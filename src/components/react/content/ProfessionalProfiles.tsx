@@ -5,11 +5,10 @@ import {
   Briefcase,
   Brain,
   Heart,
-  Scale,
-  Stethoscope,
+  BookOpen,
   ClipboardList,
-  Phone,
-  GraduationCap,
+  UserCheck,
+  FileText,
 } from 'lucide-react'
 
 type ProfileLevel = 'superior' | 'medio' | 'apoio'
@@ -32,7 +31,7 @@ const PROFILES: Profile[] = [
     icon: Briefcase,
     accent: 'border-t-blue-500 dark:border-t-blue-400',
     description:
-      'Responsável pela gestão da unidade CRAS, articulação da rede socioassistencial e supervisão das equipes técnicas.',
+      'Responsável pela gestão operacional do sistema e pela supervisão dos atendimentos, garantindo sigilo e segurança das informações.',
   },
   {
     id: 'psicologo',
@@ -41,7 +40,7 @@ const PROFILES: Profile[] = [
     icon: Brain,
     accent: 'border-t-purple-500 dark:border-t-purple-400',
     description:
-      'Atendimento psicossocial individual e em grupo, acolhimento e acompanhamento familiar no PAIF.',
+      'Registra, planeja e acompanha ações socioassistenciais no Prontuário SUAS. Realiza acolhimento, atendimentos especializados e fortalece vínculos familiares e comunitários.',
   },
   {
     id: 'assistente-social',
@@ -50,52 +49,43 @@ const PROFILES: Profile[] = [
     icon: Heart,
     accent: 'border-t-emerald-500 dark:border-t-emerald-400',
     description:
-      'Estudo social, visita domiciliar, encaminhamento à rede e elaboração do plano de acompanhamento familiar.',
+      'Registra, planeja e acompanha ações socioassistenciais no Prontuário SUAS. Realiza acolhimento, orientação, encaminhamentos e emissão de documentos técnicos.',
   },
   {
-    id: 'advogado',
-    role: 'Advogado',
+    id: 'tecnico-superior',
+    role: 'Técnico de Nível Superior',
     level: 'superior',
-    icon: Scale,
-    accent: 'border-t-amber-500 dark:border-t-amber-400',
+    icon: UserCheck,
+    accent: 'border-t-indigo-500 dark:border-t-indigo-400',
     description:
-      'Orientação jurídica, mediação de conflitos e garantia de acesso à justiça para famílias em vulnerabilidade.',
+      'Registra, planeja e acompanha ações socioassistenciais no Prontuário SUAS. Realiza acolhimento, atua em equipe multiprofissional, realiza intervenções individuais, grupais e comunitárias.',
   },
   {
-    id: 'estagiario',
-    role: 'Estagiário',
-    level: 'superior',
-    icon: GraduationCap,
-    accent: 'border-t-teal-500 dark:border-t-teal-400',
-    description:
-      'Apoio às equipes técnicas, observação participante e desenvolvimento de atividades acadêmico-profissionais.',
-  },
-  {
-    id: 'tecnico-enfermagem',
-    role: 'Técnico em Enfermagem',
+    id: 'tecnico-medio',
+    role: 'Técnico de Nível Médio',
     level: 'medio',
-    icon: Stethoscope,
+    icon: FileText,
     accent: 'border-t-cyan-500 dark:border-t-cyan-400',
     description:
-      'Aferição de sinais vitais, curativos, administração de medicamentos e acompanhamento de saúde dos usuários.',
+      'Produz relatórios e pareceres, registra oficinas e grupos, documenta atendimentos, contribui com o plano de acompanhamento familiar.',
   },
   {
-    id: 'auxiliar-administrativo',
-    role: 'Auxiliar Administrativo',
+    id: 'educador-social',
+    role: 'Educador Social',
     level: 'medio',
+    icon: BookOpen,
+    accent: 'border-t-green-500 dark:border-t-green-400',
+    description:
+      'Registra ações socioeducativas e o acompanhamento de usuários, produzindo relatórios, registrando oficinas e contribuindo com o plano de acompanhamento familiar.',
+  },
+  {
+    id: 'apoio-administrativo',
+    role: 'Apoio Administrativo – CRAS',
+    level: 'apoio',
     icon: ClipboardList,
     accent: 'border-t-orange-500 dark:border-t-orange-400',
     description:
-      'Suporte administrativo, organização de prontuários, controle de agendas e atendimento ao público.',
-  },
-  {
-    id: 'recepcionista',
-    role: 'Recepcionista',
-    level: 'apoio',
-    icon: Phone,
-    accent: 'border-t-rose-500 dark:border-t-rose-400',
-    description:
-      'Primeiro acolhimento, agendamento de atendimentos e triagem inicial das demandas dos usuários.',
+      'Insere informações básicas nos sistemas do SUAS, apoia processos relacionados ao CadÚnico, emite documentos e relatórios, apoia fluxos internos de atendimento.',
   },
 ]
 

@@ -4,7 +4,6 @@
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
 import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
-import SeeAlso from '@/components/astro/content/SeeAlso.astro'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
 ---
 
@@ -14,39 +13,62 @@ import BestPracticesList from '@/components/astro/content/BestPracticesList.astr
 >
   <SectionHeader title="Gestão do Prontuário: Ciclo de Vida e Política de Dados" accent="blue" />
 
-  <!-- Prosa conceitual -->
-  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed mb-10">
-    <p>
-      No contexto do <strong class="text-slate-800 dark:text-white">Sistema Único de Assistência Social (SUAS)</strong>,
-      o <strong class="text-slate-800 dark:text-white">Prontuário Eletrônico</strong> transcende a função de um simples
-      formulário digital. Ele constitui um <strong class="text-slate-800 dark:text-white">registro vivo</strong> da
-      trajetória da família na rede socioassistencial — um
-      documento dinâmico que centraliza o histórico de atendimentos, viabiliza a colaboração entre os membros da
-      equipe técnica e fundamenta decisões baseadas em evidências. Cada atualização do prontuário reflete um
-      momento do percurso familiar, permitindo que profissionais que atuam em diferentes turnos ou que assumem
-      o caso posteriormente compreendam integralmente o contexto e a evolução do acompanhamento.
-    </p>
-    <p>
-      O <strong class="text-slate-800 dark:text-white">número do prontuário</strong> é gerado automaticamente
-      pelo sistema no momento da abertura e é <strong class="text-slate-800 dark:text-white">único por família</strong>
-      dentro da unidade. Ele atua como o identificador primário para todas as operações — consultas, registros
-      de atendimento, encaminhamentos e relatórios — e é
-      <strong class="text-slate-800 dark:text-white">distinto do NIS e dos códigos do CadÚnico</strong>.
-      Enquanto o NIS identifica o cidadão para políticas federais e o CadÚnico cataloga a composição familiar
-      para programas sociais, o número do prontuário organiza internamente o trabalho da equipe do CRAS,
-      vinculando cada intervenção a uma família específica e garantindo a rastreabilidade completa das ações.
-    </p>
-    <p>
-      Por conter <strong class="text-slate-800 dark:text-white">dados pessoais sensíveis</strong> — informações
-      sobre saúde, violência, vulnerabilidades, composição e dinâmica familiar — o prontuário está sujeito às
-      disposições da <strong class="text-slate-800 dark:text-white">Lei Geral de Proteção de Dados Pessoais
-      (LGPD, Lei nº 13.709/2018)</strong>. O acesso é controlado por perfil de usuário, e a visualização de
-      prontuários fora do contexto de atendimento ativo exige
-      <strong class="text-slate-800 dark:text-white">justificativa registrada</strong>. A administração pública
-      detém a responsabilidade solidária pela segurança dos dados, devendo adotar medidas técnicas e
-      administrativas para prevenir acessos não autorizados, vazamentos e incidentes de segurança que
-      possam comprometer a privacidade das famílias atendidas.
-    </p>
+  <!-- Prosa conceitual — 3 blocos temáticos com sub-headers -->
+  <div class="space-y-5 mb-10">
+    <!-- Bloco 1: Registro Vivo -->
+    <div class="border-l-4 border-institucional-blue bg-gradient-to-br from-blue-50 to-blue-100/60 dark:from-blue-950/40 dark:to-blue-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-blue"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+        O Prontuário como Registro Vivo
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        No contexto do <strong class="text-slate-800 dark:text-white">Sistema Único de Assistência Social (SUAS)</strong>,
+        o <strong class="text-slate-800 dark:text-white">Prontuário Eletrônico</strong> transcende a função de um simples
+        formulário digital. Ele constitui um <strong class="text-slate-800 dark:text-white">registro vivo</strong> da
+        trajetória da família na rede socioassistencial — um documento dinâmico que centraliza o histórico de atendimentos,
+        viabiliza a colaboração entre os membros da equipe técnica e fundamenta decisões baseadas em evidências. Cada
+        atualização do prontuário reflete um momento do percurso familiar, permitindo que profissionais que atuam em
+        diferentes turnos ou que assumem o caso posteriormente compreendam integralmente o contexto e a evolução do
+        acompanhamento.
+      </p>
+    </div>
+
+    <!-- Bloco 2: Identificação -->
+    <div class="border-l-4 border-institucional-green bg-gradient-to-br from-green-50 to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-green"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="13" y2="15"/></svg>
+        Identificação do Prontuário
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O <strong class="text-slate-800 dark:text-white">número do prontuário</strong> é gerado automaticamente
+        pelo sistema no momento da abertura e é <strong class="text-slate-800 dark:text-white">único por família</strong>
+        dentro da unidade. Ele atua como o identificador primário para todas as operações — consultas, registros
+        de atendimento, encaminhamentos e relatórios — e é
+        <strong class="text-slate-800 dark:text-white">distinto do NIS e dos códigos do CadÚnico</strong>.
+        Enquanto o NIS identifica o cidadão para políticas federais e o CadÚnico cataloga a composição familiar
+        para programas sociais, o número do prontuário organiza internamente o trabalho da equipe do CRAS,
+        vinculando cada intervenção a uma família específica e garantindo a rastreabilidade completa das ações.
+      </p>
+    </div>
+
+    <!-- Bloco 3: LGPD e Proteção -->
+    <div class="border-l-4 border-amber-500 bg-gradient-to-br from-amber-50 to-amber-100/60 dark:from-amber-950/40 dark:to-amber-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Proteção de Dados e LGPD
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        Por conter <strong class="text-slate-800 dark:text-white">dados pessoais sensíveis</strong> — informações
+        sobre saúde, violência, vulnerabilidades, composição e dinâmica familiar — o prontuário está sujeito às
+        disposições da <strong class="text-slate-800 dark:text-white">Lei Geral de Proteção de Dados Pessoais
+        (LGPD, Lei nº 13.709/2018)</strong>. O acesso é controlado por perfil de usuário, e a visualização de
+        prontuários fora do contexto de atendimento ativo exige
+        <strong class="text-slate-800 dark:text-white">justificativa registrada</strong>. A administração pública
+        detém a responsabilidade solidária pela segurança dos dados, devendo adotar medidas técnicas e
+        administrativas para prevenir acessos não autorizados, vazamentos e incidentes de segurança que
+        possam comprometer a privacidade das famílias atendidas.
+      </p>
+    </div>
   </div>
 
   <!-- Ciclo de Vida do Prontuário -->
@@ -94,13 +116,4 @@ import BestPracticesList from '@/components/astro/content/BestPracticesList.astr
     />
   </div>
 
-  <SeeAlso
-    links={[
-      { label: 'Informações do Prontuário', href: '#informacoes-prontuario' },
-      { label: 'Excluir Prontuário', href: '#excluir-prontuario' },
-      { label: 'Migrar Prontuário', href: '#migrar-prontuario' },
-      { label: 'Diagnóstico Socioeconômico', href: '#diagnostico-socioeconomico' },
-    ]}
-    accent="blue"
-  />
-</section>
+  </section>

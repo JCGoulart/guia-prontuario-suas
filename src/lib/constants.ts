@@ -39,6 +39,7 @@ export const INTRO_SECTIONS = [
   { id: 'expediente', title: 'Expediente' },
   { id: 'sumario', title: 'Sumário' },
   { id: 'apresentacao', title: 'Apresentação' },
+  { id: 'papeis-profissionais', title: 'Profissionais do SUAS e Perfis de Acesso' },
 ]
 
 export const FINAL_SECTIONS = [

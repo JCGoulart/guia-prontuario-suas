@@ -13,7 +13,7 @@ export const WELCOME_CONTENT = {
   subtitle: 'Sistema Único de Assistência Social — SUAS',
   description:
     'Este manual apresenta o passo a passo para utilização do Prontuário Eletrônico do SUAS, abordando desde o login no sistema até o registro de atendimentos individuais, familiares e coletivos. O material é destinado aos profissionais da assistência social que atuam nos CRAS, CREAS e demais unidades socioassistenciais.',
-  teamLabel: 'Realização',
+  teamLabel: 'Equipe Responsável',
   otherCadernosLabel: 'Materiais Relacionados',
   otherCadernosEmpty: 'Outros materiais serão disponibilizados em breve.',
   dontShowAgainLabel: 'Não mostrar novamente',
@@ -22,18 +22,18 @@ export const WELCOME_CONTENT = {
 
 export const WELCOME_TEAM = [
   {
-    unit: 'Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome',
-    role: 'Publicação',
-    responsible: 'MDS',
-    support: 'Secretaria Nacional de Assistência Social',
-    email: 'suas@mds.gov.br',
+    unit: 'Coordenação Estadual de Vigilância Socioassistencial (COOVIG)',
+    role: 'Desenvolvimento do Manual',
+    responsible: 'Junier Goulart',
+    support: 'Matheus Lopes e Matheus de Freitas',
+    email: 'coordvigilanciasgs@sedsdh.rj.gov.br',
   },
 ]
 
 export const WELCOME_CONTACT = {
-  phone: '',
-  email: 'suas@mds.gov.br',
-  address: '',
+  phone: '(21) 3231-3658',
+  email: 'coordvigilanciasgs@sedsdh.rj.gov.br',
+  address: 'Secretaria de Estado de Desenvolvimento Social e Direitos Humanos — Rio de Janeiro/RJ',
 }
 
 export const OTHER_CADERNOS = [

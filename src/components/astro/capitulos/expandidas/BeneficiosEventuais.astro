@@ -2,7 +2,6 @@
 // Benefícios Eventuais no SUAS — conceptual expansion with typology, best practices, and cross-references
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
-import SeeAlso from '@/components/astro/content/SeeAlso.astro'
 import ProgramsTable from '@/components/react/content/ProgramsTable.tsx'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
 
@@ -68,43 +67,61 @@ const beneficios = [
 >
   <SectionHeader title="Benefícios Eventuais no SUAS" accent="blue" />
 
-  <!-- Prosa conceitual -->
-  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed">
-    <p>
-      Os <strong class="text-slate-800 dark:text-white">Benefícios Eventuais</strong> são provisões suplementares e provisórias
-      que integram as garantias da <strong class="text-slate-800 dark:text-white">Política Nacional de Assistência Social</strong>.
-      Previstos no art. 22 da <strong class="text-slate-800 dark:text-white">Lei Orgânica da Assistência Social — LOAS</strong>
-      (Lei nº 8.742, de 7 de dezembro de 1993), regulamentados pelo
-      <strong class="text-slate-800 dark:text-white">Decreto nº 6.307/2007</strong> e disciplinados por sucessivas
-      <strong class="text-slate-800 dark:text-white">Resoluções do CNAS</strong> (em especial a Resolução CNAS nº 212/2006 e
-      a Resolução CNAS nº 39/2010), o direito aos benefícios eventuais constitui uma garantia constitucional derivada do art. 203
-      da Constituição Federal, que assegura a proteção à família, à maternidade, à infância, à adolescência e à velhice, bem como
-      a habilitação e reabilitação das pessoas com deficiência e a promoção de sua integração à vida comunitária.
-    </p>
-    <p>
-      Diferentemente dos programas de transferência continuada de renda — como o
-      <strong class="text-slate-800 dark:text-white">Bolsa Família</strong> e o
-      <strong class="text-slate-800 dark:text-white">Benefício de Prestação Continuada (BPC)</strong> —, os benefícios
-      eventuais não possuem caráter permanente. Eles se destinam a responder a
-      <strong class="text-slate-800 dark:text-white">situações específicas e transitórias</strong> de vulnerabilidade,
-      configurando uma ação protetiva imediata para cidadãos e famílias que, em determinado momento, não possuem condições
-      de arcar com despesas essenciais decorrentes de nascimento, morte, calamidade pública ou outras situações de
-      vulnerabilidade temporária.
-    </p>
-    <p>
-      O fluxo operacional dos benefícios eventuais no CRAS segue uma sequência estruturada:
-      <strong class="text-slate-800 dark:text-white">(1) identificação da necessidade</strong> por meio da escuta
-      qualificada ou de busca ativa no território;
-      <strong class="text-slate-800 dark:text-white">(2) registro no prontuário eletrônico</strong> com a
-      documentação comprobatória da situação geradora;
-      <strong class="text-slate-800 dark:text-white">(3) encaminhamento</strong> para a equipe responsável pela
-      avaliação e concessão; e
-      <strong class="text-slate-800 dark:text-white">(4) acompanhamento pós-concessão</strong>, que pode revelar
-      outras demandas da família e desencadear a inserção no PAIF ou o acionamento da rede intersetorial. O
-      benefício eventual, portanto, não é um fim em si mesmo — é frequentemente a
-      <strong class="text-slate-800 dark:text-white">porta de entrada</strong> para um acompanhamento sistemático
-      e continuado da família no âmbito da Proteção Social Básica.
-    </p>
+  <!-- Prosa conceitual — 3 blocos temáticos -->
+  <div class="space-y-5 mb-10">
+    <!-- Bloco 1: Marco Legal -->
+    <div class="border-l-4 border-institucional-blue bg-gradient-to-br from-blue-50 to-blue-100/60 dark:from-blue-950/40 dark:to-blue-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-blue"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Marco Legal e Fundamentação
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        Os <strong class="text-slate-800 dark:text-white">Benefícios Eventuais</strong> são provisões suplementares e provisórias
+        que integram as garantias da <strong class="text-slate-800 dark:text-white">Política Nacional de Assistência Social</strong>.
+        Previstos no art. 22 da <strong class="text-slate-800 dark:text-white">Lei Orgânica da Assistência Social — LOAS</strong>
+        (Lei nº 8.742/1993), regulamentados pelo <strong class="text-slate-800 dark:text-white">Decreto nº 6.307/2007</strong> e
+        pela <strong class="text-slate-800 dark:text-white">Resolução CNAS nº 212/2006</strong>, constituem garantia derivada do
+        art. 203 da Constituição Federal, que assegura proteção à família, à maternidade, à infância, à adolescência e à velhice.
+      </p>
+    </div>
+
+    <!-- Bloco 2: Natureza -->
+    <div class="border-l-4 border-amber-500 bg-gradient-to-br from-amber-50 to-amber-100/60 dark:from-amber-950/40 dark:to-amber-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Natureza Provisória e Transitória
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        Diferentemente dos programas de transferência continuada de renda — como o
+        <strong class="text-slate-800 dark:text-white">Bolsa Família</strong> e o
+        <strong class="text-slate-800 dark:text-white">Benefício de Prestação Continuada (BPC)</strong> —, os benefícios
+        eventuais não possuem caráter permanente. Destinam-se a responder a
+        <strong class="text-slate-800 dark:text-white">situações específicas e transitórias</strong> de vulnerabilidade —
+        nascimento, morte, calamidade pública ou outras situações de vulnerabilidade temporária — configurando uma ação
+        protetiva imediata para cidadãos e famílias que, em determinado momento, não possuem condições de arcar com
+        despesas essenciais.
+      </p>
+    </div>
+
+    <!-- Bloco 3: Fluxo Operacional -->
+    <div class="border-l-4 border-institucional-green bg-gradient-to-br from-green-50 to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-green"><polyline points="9 18 15 12 9 6"/></svg>
+        Fluxo Operacional e Porta de Entrada
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O fluxo operacional no CRAS segue uma sequência estruturada:
+        <strong class="text-slate-800 dark:text-white">(1) identificação</strong> da necessidade por escuta qualificada ou
+        busca ativa;
+        <strong class="text-slate-800 dark:text-white">(2) registro no prontuário eletrônico</strong> com documentação
+        comprobatória;
+        <strong class="text-slate-800 dark:text-white">(3) encaminhamento</strong> para avaliação e concessão; e
+        <strong class="text-slate-800 dark:text-white">(4) acompanhamento pós-concessão</strong>, que pode revelar outras
+        demandas e desencadear a inserção no PAIF. O benefício eventual é frequentemente a
+        <strong class="text-slate-800 dark:text-white">porta de entrada</strong> para um acompanhamento sistemático e
+        continuado da família no âmbito da Proteção Social Básica.
+      </p>
+    </div>
   </div>
 
   <!-- Tabela de tipologia -->
@@ -132,13 +149,4 @@ const beneficios = [
     accent="green"
   />
 
-  <SeeAlso
-    links={[
-      { label: 'Acesso a Benefícios — Registro no Prontuário', href: '#acesso-beneficios' },
-      { label: 'Diagnóstico Socioeconômico da Família', href: '#diagnostico-socioeconomico' },
-      { label: 'Situações de Vulnerabilidade e Proteções Sociais', href: '#vulnerabilidades' },
-      { label: 'Encaminhamentos e Articulação Intersetorial', href: '#encaminhamentos' },
-    ]}
-    accent="blue"
-  />
-</section>
+  </section>

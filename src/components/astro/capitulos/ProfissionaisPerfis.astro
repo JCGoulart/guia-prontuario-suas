@@ -1,0 +1,50 @@
+---
+import ProfissionaisFlowModal from '@/components/react/content/ProfissionaisFlowModal'
+---
+
+<section id="papeis-profissionais" class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none mt-6">
+  <div class="flex items-center gap-3 mb-3">
+    <div class="w-10 h-10 rounded-xl bg-institucional-green flex items-center justify-center shadow-md shadow-institucional-green/25">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    </div>
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white tracking-tight">Profissionais do SUAS e Perfis de Acesso</h2>
+  </div>
+
+  <div class="h-1 w-20 rounded-full bg-gradient-to-r from-institucional-green to-green-300 mb-8" />
+
+  <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+    O acesso ao sistema Prontuário Eletrônico deve ser restrito aos profissionais do SUAS, em especial aos técnicos de nível superior das equipes de referência, de acordo com os perfis de acesso definidos no CadSUAS.
+  </p>
+
+  <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+    <span class="w-1.5 h-5 rounded-full bg-institucional-green inline-block"></span>
+    Perfis de Acesso
+  </h3>
+
+  <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+    O sistema conta com diferentes níveis de acesso, organizados por esfera de atuação e responsabilidade. Os perfis contemplam desde a gestão nacional — <strong>Administrador Federal</strong> — passando pelas esferas estadual e municipal com <strong>Gestores</strong> e <strong>Técnicos da Gestão</strong>, até o <strong>Conselheiro</strong> no controle social. Na ponta, a equipe do CRAS é composta por <strong>Coordenador</strong>, <strong>Assistente Social</strong>, <strong>Psicólogo</strong>, <strong>Técnico de Nível Superior</strong>, <strong>Técnico de Nível Médio</strong>, <strong>Educador Social</strong> e <strong>Apoio Administrativo</strong>.
+  </p>
+
+  <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+    Cada perfil possui atribuições específicas e restrições de acesso conforme o CadSUAS. <strong>Clique no botão abaixo</strong> para explorar a estrutura completa com as descrições detalhadas de cada papel.
+  </p>
+
+  <!-- Botão para abrir diagrama interativo -->
+  <div class="flex justify-center my-8">
+    <button
+      onclick="window.openProfissionaisFlowModal?.()"
+      class="inline-flex items-center gap-3 px-6 py-4 rounded-2xl text-sm font-semibold bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-800/60 border-2 border-dashed border-slate-300 dark:border-slate-600 shadow-sm hover:shadow-lg hover:border-institucional-green dark:hover:border-institucional-green hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 group"
+    >
+      <span class="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-institucional-green to-institucional-green/80 text-white shadow-md group-hover:scale-110 transition-transform duration-200">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <div class="text-left">
+        <span class="block text-slate-800 dark:text-slate-100 group-hover:text-institucional-green transition-colors">Ver estrutura completa</span>
+        <span class="block text-xs text-slate-500 dark:text-slate-400 mt-0.5">Governança → CRAS → Profissionais</span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 group-hover:text-institucional-green group-hover:translate-x-0.5 transition-all"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <ProfissionaisFlowModal client:load />
+</section>

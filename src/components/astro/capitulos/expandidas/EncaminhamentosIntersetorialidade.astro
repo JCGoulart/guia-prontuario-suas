@@ -3,7 +3,6 @@
 import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
-import SeeAlso from '@/components/astro/content/SeeAlso.astro'
 import type { Anotacao } from '@/types'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
 
@@ -50,42 +49,65 @@ const anotacoes: Anotacao[] = [
   <!-- Título -->
   <SectionHeader title="Encaminhamentos e Intersetorialidade" accent="blue" />
 
-  <!-- Prosa Conceitual -->
-  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-5 text-base leading-relaxed mb-10">
-    <p>
-      O princípio da <strong class="text-slate-800 dark:text-white">intersetorialidade</strong> reconhece que nenhuma política pública
-      isolada é capaz de resolver problemas sociais complexos. No SUAS, isso significa que o CRAS não atua sozinho: ele articula
-      ações com saúde, educação, justiça, trabalho, habitação e outras áreas para garantir a proteção integral das famílias.
-    </p>
+  <!-- Prosa Conceitual — 4 blocos temáticos -->
+  <div class="space-y-5 mb-10">
+    <!-- Bloco 1: Princípio da Intersetorialidade -->
+    <div class="border-l-4 border-institucional-blue bg-gradient-to-br from-blue-50 to-blue-100/60 dark:from-blue-950/40 dark:to-blue-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-blue"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        O Princípio da Intersetorialidade
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O princípio da <strong class="text-slate-800 dark:text-white">intersetorialidade</strong> reconhece que nenhuma política pública
+        isolada é capaz de resolver problemas sociais complexos. No SUAS, isso significa que o CRAS não atua sozinho: ele articula
+        ações com saúde, educação, justiça, trabalho, habitação e outras áreas para garantir a proteção integral das famílias.
+      </p>
+    </div>
 
-    <p>
-      O <strong class="text-slate-800 dark:text-white">encaminhamento</strong> é o instrumento que operacionaliza essa articulação.
-      Sempre que a equipe do CRAS identifica uma demanda que extrapola o escopo da assistência social — como uma consulta médica
-      especializada, uma vaga em escola, orientação jurídica ou atualização cadastral — ela registra o encaminhamento no sistema.
-      O registro informa <em>quem</em> foi encaminhado, <em>para qual área</em>, em que <em>data</em> e por qual <em>motivo</em>.
-    </p>
+    <!-- Bloco 2: Encaminhamento como Instrumento -->
+    <div class="border-l-4 border-institucional-green bg-gradient-to-br from-green-50 to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-green"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        O Encaminhamento como Instrumento
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O <strong class="text-slate-800 dark:text-white">encaminhamento</strong> é o instrumento que operacionaliza a articulação
+        intersetorial. Sempre que a equipe do CRAS identifica uma demanda que extrapola o escopo da assistência social — como
+        consulta médica especializada, vaga em escola, orientação jurídica ou atualização cadastral — ela registra o
+        encaminhamento no sistema, informando <em>quem</em> foi encaminhado, <em>para qual área</em>, em que <em>data</em> e
+        por qual <em>motivo</em>.
+      </p>
+    </div>
 
-    <p>
-      As áreas de destino mais comuns incluem: <strong>Saúde</strong> (UBS, CAPS, hospitais), <strong>Educação</strong>
-      (escolas), <strong>Justiça</strong> (Defensoria Pública, CREAS), <strong>Trabalho</strong> (SINE, programas
-      de qualificação profissional) e <strong>Habitação</strong> (programas de moradia). O campo de seleção do formulário
-      apresenta essas opções codificadas, facilitando o registro padronizado.
-    </p>
+    <!-- Bloco 3: Áreas de Destino -->
+    <div class="border-l-4 border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100/60 dark:from-purple-950/40 dark:to-purple-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Áreas de Destino e Padronização
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        As áreas de destino mais comuns incluem: <strong>Saúde</strong> (UBS, CAPS, hospitais), <strong>Educação</strong>
+        (escolas), <strong>Justiça</strong> (Defensoria Pública, CREAS), <strong>Trabalho</strong> (SINE, programas
+        de qualificação profissional) e <strong>Habitação</strong> (programas de moradia). O campo de seleção do formulário
+        apresenta essas opções codificadas, facilitando o registro padronizado e a consolidação estatística.
+      </p>
+    </div>
 
-    <p>
-      O <strong class="text-slate-800 dark:text-white">acompanhamento do encaminhamento</strong> é tão importante quanto o
-      próprio registro. Após encaminhar, a equipe deve verificar — em atendimentos subsequentes ou por contato com a unidade
-      de destino — se a pessoa efetivamente acessou o serviço. Esse retorno, chamado de
-      <strong>contrarreferência</strong>, fecha o ciclo da intersetorialidade: o CRAS encaminha e a rede responde, permitindo
-      avaliar se a demanda foi atendida ou se novas ações são necessárias.
-    </p>
-
-    <p>
-      A diferença conceitual é relevante: o <strong>encaminhamento</strong> é o ato de direcionar a pessoa a outro serviço
-      (fluxo de saída), enquanto a <strong>contrarreferência</strong> é a resposta que retorna ao CRAS (fluxo de entrada),
-      confirmando o atendimento, informando o desfecho ou solicitando informações complementares. Ambos os movimentos são
-      registrados no prontuário para compor o histórico integral do atendimento.
-    </p>
+    <!-- Bloco 4: Contrarreferência -->
+    <div class="border-l-4 border-amber-500 bg-gradient-to-br from-amber-50 to-amber-100/60 dark:from-amber-950/40 dark:to-amber-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        Acompanhamento e Contrarreferência
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O <strong class="text-slate-800 dark:text-white">acompanhamento do encaminhamento</strong> é tão importante quanto o
+        registro. Após encaminhar, a equipe deve verificar — em atendimentos subsequentes ou por contato com a unidade de
+        destino — se a pessoa efetivamente acessou o serviço. Esse retorno é a
+        <strong>contrarreferência</strong>: enquanto o <strong>encaminhamento</strong> é o ato de direcionar (fluxo de saída),
+        a <strong>contrarreferência</strong> é a resposta que retorna ao CRAS (fluxo de entrada), confirmando o atendimento,
+        informando o desfecho ou solicitando informações complementares. Ambos compõem o histórico integral do atendimento.
+      </p>
+    </div>
   </div>
 
   <!-- Screenshot com anotações -->
@@ -118,12 +140,4 @@ const anotacoes: Anotacao[] = [
     accent="blue"
   />
 
-  <SeeAlso
-    links={[
-      { label: 'Vulnerabilidades e Riscos Sociais', href: '#vulnerabilidades' },
-      { label: 'Condições de Saúde', href: '#condicoes-saude' },
-      { label: 'Condições Educacionais', href: '#condicoes-educacionais' },
-    ]}
-    accent="blue"
-  />
-</section>
+  </section>

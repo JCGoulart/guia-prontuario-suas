@@ -4,7 +4,6 @@ import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
 import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
-import SeeAlso from '@/components/astro/content/SeeAlso.astro'
 import ColetivoVsIndividual from '@/components/react/content/ColetivoVsIndividual.tsx'
 import type { Anotacao } from '@/types'
 
@@ -152,12 +151,4 @@ const anotacoes: Anotacao[] = [
     </div>
   </div>
 
-  <SeeAlso
-    links={[
-      { label: 'Planejamento e Evolução', href: '#planejamento-evolucao' },
-      { label: 'Lista de Atendimentos Coletivos', href: '#atendimento-coletivo-lista' },
-      { label: 'Painel Estatístico', href: '#painel-estatistico' },
-    ]}
-    accent="green"
-  />
-</section>
+  </section>

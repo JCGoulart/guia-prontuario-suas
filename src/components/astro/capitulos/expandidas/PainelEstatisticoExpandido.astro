@@ -3,7 +3,6 @@
 import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
-import SeeAlso from '@/components/astro/content/SeeAlso.astro'
 import FeatureCard from '@/components/astro/content/FeatureCard.astro'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
 import type { Anotacao } from '@/types'
@@ -128,12 +127,4 @@ const anotacoes: Anotacao[] = [
     />
   </div>
 
-  <SeeAlso
-    links={[
-      { label: 'Painel Estatístico (Visão Geral)', href: '#painel-estatistico' },
-      { label: 'Atendimento Coletivo', href: '#atendimento-coletivo-expandido' },
-      { label: 'Relatório Simplificado', href: '#relatorio-simplificado' },
-    ]}
-    accent="blue"
-  />
-</section>
+  </section>

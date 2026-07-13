@@ -3,7 +3,6 @@
 import SecaoTutorial from '../SecaoTutorial.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
-import SeeAlso from '@/components/astro/content/SeeAlso.astro'
 import type { Anotacao } from '@/types'
 import ProgramsTable from '@/components/react/content/ProgramsTable.tsx'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
@@ -78,17 +77,40 @@ const anotacoes: Anotacao[] = [
 >
   <SectionHeader title="Diagnóstico Socioeconômico da Família" accent="blue" />
 
-  <!-- Prosa conceitual -->
-  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed">
-    <p>
-      O <strong class="text-slate-800 dark:text-white">Diagnóstico Socioeconômico</strong> é uma etapa fundamental do acompanhamento familiar no SUAS. Diferente do Cadastro Único — que tem caráter declaratório e finalidade de elegibilidade para programas —, o diagnóstico realizado pelo técnico do CRAS busca compreender a <strong class="text-slate-800 dark:text-white">realidade concreta da família</strong>: suas fontes de renda, condições de moradia, acesso a serviços públicos, dinâmicas de trabalho e estratégias de sobrevivência. Esses dados alimentam o plano de acompanhamento e permitem planejar intervenções mais efetivas, monitorar mudanças ao longo do tempo e produzir evidências sobre o impacto das políticas socioassistenciais no território.
-    </p>
-    <p>
-      O registro da <strong class="text-slate-800 dark:text-white">Forma de Ingresso</strong> é o ponto de partida — a porta de entrada que documenta como e por que a família chegou até a unidade. É o primeiro contato formal entre a família e o CRAS, e a qualidade desse registro influencia diretamente a capacidade da equipe de compreender a demanda inicial e traçar uma rota de acompanhamento adequada. Cada novo atendimento pode gerar uma nova forma de ingresso, permitindo que o histórico reflita a trajetória da família ao longo do tempo.
-    </p>
-    <p>
-      As informações coletadas aqui — somadas aos dados do CadÚnico, à composição familiar e aos registros de vulnerabilidades — compõem um panorama multidimensional que subsidia tanto a <strong class="text-slate-800 dark:text-white">avaliação de risco e vulnerabilidade</strong> quanto o <strong class="text-slate-800 dark:text-white">monitoramento familiar</strong>. Um diagnóstico bem fundamentado é a base para decisões técnicas seguras e para a garantia de direitos.
-    </p>
+  <!-- Prosa conceitual — 3 blocos temáticos com sub-headers -->
+  <div class="space-y-5 mb-10">
+    <!-- Bloco 1: Conceito e Finalidade -->
+    <div class="border-l-4 border-institucional-blue bg-gradient-to-br from-blue-50 to-blue-100/60 dark:from-blue-950/40 dark:to-blue-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-blue"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        Conceito e Finalidade
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O <strong class="text-slate-800 dark:text-white">Diagnóstico Socioeconômico</strong> é uma etapa fundamental do acompanhamento familiar no SUAS. Diferente do Cadastro Único — que tem caráter declaratório e finalidade de elegibilidade para programas —, o diagnóstico realizado pelo técnico do CRAS busca compreender a <strong class="text-slate-800 dark:text-white">realidade concreta da família</strong>: suas fontes de renda, condições de moradia, acesso a serviços públicos, dinâmicas de trabalho e estratégias de sobrevivência. Esses dados alimentam o plano de acompanhamento e permitem planejar intervenções mais efetivas, monitorar mudanças ao longo do tempo e produzir evidências sobre o impacto das políticas socioassistenciais no território.
+      </p>
+    </div>
+
+    <!-- Bloco 2: Porta de Entrada -->
+    <div class="border-l-4 border-institucional-green bg-gradient-to-br from-green-50 to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-green"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Forma de Ingresso — Porta de Entrada
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O registro da <strong class="text-slate-800 dark:text-white">Forma de Ingresso</strong> é o ponto de partida — a porta de entrada que documenta como e por que a família chegou até a unidade. É o primeiro contato formal entre a família e o CRAS, e a qualidade desse registro influencia diretamente a capacidade da equipe de compreender a demanda inicial e traçar uma rota de acompanhamento adequada. Cada novo atendimento pode gerar uma nova forma de ingresso, permitindo que o histórico reflita a trajetória da família ao longo do tempo.
+      </p>
+    </div>
+
+    <!-- Bloco 3: Panorama Multidimensional -->
+    <div class="border-l-4 border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100/60 dark:from-purple-950/40 dark:to-purple-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Panorama Multidimensional
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        As informações coletadas aqui — somadas aos dados do CadÚnico, à composição familiar e aos registros de vulnerabilidades — compõem um panorama multidimensional que subsidia tanto a <strong class="text-slate-800 dark:text-white">avaliação de risco e vulnerabilidade</strong> quanto o <strong class="text-slate-800 dark:text-white">monitoramento familiar</strong>. Um diagnóstico bem fundamentado é a base para decisões técnicas seguras e para a garantia de direitos.
+      </p>
+    </div>
   </div>
 
   <!-- Screenshot com anotações -->
@@ -125,11 +147,4 @@ const anotacoes: Anotacao[] = [
     accent="green"
   />
 
-  <SeeAlso
-    links={[
-      { label: 'Situações de Vulnerabilidade', href: '#vulnerabilidades' },
-      { label: 'Acesso a Benefícios Eventuais', href: '#acesso-beneficios' },
-    ]}
-    accent="blue"
-  />
-</section>
+  </section>

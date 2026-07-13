@@ -4,7 +4,6 @@ import type { Anotacao } from '@/types'
 import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
-import SeeAlso from '@/components/astro/content/SeeAlso.astro'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
 
 const anotacoes: Anotacao[] = [
@@ -33,51 +32,72 @@ const acompanhamentoSteps = [
 >
   <SectionHeader title="Metodologia do Acompanhamento Familiar" accent="blue" />
 
-  <!-- Introdução conceitual -->
-  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed mb-10">
-    <p>
-      O <strong class="text-slate-800 dark:text-white">acompanhamento familiar</strong> no âmbito do PAIF — Serviço de Proteção e
-      Atendimento Integral à Família — não se reduz a visitas domiciliares ou contatos pontuais. Trata-se de um
-      <strong class="text-slate-800 dark:text-white">processo sistemático e planejado</strong>, conduzido pela equipe de
-      referência do CRAS, que estabelece objetivos claros, ações estruturadas e instrumentos de avaliação contínua
-      para apoiar as famílias na superação de vulnerabilidades e no fortalecimento de vínculos.
-    </p>
+  <!-- Prosa conceitual — 4 blocos temáticos -->
+  <div class="space-y-5 mb-10">
+    <!-- Bloco 1: Processo Sistemático -->
+    <div class="border-l-4 border-institucional-blue bg-gradient-to-br from-blue-50 to-blue-100/60 dark:from-blue-950/40 dark:to-blue-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-blue"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Processo Sistemático e Planejado
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O <strong class="text-slate-800 dark:text-white">acompanhamento familiar</strong> no âmbito do PAIF — Serviço de Proteção e
+        Atendimento Integral à Família — não se reduz a visitas domiciliares ou contatos pontuais. Trata-se de um
+        <strong class="text-slate-800 dark:text-white">processo sistemático e planejado</strong>, conduzido pela equipe de
+        referência do CRAS, que estabelece objetivos claros, ações estruturadas e instrumentos de avaliação contínua
+        para apoiar as famílias na superação de vulnerabilidades e no fortalecimento de vínculos.
+      </p>
+    </div>
 
-    <p>
-      Estruturar um plano de acompanhamento significa articular três dimensões interdependentes:
-      <strong class="text-slate-800 dark:text-white">objetivos</strong> (o que se pretende alcançar com a família),
-      <strong class="text-slate-800 dark:text-white">ações</strong> (as estratégias e atividades que serão desenvolvidas
-      em cada etapa) e <strong class="text-slate-800 dark:text-white">prazos</strong> (os marcos temporais para
-      reavaliação dos resultados). Esse tripé garante intencionalidade ao trabalho social e impede que o
-      acompanhamento se torne uma sucessão desconexa de atendimentos.
-    </p>
+    <!-- Bloco 2: Tripé Metodológico -->
+    <div class="border-l-4 border-institucional-green bg-gradient-to-br from-green-50 to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-green"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        O Tripé: Objetivos, Ações e Prazos
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        Estruturar um plano de acompanhamento significa articular três dimensões interdependentes:
+        <strong class="text-slate-800 dark:text-white">objetivos</strong> (o que se pretende alcançar com a família),
+        <strong class="text-slate-800 dark:text-white">ações</strong> (as estratégias e atividades que serão desenvolvidas
+        em cada etapa) e <strong class="text-slate-800 dark:text-white">prazos</strong> (os marcos temporais para
+        reavaliação dos resultados). Esse tripé garante intencionalidade ao trabalho social e impede que o
+        acompanhamento se torne uma sucessão desconexa de atendimentos.
+      </p>
+    </div>
 
-    <p>
-      O <strong class="text-slate-800 dark:text-white">técnico de referência</strong> desempenha papel central nesse
-      processo: é dele a responsabilidade de manter contato regular com a família, registrar as
-      <strong class="text-slate-800 dark:text-white">evoluções</strong> (descrições do que foi observado, dialogado e
-      encaminhado a cada interação) e ajustar o plano conforme as circunstâncias se modificam. As evoluções são o
-      fio condutor que documenta a trajetória da família, permitindo que qualquer profissional que acesse o prontuário
-      compreenda o percurso já trilhado e as decisões tomadas.
-    </p>
+    <!-- Bloco 3: Papel do Técnico -->
+    <div class="border-l-4 border-amber-500 bg-gradient-to-br from-amber-50 to-amber-100/60 dark:from-amber-950/40 dark:to-amber-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        O Técnico de Referência e as Evoluções
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O <strong class="text-slate-800 dark:text-white">técnico de referência</strong> desempenha papel central: é dele a
+        responsabilidade de manter contato regular com a família, registrar as
+        <strong class="text-slate-800 dark:text-white">evoluções</strong> — descrições do que foi observado, dialogado e
+        encaminhado a cada interação — e ajustar o plano conforme as circunstâncias se modificam. As evoluções são o
+        fio condutor que documenta a trajetória da família, permitindo que qualquer profissional que acesse o prontuário
+        compreenda o percurso já trilhado e as decisões tomadas.
+      </p>
+    </div>
 
-    <p>
-      O <strong class="text-slate-800 dark:text-white">desligamento</strong> do acompanhamento não deve ser confundido
-      com abandono ou ausência da família. Os critérios para encerrar o ciclo são bem definidos: a
-      <strong class="text-slate-800 dark:text-white">avaliação técnica</strong> conclui que os objetivos foram
-      alcançados e a família demonstra autonomia para seguir sem suporte intensivo; a
-      <strong class="text-slate-800 dark:text-white">evasão ou recusa</strong> da família, quando esta opta por não
-      continuar; a <strong class="text-slate-800 dark:text-white">mudança de município</strong>, que exige a migração
-      do prontuário para a nova unidade de referência; ou <strong class="text-slate-800 dark:text-white">outros</strong>
-      motivos devidamente justificados.
-    </p>
-
-    <p>
-      Registrar as evoluções com regularidade é mais do que um dever burocrático: é o que transforma o prontuário
-      em um <strong class="text-slate-800 dark:text-white">instrumento vivo de gestão do cuidado</strong>. Cada
-      evolução documenta avanços, retrocessos, novas demandas e respostas da rede, construindo uma memória técnica
-      que fundamenta decisões futuras e protege tanto a família quanto o profissional.
-    </p>
+    <!-- Bloco 4: Desligamento e Continuidade -->
+    <div class="border-l-4 border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100/60 dark:from-purple-950/40 dark:to-purple-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Desligamento e Continuidade do Cuidado
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O <strong class="text-slate-800 dark:text-white">desligamento</strong> não deve ser confundido com abandono. Os
+        critérios são bem definidos: <strong class="text-slate-800 dark:text-white">avaliação técnica</strong> concluindo
+        que os objetivos foram alcançados; <strong class="text-slate-800 dark:text-white">evasão ou recusa</strong> da
+        família; <strong class="text-slate-800 dark:text-white">mudança de município</strong>, exigindo migração do
+        prontuário; ou <strong class="text-slate-800 dark:text-white">outros</strong> motivos justificados. Registrar
+        evoluções com regularidade transforma o prontuário em um
+        <strong class="text-slate-800 dark:text-white">instrumento vivo de gestão do cuidado</strong>, construindo uma
+        memória técnica que fundamenta decisões e protege tanto a família quanto o profissional.
+      </p>
+    </div>
   </div>
 
   <!-- Screenshot com anotações -->
@@ -104,12 +124,4 @@ const acompanhamentoSteps = [
     />
   </div>
 
-  <SeeAlso
-    links={[
-      { label: 'Situações de Vulnerabilidades e Desproteções Sociais', href: '#vulnerabilidades' },
-      { label: 'Acesso a Benefícios Eventuais', href: '#acesso-beneficios' },
-      { label: 'Formulário de Controle de Encaminhamentos', href: '#encaminhamentos' },
-    ]}
-    accent="green"
-  />
-</section>
+  </section>

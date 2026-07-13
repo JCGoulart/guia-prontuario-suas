@@ -4,7 +4,6 @@ import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import type { Anotacao } from '@/types'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
-import SeeAlso from '@/components/astro/content/SeeAlso.astro'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
 import VulnerabilityMap from '@/components/react/content/VulnerabilityMap'
 
@@ -27,41 +26,72 @@ const anotacoes: Anotacao[] = [
 >
   <SectionHeader title="Vulnerabilidades e Desproteções Sociais" accent="blue" />
 
-  <!-- Prosa conceitual -->
-  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed mb-10">
-    <p>
-      No âmbito do <strong class="text-slate-800 dark:text-white">Sistema Único de Assistência Social (SUAS)</strong>, as
-      <strong class="text-slate-800 dark:text-white">vulnerabilidades e riscos sociais</strong> são entendidos como situações
-      que fragilizam a capacidade das famílias e indivíduos de enfrentar adversidades, acessar direitos e construir trajetórias
-      autônomas. A <strong>Política Nacional de Assistência Social (PNAS/2004)</strong> e a <strong>NOB-SUAS</strong> organizam
-      a resposta do Estado em níveis progressivos de proteção, partindo do reconhecimento de que as vulnerabilidades não são
-      atributos individuais, mas manifestações de desigualdades estruturais que afetam os vínculos familiares, comunitários e
-      as condições materiais de existência.
-    </p>
-    <p>
-      O diagnóstico das vulnerabilidades é o ponto de partida para a definição do nível de proteção mais adequado a cada
-      família. As situações de risco moderado ou prevenível — como insegurança alimentar, dificuldades de acesso à renda
-      ou fragilização de vínculos — direcionam o atendimento para a <strong class="text-slate-800 dark:text-white">Proteção
-      Social Básica</strong>, operada nos CRAS por meio do PAIF, do SCFV e da concessão de Benefícios Eventuais. Já as
-      situações de violação de direitos — violência doméstica, trabalho infantil, abandono, situação de rua — exigem
-      acompanhamento especializado no âmbito da <strong class="text-slate-800 dark:text-white">Proteção Social Especial</strong>
-      (Média ou Alta Complexidade), conduzido nos CREAS e nas unidades de acolhimento.
-    </p>
-    <p>
-      O Prontuário Eletrônico do SUAS distingue dois tipos de indicadores de vulnerabilidade. Os
-      <strong class="text-slate-800 dark:text-white">indicadores automáticos</strong> — Pessoa com Deficiência (PCD) e
-      Pessoa Idosa — são preenchidos diretamente a partir dos dados do CadÚnico vinculado à família, exigindo apenas que
-      o cadastro esteja atualizado. Já as <strong class="text-slate-800 dark:text-white">vulnerabilidades de registro
-      manual</strong> dependem da avaliação técnica do profissional que conduz o atendimento, que seleciona a tipificação
-      correspondente à situação observada e registra data, categoria e responsável.
-    </p>
-    <p>
-      A <strong class="text-slate-800 dark:text-white">tipificação das vulnerabilidades</strong> é essencial para o
-      planejamento do serviço: ela permite à equipe do CRAS mapear as demandas recorrentes do território, dimensionar
-      a oferta de programas e orientar o Plano de Acompanhamento Familiar com base em evidências registradas.
-      Sem o registro criterioso, perde-se a rastreabilidade das intervenções e a capacidade de avaliar se as proteções
-      acionadas estão, de fato, produzindo os resultados esperados para a superação das vulnerabilidades identificadas.
-    </p>
+  <!-- Prosa conceitual — 4 blocos temáticos -->
+  <div class="space-y-5 mb-10">
+    <!-- Bloco 1: Conceito e Marco Normativo -->
+    <div class="border-l-4 border-institucional-blue bg-gradient-to-br from-blue-50 to-blue-100/60 dark:from-blue-950/40 dark:to-blue-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-blue"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Conceito e Marco Normativo
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        No âmbito do <strong class="text-slate-800 dark:text-white">Sistema Único de Assistência Social (SUAS)</strong>, as
+        <strong class="text-slate-800 dark:text-white">vulnerabilidades e riscos sociais</strong> são entendidos como situações
+        que fragilizam a capacidade das famílias e indivíduos de enfrentar adversidades, acessar direitos e construir trajetórias
+        autônomas. A <strong>Política Nacional de Assistência Social (PNAS/2004)</strong> e a <strong>NOB-SUAS</strong> organizam
+        a resposta do Estado em níveis progressivos de proteção, partindo do reconhecimento de que as vulnerabilidades não são
+        atributos individuais, mas manifestações de desigualdades estruturais que afetam os vínculos familiares, comunitários e
+        as condições materiais de existência.
+      </p>
+    </div>
+
+    <!-- Bloco 2: Níveis de Proteção -->
+    <div class="border-l-4 border-amber-500 bg-gradient-to-br from-amber-50 to-amber-100/60 dark:from-amber-950/40 dark:to-amber-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Níveis de Proteção: da Prevenção à Alta Complexidade
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O diagnóstico das vulnerabilidades é o ponto de partida para a definição do nível de proteção mais adequado.
+        Situações de risco moderado ou prevenível — como insegurança alimentar, dificuldades de acesso à renda ou
+        fragilização de vínculos — direcionam o atendimento para a <strong class="text-slate-800 dark:text-white">Proteção
+        Social Básica</strong>, operada nos CRAS por meio do PAIF, do SCFV e da concessão de Benefícios Eventuais. Já as
+        situações de violação de direitos — violência doméstica, trabalho infantil, abandono, situação de rua — exigem
+        acompanhamento especializado no âmbito da <strong class="text-slate-800 dark:text-white">Proteção Social Especial</strong>
+        (Média ou Alta Complexidade), conduzido nos CREAS e nas unidades de acolhimento.
+      </p>
+    </div>
+
+    <!-- Bloco 3: Tipos de Indicadores -->
+    <div class="border-l-4 border-institucional-green bg-gradient-to-br from-green-50 to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-green"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Indicadores Automáticos e de Registro Manual
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        O Prontuário Eletrônico do SUAS distingue dois tipos de indicadores. Os
+        <strong class="text-slate-800 dark:text-white">indicadores automáticos</strong> — Pessoa com Deficiência (PCD) e
+        Pessoa Idosa — são preenchidos diretamente a partir dos dados do CadÚnico, exigindo apenas que o cadastro esteja
+        atualizado. Já as <strong class="text-slate-800 dark:text-white">vulnerabilidades de registro manual</strong> dependem
+        da avaliação técnica do profissional que conduz o atendimento: ele seleciona a tipificação correspondente à situação
+        observada e registra data, categoria e responsável.
+      </p>
+    </div>
+
+    <!-- Bloco 4: Tipificação e Planejamento -->
+    <div class="border-l-4 border-purple-500 bg-gradient-to-br from-purple-50 to-purple-100/60 dark:from-purple-950/40 dark:to-purple-900/20 rounded-r-xl pl-5 py-4 pr-4">
+      <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Tipificação como Ferramenta de Planejamento
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        A <strong class="text-slate-800 dark:text-white">tipificação das vulnerabilidades</strong> é essencial para o
+        planejamento do serviço: permite à equipe do CRAS mapear as demandas recorrentes do território, dimensionar
+        a oferta de programas e orientar o Plano de Acompanhamento Familiar com base em evidências registradas.
+        Sem o registro criterioso, perde-se a rastreabilidade das intervenções e a capacidade de avaliar se as proteções
+        acionadas estão, de fato, produzindo os resultados esperados para a superação das vulnerabilidades identificadas.
+      </p>
+    </div>
   </div>
 
   <!-- Seção tutorial com screenshot -->
@@ -98,12 +128,4 @@ const anotacoes: Anotacao[] = [
     />
   </div>
 
-  <SeeAlso
-    links={[
-      { label: 'Planejamento e Evolução', href: '#planejamento-evolucao' },
-      { label: 'Acesso a Benefícios Eventuais', href: '#acesso-beneficios' },
-      { label: 'Controle de Encaminhamentos', href: '#encaminhamentos' },
-    ]}
-    accent="blue"
-  />
-</section>
+  </section>

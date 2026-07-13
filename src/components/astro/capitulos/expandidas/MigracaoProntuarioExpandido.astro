@@ -3,7 +3,6 @@
 import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
-import SeeAlso from '@/components/astro/content/SeeAlso.astro'
 import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
 import FeatureCard from '@/components/astro/content/FeatureCard.astro'
 import type { Anotacao } from '@/types'
@@ -204,12 +203,4 @@ const fluxogramaSteps = [
     </div>
   </div>
 
-  <SeeAlso
-    links={[
-      { label: 'Migrar Prontuário', href: '#migrar-prontuario' },
-      { label: 'Gestão de Prontuário', href: '#gestao-prontuario' },
-      { label: 'Informações do Prontuário', href: '#informacoes-prontuario' },
-    ]}
-    accent="blue"
-  />
-</section>
+  </section>

@@ -1,5 +1,6 @@
 ---
 // Termo de Uso do Prontuário Eletrônico
+import TermoUsoModal from '@/components/react/content/TermoUsoModal'
 ---
 
 <section id="termo-uso" class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none">
@@ -57,4 +58,12 @@
       </p>
     </div>
   </div>
+
+  <div class="mt-8 flex justify-center">
+    <button onclick="window.openTermoModal?.()" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold bg-gradient-to-r from-amber-500 to-amber-400 text-white hover:from-amber-500/95 hover:to-amber-400/80 hover:-translate-y-0.5 hover:shadow-md active:scale-95 transition-all duration-200">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Ver Conteúdo Completo do Termo
+    </button>
+  </div>
+  <TermoUsoModal client:load />
 </section>
