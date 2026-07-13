@@ -1,0 +1,122 @@
+---
+// Apresentação e Conceitos Gerais do Manual
+import FeatureCard from '@/components/astro/content/FeatureCard.astro'
+import ConceptsAccordion from '@/components/react/content/ConceptsAccordion.tsx'
+import ProfessionalProfiles from '@/components/react/content/ProfessionalProfiles.tsx'
+---
+
+<section id="apresentacao" class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none print:break-before-page">
+  <div class="flex items-center gap-3 mb-3">
+    <div class="w-10 h-10 rounded-xl bg-institucional-green flex items-center justify-center shadow-md shadow-institucional-green/25">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    </div>
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white tracking-tight">Apresentação</h2>
+  </div>
+
+  <div class="h-1 w-20 rounded-full bg-gradient-to-r from-institucional-green to-green-300 mb-8" />
+
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed">
+    <p class="text-lg">O <strong class="text-slate-800 dark:text-white">Prontuário Eletrônico do SUAS</strong> é a versão digital do prontuário utilizado no atendimento socioassistencial. Ele registra os atendimentos de forma organizada e sintética, centralizando informações para apoiar o trabalho das equipes e a gestão das unidades.</p>
+    <p>Mantém a estrutura do formulário físico, com recursos adicionais que garantem mais segurança, agilidade e continuidade no acompanhamento das famílias.</p>
+  </div>
+
+  <!-- Estrutura do Sistema -->
+  <div class="mt-10">
+    <div class="border-l-4 border-institucional-green bg-gradient-to-br from-green-50 to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-r-xl pl-5 py-3 mb-8">
+      <h3 class="text-xl font-bold text-slate-800 dark:text-white">Estrutura do Sistema</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 italic leading-relaxed">
+        O Prontuário Eletrônico é o espaço onde a unidade registra, de forma simples e sintética, todos os atendimentos realizados com a família que procura o serviço.
+      </p>
+    </div>
+    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 text-sm">
+      Por meio do prontuário, é possível visualizar rapidamente o histórico da família, registrar novas ações e apoiar decisões de forma segura e integrada. Além disso, todos os blocos do prontuário possuem campos de observação onde o profissional pode escrever as anotações que considerar pertinentes, trazendo flexibilidade ao sistema para o trabalho social realizado no CRAS.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 stagger">
+      <FeatureCard
+        title="Migrar Prontuário"
+        description="Gerencia transferências de prontuários entre unidades, mantendo a continuidade do acompanhamento quando famílias mudam de CRAS."
+        accent="blue"
+        icon="Users"
+        badge="Transferência"
+      />
+      <FeatureCard
+        title="Atendimento Coletivo"
+        description="Registro único de atividades coletivas com listagem de CPF, inserido automaticamente no prontuário de cada participante."
+        accent="green"
+        icon="LayoutGrid"
+        badge="Grupo"
+      />
+      <FeatureCard
+        title="Painel Estatístico"
+        description="Visão agregada dos atendimentos com indicadores e filtros para acompanhar volume, perfil e evolução das ações."
+        accent="purple"
+        icon="BarChart3"
+        badge="Indicadores"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- Conceitos Gerais -->
+<section id="conceitos-gerais" class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none mt-6">
+  <div class="flex items-center gap-3 mb-3">
+    <div class="w-10 h-10 rounded-xl bg-institucional-blue flex items-center justify-center shadow-md shadow-institucional-blue/25">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </div>
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white tracking-tight">Conceitos Gerais</h2>
+  </div>
+
+  <div class="h-1 w-20 rounded-full bg-gradient-to-r from-institucional-blue to-blue-300 mb-8" />
+
+  <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 text-base">
+    Neste tópico você conhecerá conceitos importantes que auxiliarão na operação do Sistema Prontuário Eletrônico SUAS e na gestão dos dados nele inseridos e armazenados.
+  </p>
+
+  <ConceptsAccordion client:load />
+</section>
+
+<!-- Profissionais do SUAS e Perfis -->
+<section id="papeis-profissionais" class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none mt-6">
+  <div class="flex items-center gap-3 mb-3">
+    <div class="w-10 h-10 rounded-xl bg-institucional-green flex items-center justify-center shadow-md shadow-institucional-green/25">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    </div>
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white tracking-tight">Profissionais do SUAS e Perfis de Acesso</h2>
+  </div>
+
+  <div class="h-1 w-20 rounded-full bg-gradient-to-r from-institucional-green to-green-300 mb-8" />
+
+  <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+    O acesso ao sistema Prontuário Eletrônico deve ser restrito aos profissionais do SUAS, em especial aos técnicos de nível superior das equipes de referência, de acordo com os perfis de acesso definidos no CadSUAS.
+  </p>
+
+  <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-5 flex items-center gap-2">
+    <span class="w-1.5 h-5 rounded-full bg-institucional-green inline-block"></span>
+    Perfis de Acesso
+  </h3>
+
+  <div class="space-y-4 mb-8">
+    <div class="border-t-4 border-institucional-blue bg-gradient-to-br from-institucional-lightBlue to-blue-100/60 dark:from-blue-950/40 dark:to-blue-900/20 rounded-xl p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <span class="inline-block px-3 py-1 text-xs font-bold rounded-full bg-institucional-blue text-white mb-3 shadow-sm">Administrador Federal</span>
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Responsável pela gestão nacional do sistema. Gerencia acessos e perfis na Rede SUAS, coordena e integra o sistema em todo o país, define normas e diretrizes nacionais de uso.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="border-t-4 border-institucional-green bg-gradient-to-br from-institucional-lightGreen to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-xl p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+        <span class="inline-block px-3 py-1 text-xs font-bold rounded-full bg-institucional-green text-white mb-3 shadow-sm">Gestor Municipal</span>
+        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Administração dos acessos e permissões no âmbito municipal. Acompanha o uso do sistema e utiliza dados consolidados para gestão estratégica (sem acesso a prontuários individuais).</p>
+      </div>
+      <div class="border-t-4 border-institucional-green bg-gradient-to-br from-institucional-lightGreen to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-xl p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+        <span class="inline-block px-3 py-1 text-xs font-bold rounded-full bg-institucional-green text-white mb-3 shadow-sm">Gestor Estadual</span>
+        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Gestão macro das informações no estado. Monitora e avalia ações municipais com base em dados consolidados, planeja ações estratégicas e presta apoio técnico aos municípios.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-5 flex items-center gap-2">
+    <span class="w-1.5 h-5 rounded-full bg-institucional-blue inline-block"></span>
+    Profissionais do CRAS
+  </h3>
+
+  <ProfessionalProfiles client:load />
+</section>

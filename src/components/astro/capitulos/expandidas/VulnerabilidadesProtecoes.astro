@@ -1,0 +1,109 @@
+---
+// Seção expandida: Vulnerabilidades e Proteções Sociais — conceitos, cadastro e mapa conceitual
+import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
+import type { Anotacao } from '@/types'
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import AlertBox from '@/components/astro/content/AlertBox.astro'
+import SeeAlso from '@/components/astro/content/SeeAlso.astro'
+import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
+import VulnerabilityMap from '@/components/react/content/VulnerabilityMap'
+
+const anotacoes: Anotacao[] = [
+  { numero: 1, texto: 'Lista de vulnerabilidades e desproteções sociais já registradas para a família, com colunas de Data, Situação e Técnico responsável.' },
+  { numero: 2, texto: 'Opção "Incluir Vulnerabilidade" — acione para abrir a janela de cadastro de nova vulnerabilidade.' },
+  { numero: 3, texto: '<strong>Data da anotação</strong> — indica a data em que o atendimento foi realizado.' },
+  { numero: 4, texto: '<strong>Situação</strong> — indica a vulnerabilidade e desproteção social verificada.' },
+  { numero: 5, texto: 'Valores possíveis: <strong>Situação de insegurança alimentar</strong>.' },
+  { numero: 6, texto: '<strong>Situação de vulnerabilidades ou desproteções relacionais</strong>.' },
+  { numero: 7, texto: '<strong>Família com gestante ou criança na primeira infância</strong>.' },
+  { numero: 8, texto: 'Acione <strong>Incluir</strong> para salvar o registro e atualizar a lista de observações.' },
+  { numero: 9, texto: 'Indicadores automáticos exibidos no topo da seção: Pessoa com Deficiência (PCD) e Pessoa Idosa, preenchidos a partir dos dados do CadÚnico.' },
+]
+---
+
+<section
+  id="vulnerabilidades-protecoes"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none mt-6"
+>
+  <SectionHeader title="Vulnerabilidades e Desproteções Sociais" accent="blue" />
+
+  <!-- Prosa conceitual -->
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed mb-10">
+    <p>
+      No âmbito do <strong class="text-slate-800 dark:text-white">Sistema Único de Assistência Social (SUAS)</strong>, as
+      <strong class="text-slate-800 dark:text-white">vulnerabilidades e riscos sociais</strong> são entendidos como situações
+      que fragilizam a capacidade das famílias e indivíduos de enfrentar adversidades, acessar direitos e construir trajetórias
+      autônomas. A <strong>Política Nacional de Assistência Social (PNAS/2004)</strong> e a <strong>NOB-SUAS</strong> organizam
+      a resposta do Estado em níveis progressivos de proteção, partindo do reconhecimento de que as vulnerabilidades não são
+      atributos individuais, mas manifestações de desigualdades estruturais que afetam os vínculos familiares, comunitários e
+      as condições materiais de existência.
+    </p>
+    <p>
+      O diagnóstico das vulnerabilidades é o ponto de partida para a definição do nível de proteção mais adequado a cada
+      família. As situações de risco moderado ou prevenível — como insegurança alimentar, dificuldades de acesso à renda
+      ou fragilização de vínculos — direcionam o atendimento para a <strong class="text-slate-800 dark:text-white">Proteção
+      Social Básica</strong>, operada nos CRAS por meio do PAIF, do SCFV e da concessão de Benefícios Eventuais. Já as
+      situações de violação de direitos — violência doméstica, trabalho infantil, abandono, situação de rua — exigem
+      acompanhamento especializado no âmbito da <strong class="text-slate-800 dark:text-white">Proteção Social Especial</strong>
+      (Média ou Alta Complexidade), conduzido nos CREAS e nas unidades de acolhimento.
+    </p>
+    <p>
+      O Prontuário Eletrônico do SUAS distingue dois tipos de indicadores de vulnerabilidade. Os
+      <strong class="text-slate-800 dark:text-white">indicadores automáticos</strong> — Pessoa com Deficiência (PCD) e
+      Pessoa Idosa — são preenchidos diretamente a partir dos dados do CadÚnico vinculado à família, exigindo apenas que
+      o cadastro esteja atualizado. Já as <strong class="text-slate-800 dark:text-white">vulnerabilidades de registro
+      manual</strong> dependem da avaliação técnica do profissional que conduz o atendimento, que seleciona a tipificação
+      correspondente à situação observada e registra data, categoria e responsável.
+    </p>
+    <p>
+      A <strong class="text-slate-800 dark:text-white">tipificação das vulnerabilidades</strong> é essencial para o
+      planejamento do serviço: ela permite à equipe do CRAS mapear as demandas recorrentes do território, dimensionar
+      a oferta de programas e orientar o Plano de Acompanhamento Familiar com base em evidências registradas.
+      Sem o registro criterioso, perde-se a rastreabilidade das intervenções e a capacidade de avaliar se as proteções
+      acionadas estão, de fato, produzindo os resultados esperados para a superação das vulnerabilidades identificadas.
+    </p>
+  </div>
+
+  <!-- Seção tutorial com screenshot -->
+  <SecaoTutorial
+    id="cadastro-vulnerabilidades"
+    screenshotSrc="/assets/screenshots/page-075.webp"
+    titulo="Cadastro de Vulnerabilidades Sociais"
+    paginaFisica={75}
+    anotacoes={anotacoes}
+    observacao="O bloco de vulnerabilidades é um dos instrumentos centrais do prontuário — ele sintetiza a leitura técnica da equipe sobre as fragilidades da família e orienta todo o plano de acompanhamento."
+  />
+
+  <!-- Mapa conceitual SVG: Vulnerabilidades → Proteções -->
+  <div class="mt-10">
+    <AlertBox variant="info" title="Mapa Conceitual: Vulnerabilidades e Níveis de Proteção">
+      <p class="text-sm text-slate-600 dark:text-slate-400 italic leading-relaxed">
+        O diagrama abaixo ilustra a relação entre as dimensões da vulnerabilidade social e os níveis de proteção previstos no SUAS.
+      </p>
+    </AlertBox>
+
+    <VulnerabilityMap client:load />
+  </div>
+
+  <!-- Boas práticas -->
+  <div class="mt-10">
+    <BestPracticesList
+      title="Boas Práticas no Registro de Vulnerabilidades"
+      items={[
+        "Mantenha o CadÚnico atualizado. Os indicadores automáticos de Pessoa com Deficiência e Pessoa Idosa dependem diretamente da qualidade e atualização dos dados cadastrais. Uma família com cadastro desatualizado pode deixar de acionar proteções automáticas a que teria direito.",
+        "Registre com precisão a tipificação. Ao cadastrar manualmente uma vulnerabilidade, escolha a categoria que melhor descreve a situação observada. Evite registros genéricos — a granularidade da tipificação permite que o plano de acompanhamento seja direcionado a intervenções específicas e mensuráveis.",
+        "Revise periodicamente os registros ativos. Vulnerabilidades superadas devem ser encerradas ou atualizadas. A permanência indevida de situações que já não se aplicam compromete a leitura do histórico familiar e pode distorcer os indicadores territoriais utilizados pela gestão.",
+      ]}
+      accent="amber"
+    />
+  </div>
+
+  <SeeAlso
+    links={[
+      { label: 'Planejamento e Evolução', href: '#planejamento-evolucao' },
+      { label: 'Acesso a Benefícios Eventuais', href: '#acesso-beneficios' },
+      { label: 'Controle de Encaminhamentos', href: '#encaminhamentos' },
+    ]}
+    accent="blue"
+  />
+</section>

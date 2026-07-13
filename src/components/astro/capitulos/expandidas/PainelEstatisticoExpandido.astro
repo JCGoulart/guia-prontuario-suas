@@ -1,0 +1,139 @@
+---
+// Painel Estatístico Expandido — tutorial aprofundado sobre leitura e uso gerencial do Painel Estatístico no SUAS
+import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import AlertBox from '@/components/astro/content/AlertBox.astro'
+import SeeAlso from '@/components/astro/content/SeeAlso.astro'
+import FeatureCard from '@/components/astro/content/FeatureCard.astro'
+import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
+import type { Anotacao } from '@/types'
+
+const anotacoes: Anotacao[] = [
+  { numero: 1, texto: 'Painel Estatístico — tela de parâmetros para refinar a consulta. Preencha os filtros desejados e acione Pesquisar.' },
+  { numero: 2, texto: '<strong>Período</strong> — selecione o intervalo de datas para a consulta.' },
+  { numero: 3, texto: '<strong>Tipo de Atendimento</strong> — selecione o tipo de atendimento. Opções incluem: Atendimento Individual, Atendimento Coletivo, Encaminhamentos, entre outros.' },
+  { numero: 4, texto: '<strong>Tipo</strong> — coluna para informar o tipo específico de atendimento, conforme o campo anterior. Ex: Comprimento Histórico de Medidas Socioeducativas, Acompanhamento Familiar.' },
+  { numero: 5, texto: '<strong>Limpar</strong> — opção que limpa as informações preenchidas e permanece na mesma tela.' },
+  { numero: 6, texto: '<strong>Pesquisar</strong> — realiza a busca dos atendimentos realizados no período, de acordo com os parâmetros informados, e exibe o Painel Estatístico correspondente.' },
+  { numero: 7, texto: 'Quanto mais específicos forem os filtros aplicados, mais precisos serão os resultados apresentados nos painéis.' },
+]
+---
+
+<section
+  id="painel-estatistico-expandido"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none print:break-before-page"
+>
+  <SectionHeader title="Painel Estatístico: Leitura e Uso Gerencial" accent="purple" />
+
+  <!-- Prosa conceitual -->
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-6 text-base leading-relaxed mb-10">
+
+    <section>
+      <AlertBox variant="info" title="O que o Painel Estatístico Oferece">
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+          O Painel Estatístico é o módulo de inteligência do Prontuário Eletrônico do SUAS. Diferentemente dos blocos de registro — que capturam atendimentos um a um —, o painel consolida os dados já inseridos no sistema e os apresenta de forma agregada, permitindo visualizar volume, perfil e evolução temporal dos atendimentos realizados pela unidade em um determinado período.
+        </p>
+      </AlertBox>
+
+      <p>
+        O painel é, essencialmente, uma <strong class="text-slate-800 dark:text-white">ferramenta de gestão</strong>. Ele não substitui a análise qualitativa que o técnico realiza no dia a dia — a escuta sensível, a leitura do território, a percepção das dinâmicas familiares —, mas a <em>complementa</em> com dados objetivos que fundamentam decisões de planejamento, alocação de recursos e prestação de contas. Enquanto o prontuário individual conta a história de uma família, o painel conta a história da unidade.
+      </p>
+    </section>
+
+    <section>
+      <AlertBox variant="info" title="Como Aplicar os Filtros">
+      <p>
+        A precisão dos resultados do painel depende diretamente da qualidade dos filtros aplicados. A tela de parâmetros de consulta oferece os seguintes filtros combináveis:
+      </p>
+      <ul class="space-y-2 list-disc pl-5 marker:text-pink-500">
+        <li><strong class="text-slate-800 dark:text-white">Período</strong> — define o intervalo de datas sobre o qual a consulta será executada. Quanto mais amplo o período, maior o volume de dados e mais visíveis as tendências de longo prazo.</li>
+        <li><strong class="text-slate-800 dark:text-white">Tipo de Atendimento</strong> — permite filtrar por categoria: Atendimento Individual, Atendimento Coletivo, Encaminhamentos, entre outros. Útil para isolar um tipo específico de ação e avaliar seu peso relativo no conjunto.</li>
+        <li><strong class="text-slate-800 dark:text-white">Unidade</strong> — restringe os resultados a uma unidade específica. Essencial para coordenações que supervisionam múltiplos CRAS.</li>
+        <li><strong class="text-slate-800 dark:text-white">Perfil do Público</strong> — possibilita filtrar por faixa etária, gênero ou território, revelando quais segmentos da população estão sendo mais (ou menos) alcançados.</li>
+      </ul>
+      <p class="mt-3">
+        A regra de ouro é simples: <strong class="text-slate-800 dark:text-white">quanto mais específicos os filtros, mais precisos os resultados</strong>. Um filtro amplo ("todos os atendimentos do ano") fornece uma visão panorâmica; um filtro refinado ("atendimentos individuais de mulheres entre 30 e 59 anos no território X nos últimos 3 meses") permite decisões táticas.
+      </p>
+      </AlertBox>
+    </section>
+
+    <section>
+      <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-3">Usando o Painel para Planejamento</h3>
+      <p>
+        O verdadeiro valor do Painel Estatístico não está na consulta pontual, mas no <strong class="text-slate-800 dark:text-white">uso sistemático como instrumento de planejamento</strong>. Alguns usos práticos:
+      </p>
+      <ul class="space-y-2 list-disc pl-5 marker:text-pink-500">
+        <li><strong class="text-slate-800 dark:text-white">Identificar demandas reprimidas</strong> — se o volume de atendimentos em determinado território é desproporcionalmente baixo em relação à população cadastrada, pode indicar barreiras de acesso que precisam ser investigadas.</li>
+        <li><strong class="text-slate-800 dark:text-white">Detectar lacunas de serviço</strong> — a ausência de determinados tipos de atendimento (por exemplo, encaminhamentos para saúde mental) pode sinalizar a necessidade de articulação intersetorial.</li>
+        <li><strong class="text-slate-800 dark:text-white">Distribuir carga de trabalho</strong> — ao cruzar volume de atendimentos por técnico, é possível identificar desequilíbrios na distribuição de casos e redistribuir a equipe de forma mais justa.</li>
+        <li><strong class="text-slate-800 dark:text-white">Projetar demandas futuras</strong> — a análise de séries históricas permite antecipar picos sazonais (como maior procura por benefícios eventuais no inverno) e preparar a equipe com antecedência.</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- Infográfico de Indicadores -->
+  <div class="mb-10">
+    <AlertBox variant="info" title="Indicadores-Chave e o que Revelam">
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+        Cada indicador do painel responde a uma pergunta gerencial específica. Conhecer o que cada um mede — e que decisão possibilita — é o primeiro passo para transformar dados em ação.
+      </p>
+    </AlertBox>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 stagger">
+      <FeatureCard
+        title="Volume de Atendimentos"
+        description="Quantidade total de atendimentos por período e tipo. Decisão: dimensionar equipe, identificar sobrecarga."
+        accent="purple"
+        icon="BarChart3"
+        badge="Indicador"
+      />
+      <FeatureCard
+        title="Perfil do Público"
+        description="Distribuição por faixa etária, gênero, território. Decisão: identificar públicos prioritários."
+        accent="purple"
+        icon="Users"
+        badge="Indicador"
+      />
+      <FeatureCard
+        title="Evolução Temporal"
+        description="Tendências ao longo do tempo (mensal, trimestral, anual). Decisão: avaliar impacto de ações."
+        accent="purple"
+        icon="TrendingUp"
+        badge="Indicador"
+      />
+    </div>
+  </div>
+
+  <!-- Tutorial com screenshot -->
+  <SecaoTutorial
+    id="painel-estatistico-parametros"
+    titulo="Painel Estatístico — Parâmetros de Consulta"
+    screenshotSrc="/assets/screenshots/page-142.webp"
+    paginaFisica={142}
+    anotacoes={anotacoes}
+    observacao="A tela de parâmetros é o ponto de partida do Painel Estatístico. Os filtros definidos aqui determinam quais dados serão exibidos nos gráficos e tabelas do painel. A combinação de múltiplos filtros permite análises cada vez mais específicas."
+  />
+
+  <!-- Boas Práticas -->
+  <div class="mt-10">
+    <BestPracticesList
+      title="Boas Práticas na Leitura do Painel"
+      items={[
+        "Consulte o painel mensalmente para acompanhar a evolução dos atendimentos e identificar tendências.",
+        "Cruze os dados do painel com o planejamento da equipe para avaliar se as metas estão sendo atingidas.",
+        "Utilize os filtros de território para identificar microáreas com maior demanda e planejar ações preventivas.",
+        "Compartilhe os achados do painel com a equipe — os dados são mais úteis quando discutidos coletivamente.",
+      ]}
+      accent="blue"
+    />
+  </div>
+
+  <SeeAlso
+    links={[
+      { label: 'Painel Estatístico (Visão Geral)', href: '#painel-estatistico' },
+      { label: 'Atendimento Coletivo', href: '#atendimento-coletivo-expandido' },
+      { label: 'Relatório Simplificado', href: '#relatorio-simplificado' },
+    ]}
+    accent="blue"
+  />
+</section>

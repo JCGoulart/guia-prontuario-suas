@@ -1,0 +1,163 @@
+---
+// Atendimento Coletivo Expandido — tutorial aprofundado sobre o módulo de Atendimento Coletivo no SUAS
+import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import AlertBox from '@/components/astro/content/AlertBox.astro'
+import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
+import SeeAlso from '@/components/astro/content/SeeAlso.astro'
+import ColetivoVsIndividual from '@/components/react/content/ColetivoVsIndividual.tsx'
+import type { Anotacao } from '@/types'
+
+const anotacoes: Anotacao[] = [
+  { numero: 1, texto: 'Tela de inclusão de Atendimento Coletivo — formulário completo para registrar uma atividade coletiva (oficina, palestra, grupo, ação comunitária).' },
+  { numero: 2, texto: '<strong>Adicionar pessoa</strong> — opção que ao ser acionada adiciona a pessoa na lista de pessoas atendidas.' },
+  { numero: 3, texto: 'Lista de pessoas participantes do atendimento coletivo, com opção de <strong>Excluir</strong> para remover da lista.' },
+  { numero: 4, texto: '<strong>Data do atendimento</strong> — campo para informar a data em que o atendimento foi realizado.' },
+  { numero: 5, texto: '<strong>Nome do técnico responsável</strong> — campo que informa o nome do técnico responsável pelo registro do atendimento.' },
+  { numero: 6, texto: '<strong>Tipo de atendimento coletivo</strong> — campo para informar o tipo. <strong>Domínio</strong>: Oficinas do PAIF; Acolhida em Grupo; Ações Comunitárias (eventos, campanhas temáticas e rodas de conversa).' },
+  { numero: 7, texto: '<strong>Descrição</strong> — campo para informar a descrição detalhada do atendimento.' },
+  { numero: 8, texto: '<strong>Unidade</strong> — campo que informa o nome da unidade de atendimento.' },
+  { numero: 9, texto: 'Acione <strong>Incluir</strong> para salvar o atendimento. O registro será automaticamente replicado no prontuário individual de cada participante.' },
+]
+---
+
+<section
+  id="atendimento-coletivo-expandido"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none print:break-before-page"
+>
+  <!-- Cabeçalho -->
+  <SectionHeader title="Atendimento Coletivo: Expansão Conceitual" accent="green" />
+
+  <!-- Prosa conceitual -->
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-6 text-base leading-relaxed mb-10">
+
+    <section>
+      <AlertBox variant="success" title="Marco Legal e Conceitual">
+        <p class="text-sm mt-1.5 leading-relaxed">
+          O atendimento coletivo no SUAS está amparado pela Tipificação Nacional de Serviços Socioassistenciais (Resolução CNAS n.º 109/2009) e integra o escopo do Serviço de Proteção e Atendimento Integral à Família (PAIF). Consiste em intervenções planejadas e sistemáticas direcionadas a grupos de famílias ou indivíduos que compartilham características, demandas ou vulnerabilidades semelhantes, realizadas por meio de oficinas, grupos de acolhida, ações comunitárias, campanhas temáticas e rodas de conversa.
+        </p>
+      </AlertBox>
+
+      <p>
+        Diferentemente do atendimento individual — em que cada interação é registrada isoladamente no prontuário de um único usuário — o <strong class="text-slate-800 dark:text-white">atendimento coletivo</strong> inverte essa lógica: um único registro no sistema gera automaticamente entradas equivalentes no prontuário de <em>todos</em> os participantes listados na atividade. Essa arquitetura elimina o retrabalho de digitar o mesmo atendimento dezenas de vezes e garante consistência nos dados para fins de relatórios estatísticos e prestação de contas.
+      </p>
+    </section>
+
+    <section>
+      <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-3">A Diferença Fundamental: Registro Único, Múltiplos Prontuários</h3>
+      <p>
+        No fluxo tradicional de atendimento individual, o técnico acessa o prontuário de uma pessoa de referência, preenche os campos do atendimento e o salva — o registro pertence exclusivamente àquele prontuário. No atendimento coletivo, o formulário é preenchido <strong>uma única vez</strong>, com a lista de participantes (identificados por CPF), data, tipo de atividade, descrição e técnico responsável. Ao clicar em <strong>Incluir</strong>, o sistema replica o registro no prontuário de cada participante, como se cada um tivesse recebido aquele atendimento individualmente.
+      </p>
+
+      <p>
+        Essa lógica é especialmente potente em cenários como:
+      </p>
+      <ul class="space-y-2 list-disc pl-5 marker:text-institucional-green">
+        <li><strong class="text-slate-800 dark:text-white">Oficinas do PAIF</strong> — palestras, dinâmicas de grupo e atividades socioeducativas com dezenas de participantes;</li>
+        <li><strong class="text-slate-800 dark:text-white">Acolhida em Grupo</strong> — recepção coletiva de famílias recém-chegadas ao CRAS;</li>
+        <li><strong class="text-slate-800 dark:text-white">Ações Comunitárias</strong> — eventos, campanhas temáticas e rodas de conversa abertas à comunidade.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-3">Tipos de Atividades Coletivas</h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 stagger">
+        <div class="border-t-4 border-institucional-green bg-gradient-to-br from-institucional-lightGreen to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-xl p-5">
+          <h4 class="font-bold text-slate-800 dark:text-white text-sm mb-2">Oficinas do PAIF</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Atividades socioeducativas planejadas com objetivos específicos de fortalecimento de vínculos, desenvolvimento de habilidades e reflexão sobre direitos. Podem ser temáticas (geração de renda, saúde, educação) ou transversais (convivência familiar, prevenção de violências).</p>
+        </div>
+        <div class="border-t-4 border-institucional-green bg-gradient-to-br from-institucional-lightGreen to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-xl p-5">
+          <h4 class="font-bold text-slate-800 dark:text-white text-sm mb-2">Acolhida em Grupo</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Primeiro contato coletivo com famílias encaminhadas ou que buscam o CRAS espontaneamente. Espaço de escuta qualificada que apresenta os serviços ofertados, o funcionamento da unidade e os direitos socioassistenciais.</p>
+        </div>
+        <div class="border-t-4 border-institucional-green bg-gradient-to-br from-institucional-lightGreen to-green-100/60 dark:from-green-950/40 dark:to-green-900/20 rounded-xl p-5">
+          <h4 class="font-bold text-slate-800 dark:text-white text-sm mb-2">Ações Comunitárias</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Eventos, campanhas e rodas de conversa voltados à mobilização e participação social no território. Abrangem desde campanhas de conscientização (violência contra a mulher, trabalho infantil) até mutirões de cidadania e festivais comunitários.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-3">Quando Usar Atendimento Coletivo vs. Individual</h3>
+      <ColetivoVsIndividual client:load />
+    </section>
+
+    <section>
+      <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-8 mb-3">O Mecanismo de Replicação</h3>
+      <p>
+        O coração técnico do módulo de atendimento coletivo é o <strong class="text-slate-800 dark:text-white">mecanismo de replicação automática</strong>. Quando o técnico aciona <strong>Incluir</strong> após preencher o formulário, o sistema replica o registro de atendimento no prontuário individual de cada participante listado, mantendo a mesma data, tipo, descrição e técnico responsável em todos os registros.
+      </p>
+      <p class="mt-3">
+        Dessa forma, um único registro de atividade coletiva gera automaticamente múltiplas entradas — uma em cada prontuário — garantindo que o histórico de participação em ações coletivas esteja sempre disponível para consulta no acompanhamento familiar individual.
+      </p>
+    </section>
+  </div>
+
+  <!-- Tutorial com screenshot -->
+  <SecaoTutorial
+    id="atendimento-coletivo-inclusao"
+    titulo="Inclusão de Atendimento Coletivo"
+    screenshotSrc="/assets/screenshots/page-121.webp"
+    paginaFisica={121}
+    anotacoes={anotacoes}
+    observacao="O formulário de atendimento coletivo é idêntico em estrutura ao atendimento individual, com o acréscimo da lista de participantes. A diferença está no comportamento pós-salvamento: um único registro gera múltiplas entradas nos prontuários."
+  />
+
+  <div class="mt-10">
+    <AlertBox variant="success" title="Fluxo: do Planejamento à Replicação">
+      <p class="text-sm mt-1.5 leading-relaxed">
+        O diagrama abaixo ilustra como um único registro de atendimento coletivo se desdobra nos prontuários individuais de cada participante.
+      </p>
+    </AlertBox>
+
+    <ProcessStepper
+      class="mt-6"
+      steps={[
+        { number: 1, title: 'Planejamento da Atividade', description: 'Organização prévia da lista de participantes, definição do tema, objetivo e metodologia da atividade coletiva.', accent: 'blue' },
+        { number: 2, title: 'Registro no Sistema', description: 'Preenchimento do formulário único com data, tipo, descrição, técnico responsável e lista de participantes (identificados por CPF).', accent: 'green' },
+        { number: 3, title: 'Replicação nos Prontuários', description: 'O sistema replica automaticamente o registro no prontuário individual de cada participante listado, gerando entradas equivalentes com a mesma data, tipo, descrição e técnico.', accent: 'slate' },
+      ]}
+    />
+  </div>
+
+  <!-- Boas Práticas -->
+  <div class="mt-10">
+    <AlertBox variant="success" title="Boas Práticas no Atendimento Coletivo" />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 stagger">
+      <div class="bg-institucional-lightGreen dark:bg-green-900/20 rounded-xl p-5 border border-institucional-green/10 dark:border-green-700/30">
+        <div class="w-8 h-8 rounded-lg bg-institucional-green/10 dark:bg-green-800/40 flex items-center justify-center mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-green"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h4 class="font-bold text-slate-800 dark:text-white text-sm mb-2">Planejamento Prévio</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Antes de registrar, organize a lista de participantes com CPFs válidos. Verifique no Cadastro Único se os CPFs estão ativos na base da unidade. Isso evita alertas de "<em>participante sem prontuário</em>" e garante que a replicação atinja 100% dos presentes.</p>
+      </div>
+
+      <div class="bg-institucional-lightGreen dark:bg-green-900/20 rounded-xl p-5 border border-institucional-green/10 dark:border-green-700/30">
+        <div class="w-8 h-8 rounded-lg bg-institucional-green/10 dark:bg-green-800/40 flex items-center justify-center mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-green"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <h4 class="font-bold text-slate-800 dark:text-white text-sm mb-2">Descrição Detalhada</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">O campo Descrição é replicado integralmente nos prontuários de todos os participantes. Seja claro e objetivo: registre o tema da atividade, metodologia utilizada, principais encaminhamentos e resultados esperados. Uma boa descrição facilita a continuidade do acompanhamento por outros técnicos.</p>
+      </div>
+
+      <div class="bg-institucional-lightGreen dark:bg-green-900/20 rounded-xl p-5 border border-institucional-green/10 dark:border-green-700/30">
+        <div class="w-8 h-8 rounded-lg bg-institucional-green/10 dark:bg-green-800/40 flex items-center justify-center mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-green"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h4 class="font-bold text-slate-800 dark:text-white text-sm mb-2">Verificação da Replicação</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Após incluir o atendimento coletivo, acesse o prontuário de ao menos dois participantes e confirme que o registro aparece no bloco de atendimentos. Essa verificação cruzada é especialmente importante nos primeiros usos do módulo ou após atualizações do sistema.</p>
+      </div>
+    </div>
+  </div>
+
+  <SeeAlso
+    links={[
+      { label: 'Planejamento e Evolução', href: '#planejamento-evolucao' },
+      { label: 'Lista de Atendimentos Coletivos', href: '#atendimento-coletivo-lista' },
+      { label: 'Painel Estatístico', href: '#painel-estatistico' },
+    ]}
+    accent="green"
+  />
+</section>

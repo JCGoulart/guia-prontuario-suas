@@ -1,0 +1,10 @@
+---
+import { resumoVisualProntuario } from '@/data/resumoVisual'
+import ComparisonTable from '@/components/astro/content/ComparisonTable.astro'
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+---
+
+<section id="resumo-visual" class="animate-on-scroll">
+  <SectionHeader title="Resumo Visual: O que Pode e Não Pode no Prontuário" accent="blue" />
+  <ComparisonTable rows={resumoVisualProntuario} />
+</section>

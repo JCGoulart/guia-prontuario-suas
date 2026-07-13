@@ -1,0 +1,139 @@
+---
+// Tipos de Registro no Prontuario — comparativo entre os dois tipos de atendimento
+import SectionHeader from '../../layout/SectionHeader.astro'
+import SeeAlso from '@/components/astro/content/SeeAlso.astro'
+---
+
+<section
+  id="tipos-registro"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 mt-6"
+>
+  <SectionHeader title="Tipos de Registro no Prontuario" accent="blue" />
+
+  <!-- Intro paragraph -->
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed mb-10">
+    <p>
+      O Prontuario Eletronico do SUAS contempla <strong class="text-slate-800 dark:text-white">dois tipos de registro</strong>,
+      que correspondem as diferentes modalidades de atendimento prestadas nos equipamentos da rede socioassistencial.
+      Ambos integram o historico familiar e geram dados para o painel estatistico, mas possuem fluxos de preenchimento
+      e finalidades distintas. Conhecer cada tipo e saber quando utiliza-lo e essencial para que o registro reflita
+      com fidelidade a natureza do atendimento realizado.
+    </p>
+  </div>
+
+  <!-- Cards: side by side -->
+  <div class="flex flex-col md:flex-row gap-8">
+
+    <!-- Card Esquerda: Atendimento Individual e Familiar -->
+    <div class="flex-1 bg-white dark:bg-slate-800/60 border-2 border-institucional-blue rounded-xl p-6 relative overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+      <!-- Badge -->
+      <span class="absolute top-0 right-0 bg-institucional-lightBlue dark:bg-blue-900/60 text-institucional-blue dark:text-blue-300 px-3 py-1 rounded-bl-lg text-xs font-bold border-l border-b border-blue-200 dark:border-blue-800">
+        Regra Geral
+      </span>
+
+      <!-- Title -->
+      <h3 class="text-xl font-bold text-institucional-blue dark:text-blue-300 mb-4 mt-2">
+        Atendimento Individual e Familiar
+      </h3>
+
+      <!-- Description -->
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
+        Formulario completo de acompanhamento socioassistencial. Utilizado para registrar cada atendimento
+        realizado a uma familia ou individuo no ambito do PAIF, PAEFI e demais servicos tipificados.
+      </p>
+
+      <!-- Features -->
+      <ul class="space-y-2.5">
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 w-2 h-2 rounded-full bg-institucional-blue mt-2"></span>
+          <span class="text-sm text-slate-700 dark:text-slate-300 bg-institucional-lightBlue dark:bg-blue-950/40 p-2 rounded border border-blue-100 dark:border-blue-900/50 flex-1 leading-relaxed">Registro por familia</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 w-2 h-2 rounded-full bg-institucional-blue mt-2"></span>
+          <span class="text-sm text-slate-700 dark:text-slate-300 bg-institucional-lightBlue dark:bg-blue-950/40 p-2 rounded border border-blue-100 dark:border-blue-900/50 flex-1 leading-relaxed">Diagnostico socioeconomico</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 w-2 h-2 rounded-full bg-institucional-blue mt-2"></span>
+          <span class="text-sm text-slate-700 dark:text-slate-300 bg-institucional-lightBlue dark:bg-blue-950/40 p-2 rounded border border-blue-100 dark:border-blue-900/50 flex-1 leading-relaxed">Plano de acompanhamento</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 w-2 h-2 rounded-full bg-institucional-blue mt-2"></span>
+          <span class="text-sm text-slate-700 dark:text-slate-300 bg-institucional-lightBlue dark:bg-blue-950/40 p-2 rounded border border-blue-100 dark:border-blue-900/50 flex-1 leading-relaxed">Evolucoes periodicas</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 w-2 h-2 rounded-full bg-institucional-blue mt-2"></span>
+          <span class="text-sm text-slate-700 dark:text-slate-300 bg-institucional-lightBlue dark:bg-blue-950/40 p-2 rounded border border-blue-100 dark:border-blue-900/50 flex-1 leading-relaxed">Encaminhamentos individuais</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Card Direita: Atendimento Coletivo -->
+    <div class="flex-1 bg-white dark:bg-slate-800/60 border-2 border-institucional-green rounded-xl p-6 relative overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+      <!-- Badge -->
+      <span class="absolute top-0 right-0 bg-institucional-lightGreen dark:bg-green-900/60 text-institucional-green dark:text-green-300 px-3 py-1 rounded-bl-lg text-xs font-bold border-l border-b border-green-200 dark:border-green-800">
+        Complementar
+      </span>
+
+      <!-- Title -->
+      <h3 class="text-xl font-bold text-institucional-green dark:text-green-300 mb-4 mt-2">
+        Atendimento Coletivo
+      </h3>
+
+      <!-- Description -->
+      <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
+        Registro simplificado de atividades grupais e oficinas comunitarias. Permite documentar acoes
+        coletivas como palestras, rodas de conversa e grupos socioeducativos vinculando os participantes
+        aos seus prontuarios individuais.
+      </p>
+
+      <!-- Features -->
+      <ul class="space-y-2.5">
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 w-2 h-2 rounded-full bg-institucional-green mt-2"></span>
+          <span class="text-sm text-slate-700 dark:text-slate-300 bg-institucional-lightGreen dark:bg-green-950/40 p-2 rounded border border-green-100 dark:border-green-900/50 flex-1 leading-relaxed">Registro de grupo</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 w-2 h-2 rounded-full bg-institucional-green mt-2"></span>
+          <span class="text-sm text-slate-700 dark:text-slate-300 bg-institucional-lightGreen dark:bg-green-950/40 p-2 rounded border border-green-100 dark:border-green-900/50 flex-1 leading-relaxed">Lista de participantes</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 w-2 h-2 rounded-full bg-institucional-green mt-2"></span>
+          <span class="text-sm text-slate-700 dark:text-slate-300 bg-institucional-lightGreen dark:bg-green-950/40 p-2 rounded border border-green-100 dark:border-green-900/50 flex-1 leading-relaxed">Tema e metodologia</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 w-2 h-2 rounded-full bg-institucional-green mt-2"></span>
+          <span class="text-sm text-slate-700 dark:text-slate-300 bg-institucional-lightGreen dark:bg-green-950/40 p-2 rounded border border-green-100 dark:border-green-900/50 flex-1 leading-relaxed">Relatorio simplificado</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 w-2 h-2 rounded-full bg-institucional-green mt-2"></span>
+          <span class="text-sm text-slate-700 dark:text-slate-300 bg-institucional-lightGreen dark:bg-green-950/40 p-2 rounded border border-green-100 dark:border-green-900/50 flex-1 leading-relaxed">Vinculacao automatica aos prontuarios</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Dica complementar -->
+  <div class="mt-8 bg-institucional-lightBlue dark:bg-blue-950/30 rounded-xl p-5 border border-institucional-blue/10 dark:border-blue-900/50">
+    <div class="flex items-start gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-blue dark:text-blue-400 flex-shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        <strong class="text-slate-800 dark:text-white">Importante:</strong> o atendimento coletivo nao substitui o
+        acompanhamento individual. Ele complementa o prontuario familiar com o registro da participacao em
+        atividades grupais. Ao encerrar um atendimento coletivo, o sistema vincula automaticamente a presenca
+        de cada participante ao seu respectivo prontuario, enriquecendo o historico familiar sem duplicar
+        registros.
+      </p>
+    </div>
+  </div>
+
+  <SeeAlso
+    links={[
+      { label: 'Atendimento Coletivo', href: '#atendimento-coletivo' },
+      { label: 'Diagnóstico Socioeconômico', href: '#diagnostico-socioeconomico' },
+      { label: 'Encaminhamentos e Intersetorialidade', href: '#encaminhamentos' },
+      { label: 'Painel Estatístico', href: '#painel-estatistico' },
+    ]}
+    accent="blue"
+  />
+</section>

@@ -1,0 +1,68 @@
+---
+export interface Props {
+  title: string
+  items: string[]
+  accent?: 'blue' | 'green' | 'amber'
+  class?: string
+}
+
+const { title, items, accent = 'blue', class: className } = Astro.props
+
+const accentStyles: Record<string, {
+  border: string
+  bg: string
+  text: string
+  titleBorder: string
+  iconColor: string
+  circleBg: string
+}> = {
+  blue: {
+    border: 'border-blue-200 dark:border-blue-800',
+    bg: 'bg-gradient-to-br from-blue-50 to-blue-100/80 dark:from-blue-950/40 dark:to-blue-900/30',
+    text: 'text-blue-800 dark:text-blue-300',
+    titleBorder: 'border-l-blue-600 dark:border-l-blue-400',
+    iconColor: 'text-blue-600 dark:text-blue-400',
+    circleBg: 'bg-blue-600 dark:bg-blue-500',
+  },
+  green: {
+    border: 'border-green-200 dark:border-green-800',
+    bg: 'bg-gradient-to-br from-green-50 to-green-100/80 dark:from-green-950/40 dark:to-green-900/30',
+    text: 'text-green-800 dark:text-green-300',
+    titleBorder: 'border-l-green-600 dark:border-l-green-400',
+    iconColor: 'text-green-600 dark:text-green-400',
+    circleBg: 'bg-green-600 dark:bg-green-500',
+  },
+  amber: {
+    border: 'border-amber-200 dark:border-amber-800',
+    bg: 'bg-gradient-to-br from-amber-50 to-amber-100/80 dark:from-amber-950/40 dark:to-amber-900/30',
+    text: 'text-amber-800 dark:text-amber-300',
+    titleBorder: 'border-l-amber-500 dark:border-l-amber-400',
+    iconColor: 'text-amber-600 dark:text-amber-400',
+    circleBg: 'bg-amber-500 dark:bg-amber-400',
+  },
+}
+
+const s = accentStyles[accent]
+
+const checkCircleIcon =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
+---
+
+<div class={`rounded-xl border shadow-sm ${s.bg} ${s.border} ${className ?? ''}`}>
+  <div class={`flex items-center gap-3 px-6 py-4 border-b ${s.border}`}>
+    <span class={`flex-shrink-0 ${s.iconColor}`} set:html={checkCircleIcon} />
+    <h4 class={`text-lg font-bold border-l-4 pl-3 ${s.titleBorder}`}>{title}</h4>
+  </div>
+  <ol class="p-6 space-y-4">
+    {
+      items.map((item, index) => (
+        <li class="flex items-start gap-4">
+          <span class={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-white text-sm font-bold leading-none ${s.circleBg}`}>
+            {index + 1}
+          </span>
+          <span class={`text-base leading-relaxed pt-0.5 ${s.text}`}>{item}</span>
+        </li>
+      ))
+    }
+  </ol>
+</div>

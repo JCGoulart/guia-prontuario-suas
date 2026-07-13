@@ -1,0 +1,350 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import Sidebar from '@/components/astro/layout/Sidebar.astro'
+import ReadingModeToggle from '@/components/astro/layout/ReadingModeToggle.astro'
+import ScrollToTop from '@/components/react/layout/ScrollToTop'
+import BlockAccordion from '@/components/react/layout/BlockAccordion'
+import BookViewport from '@/components/react/layout/BookViewport'
+import { WelcomeModal } from '@/components/react/layout/WelcomeModal'
+import { BLOCK_ACCENTS } from '@/lib/constants'
+
+import Capa from '@/components/astro/capitulos/Capa.astro'
+import Expediente from '@/components/astro/capitulos/Expediente.astro'
+import Sumario from '@/components/astro/capitulos/Sumario.astro'
+import Apresentacao from '@/components/astro/capitulos/Apresentacao.astro'
+import LoginSistema from '@/components/astro/capitulos/LoginSistema.astro'
+import TermoUso from '@/components/astro/capitulos/TermoUso.astro'
+import ContraCapa from '@/components/astro/capitulos/ContraCapa.astro'
+import GestaoProntuario from '@/components/astro/capitulos/expandidas/GestaoProntuario.astro'
+import DiagnosticoSocioeconomico from '@/components/astro/capitulos/expandidas/DiagnosticoSocioeconomico.astro'
+import VulnerabilidadesProtecoes from '@/components/astro/capitulos/expandidas/VulnerabilidadesProtecoes.astro'
+import MetodologiaAcompanhamento from '@/components/astro/capitulos/expandidas/MetodologiaAcompanhamento.astro'
+import BeneficiosEventuais from '@/components/astro/capitulos/expandidas/BeneficiosEventuais.astro'
+import CondicoesVida from '@/components/astro/capitulos/expandidas/CondicoesVida.astro'
+import AtendimentoColetivoExpandido from '@/components/astro/capitulos/expandidas/AtendimentoColetivoExpandido.astro'
+import EncaminhamentosIntersetorialidade from '@/components/astro/capitulos/expandidas/EncaminhamentosIntersetorialidade.astro'
+import MigracaoProntuarioExpandido from '@/components/astro/capitulos/expandidas/MigracaoProntuarioExpandido.astro'
+import PainelEstatisticoExpandido from '@/components/astro/capitulos/expandidas/PainelEstatisticoExpandido.astro'
+import CicloAcompanhamento from '@/components/astro/capitulos/expandidas/CicloAcompanhamento.astro'
+import TiposRegistro from '@/components/astro/capitulos/expandidas/TiposRegistro.astro'
+import FluxoAtendimento from '@/components/astro/capitulos/expandidas/FluxoAtendimento.astro'
+import PapelProfissionais from '@/components/astro/capitulos/expandidas/PapelProfissionais.astro'
+import RegrasOuroProntuario from '@/components/astro/capitulos/expandidas/RegrasOuroProntuario.astro'
+import ResumoPodeNaoPode from '@/components/astro/capitulos/expandidas/ResumoPodeNaoPode.astro'
+import ChecklistProntuario from '@/components/astro/capitulos/expandidas/ChecklistProntuario.astro'
+import BaseNormativaProntuario from '@/components/astro/capitulos/expandidas/BaseNormativaProntuario.astro'
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
+
+const b = BLOCK_ACCENTS
+---
+
+<BaseLayout>
+  <Sidebar />
+  <ReadingModeToggle />
+  <ScrollToTop client:idle />
+  <BlockAccordion client:idle />
+  <BookViewport client:load />
+  <WelcomeModal client:load />
+
+  <div id="main-content" data-pagefind-body class="max-w-4xl mx-auto my-8 px-4 md:px-8 space-y-4 md:space-y-6">
+    <Capa />
+    <Expediente />
+    <Sumario />
+    <Apresentacao />
+    <LoginSistema />
+    <TermoUso />
+
+    <div class="flex justify-center no-print">
+      <button id="toggle-all-blocks" class="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors max-md:min-h-[44px] max-md:py-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 15 12 9 18 15"/></svg>
+        Recolher todos
+      </button>
+    </div>
+
+    <!-- BLOCO 1: Atendimento Individual e Familiar -->
+    <div data-block-group="atendimento-individual">
+      <SectionHeader title="Bloco 1 — Atendimento Individual e Familiar" accent="blue" />
+      <div data-block-content="atendimento-individual" class="space-y-6">
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="informacoes-prontuario" titulo="Informações do Prontuário" screenshotSrc="/assets/screenshots/page-022.webp" paginaFisica={22}
+            anotacoes={[
+              { numero: 1, texto: 'Campo <strong>Número do Prontuário</strong> — identificador único gerado automaticamente pelo sistema.' },
+              { numero: 2, texto: 'Campo <strong>Data de Abertura</strong> — data em que o prontuário foi criado.' },
+              { numero: 3, texto: 'Campo <strong>Situação</strong> — informa se o prontuário está Ativo, Inativo ou Excluído.' },
+              { numero: 4, texto: 'Campo <strong>Unidade</strong> — unidade de atendimento responsável.' },
+              { numero: 5, texto: 'Campo <strong>Nome da Pessoa de Referência</strong> — pessoa de referência familiar.' },
+            ]}
+          />
+        </section>
+
+        <GestaoProntuario />
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="excluir-prontuario" titulo="Excluir Prontuário" screenshotSrc="/assets/screenshots/page-026.webp" paginaFisica={26}
+            anotacoes={[
+              { numero: 1, texto: 'Opção <strong>Excluir Prontuário</strong> — permite excluir o prontuário do sistema.' },
+              { numero: 2, texto: 'Ao acionar, o sistema solicita <strong>confirmação</strong> da ação.' },
+              { numero: 3, texto: 'É necessário informar a <strong>justificativa</strong> para a exclusão.' },
+            ]}
+            observacao="A exclusão do prontuário é irreversível. Certifique-se de que todos os dados foram migrados ou documentados antes de prosseguir."
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="informacoes-familia" titulo="Informações da Família" screenshotSrc="/assets/screenshots/page-030.webp" paginaFisica={30}
+            anotacoes={[
+              { numero: 7, texto: 'Agrupamento <strong>Informações da Família</strong> — dados cadastrais do Cadastro Único.' },
+              { numero: 8, texto: '<strong>Código Familiar</strong> — código do cadastro no Cadastro Único.' },
+              { numero: 9, texto: '<strong>Data de Atualização</strong> — última atualização do Cadastro Único.' },
+              { numero: 10, texto: '<strong>Renda Per Capita</strong> — renda média da família.' },
+              { numero: 11, texto: '<strong>Estado Cadastral</strong> — situação do cadastro.' },
+              { numero: 12, texto: '<strong>Recebe Bolsa Família</strong> — indica se é beneficiário.' },
+            ]}
+            observacao="As informações são apenas para consulta, não sendo possível alterá-las pelo Prontuário Eletrônico."
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="composicao-familiar" titulo="Composição Familiar" screenshotSrc="/assets/screenshots/page-031.webp" paginaFisica={31}
+            anotacoes={[
+              { numero: 8, texto: 'Agrupamento <strong>Composição Familiar</strong> — membros do núcleo familiar.' },
+              { numero: 9, texto: '<strong>Nome</strong> do membro da composição.' },
+              { numero: 10, texto: '<strong>Situação Cadastral</strong> do membro (Cadastrado, Excluído, etc.).' },
+              { numero: 11, texto: '<strong>CPF</strong> e <strong>NIS</strong> do membro.' },
+              { numero: 12, texto: '<strong>Sexo</strong> e <strong>Cor/Raça</strong>.' },
+              { numero: 13, texto: '<strong>Data de Nascimento</strong>.' },
+              { numero: 14, texto: '<strong>Ocorrências e Pendências</strong> — expande informações quando disponível.' },
+            ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="forma-ingresso" titulo="Forma de Ingresso e Motivo do Atendimento" screenshotSrc="/assets/screenshots/page-032.webp" paginaFisica={32}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Forma de Ingresso</strong> — forma de acesso da pessoa na unidade CRAS.' },
+              { numero: 2, texto: '<strong>Data da Ação</strong> — data do atendimento.' },
+              { numero: 3, texto: '<strong>Forma de Ingresso</strong> — como a pessoa acessou a unidade.' },
+              { numero: 4, texto: '<strong>Unidade</strong> — nome da unidade.' },
+              { numero: 5, texto: 'Coluna <strong>Ações</strong> — ícone para visualizar registro.' },
+            ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="condicoes-trabalho" titulo="Condições de Trabalho e Rendimento da Família" screenshotSrc="/assets/screenshots/page-056.webp" paginaFisica={56}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Condições de Trabalho e Rendimento</strong> — consulta por membro da composição familiar.' },
+              { numero: 2, texto: '<strong>Lista de Condições</strong> com Pessoa, Idade e N.º da CTPS.' },
+              { numero: 3, texto: 'Agrupamento <strong>Valores Recebidos por Programas Sociais</strong> — Bolsa Família, BPC/LOAS, Seguro-desemprego, Pensão Alimentícia.' },
+              { numero: 4, texto: 'Campo <strong>Observações</strong> para registro de informações complementares.' },
+            ]}
+          />
+        </section>
+
+        <DiagnosticoSocioeconomico />
+
+        <CicloAcompanhamento />
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="condicoes-educacionais" titulo="Condições Educacionais da Família" screenshotSrc="/assets/screenshots/page-049.webp" paginaFisica={49}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Condições Educacionais</strong> — consulta por membro da composição familiar.' },
+              { numero: 2, texto: '<strong>Lista de Condições</strong> com Pessoa, Idade, Sabe Ler e Escrever, Frequenta Escola.' },
+              { numero: 3, texto: 'Agrupamento <strong>Identificação de Vulnerabilidade Educacional</strong> por faixa etária.' },
+              { numero: 4, texto: 'Campo <strong>Observações</strong> sobre as condições educacionais.' },
+            ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="condicoes-saude" titulo="Condições de Saúde da Família" screenshotSrc="/assets/screenshots/page-051.webp" paginaFisica={51}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Condições de Saúde</strong> — marcações de saúde por membro da família.' },
+              { numero: 2, texto: '<strong>Lista de Marcações</strong> com Data, Nome, Tipo (Doença grave, Remédios controlados, Uso abusivo de álcool/drogas) e Técnico.' },
+              { numero: 3, texto: 'Coluna <strong>Ações</strong> — ícone para visualizar registro de marcação de saúde.' },
+            ]}
+          />
+        </section>
+
+        <CondicoesVida />
+
+        <TiposRegistro />
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="registro-atendimentos" titulo="Registro de Atendimentos Socioassistenciais" screenshotSrc="/assets/screenshots/page-053.webp" paginaFisica={53}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Registro de Atendimentos</strong> — histórico de atendimentos realizados com a família.' },
+              { numero: 2, texto: '<strong>Lista de Atendimentos</strong> com Data, Tipo de Atendimento, Nome do Técnico e Ações.' },
+              { numero: 3, texto: 'Opção <strong>Incluir Atendimento</strong> para registrar novo atendimento.' },
+            ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="vulnerabilidades" titulo="Situações de Vulnerabilidades e Desproteções Sociais" screenshotSrc="/assets/screenshots/page-073.webp" paginaFisica={73}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Situações de Vulnerabilidades e Desproteções Sociais</strong>.' },
+              { numero: 2, texto: '<strong>Indicadores Automáticos</strong> — Família com pessoas com deficiência e Família com pessoa idosa.' },
+              { numero: 3, texto: '<strong>Lista de Vulnerabilidades</strong> registradas manualmente: Data, Vulnerabilidade, Técnico, Continua na vulnerabilidade.' },
+              { numero: 4, texto: 'Opção <strong>Incluir Vulnerabilidade</strong> para adicionar novo registro.' },
+            ]}
+          />
+        </section>
+
+        <VulnerabilidadesProtecoes />
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="acesso-beneficios" titulo="Acesso a Benefícios Eventuais" screenshotSrc="/assets/screenshots/page-066.webp" paginaFisica={66}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Acesso a Benefícios Eventuais</strong> — benefícios oferecidos por membro da família.' },
+              { numero: 2, texto: '<strong>Lista de Benefícios</strong> com Pessoa, Benefício, Descrição e Ações.' },
+              { numero: 3, texto: 'Opção <strong>Incluir Benefício Eventual</strong> — cadastro de novo benefício (morte, nascimento, calamidade, vulnerabilidade temporária).' },
+            ]}
+          />
+        </section>
+
+        <BeneficiosEventuais />
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="planejamento-evolucao" titulo="Planejamento e Evolução do Acompanhamento Familiar" screenshotSrc="/assets/screenshots/page-084.webp" paginaFisica={84}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Planejamento e Evolução do Acompanhamento Familiar</strong>.' },
+              { numero: 2, texto: '<strong>Lista de Inserção e Desligamento</strong> com Data de Ingresso, Nome, Data de Desligamento e Razão.' },
+              { numero: 3, texto: 'Opção <strong>Incluir Acompanhamento</strong> para adicionar a família ao acompanhamento.' },
+            ]}
+          />
+        </section>
+
+        <MetodologiaAcompanhamento />
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="encaminhamentos" titulo="Formulário de Controle de Encaminhamentos" screenshotSrc="/assets/screenshots/page-102.webp" paginaFisica={102}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Encaminhamentos</strong> — registro de encaminhamentos para a rede de serviços.' },
+              { numero: 2, texto: '<strong>Lista de Encaminhamentos</strong> com Data, Código da Área, Nome, Técnico e Ações.' },
+              { numero: 3, texto: 'Opção <strong>Incluir Encaminhamento</strong> — cadastro com Pessoa(s), Data, Área de encaminhamento.' },
+            ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="participacao-servicos" titulo="Participação em Serviços, Programas e Projetos" screenshotSrc="/assets/screenshots/page-092.webp" paginaFisica={92}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Participação em Serviços, Programas e Projetos</strong>.' },
+              { numero: 2, texto: '<strong>Observações</strong> de participação dos membros da família em serviços, programas e projetos.' },
+            ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="medidas-socioeducativas" titulo="Histórico de Cumprimento de Medidas Socioeducativas" screenshotSrc="/assets/screenshots/page-093.webp" paginaFisica={93}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Medidas Socioeducativas</strong> — consulta de medidas para adolescentes.' },
+              { numero: 2, texto: '<strong>Lista de Medidas</strong> com Data, Nome do adolescente, Tipo de medida, Técnico e Unidade.' },
+              { numero: 3, texto: 'Opção <strong>Incluir Medida</strong> para adicionar nova medida socioeducativa.' },
+            ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="historico-acolhimento" titulo="Histórico de Acolhimento Institucional" screenshotSrc="/assets/screenshots/page-101.webp" paginaFisica={101}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Histórico de Acolhimento Institucional</strong>.' },
+              { numero: 2, texto: '<strong>Observações</strong> do histórico de acolhimento institucional registrado para a família ou membro.' },
+            ]}
+          />
+        </section>
+      </div>
+    </div>
+
+    <!-- BLOCO 2: Atendimento Coletivo -->
+    <div data-block-group="atendimento-coletivo">
+      <SectionHeader title="Bloco 2 — Atendimento Coletivo" accent="green" />
+      <div data-block-content="atendimento-coletivo" class="space-y-6">
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.planejamento.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="controle-encaminhamentos" titulo="Controle de Encaminhamentos" screenshotSrc="/assets/screenshots/page-102.webp" paginaFisica={102}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Formulário de Controle de Encaminhamentos</strong>.' },
+              { numero: 2, texto: '<strong>Lista de Registro</strong> com Data, Código da área, Nome, Técnico e Ações.' },
+              { numero: 3, texto: 'Opção <strong>Incluir Encaminhamento</strong> — cadastro de novo encaminhamento com Pessoa(s), Data e Área.' },
+            ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.planejamento.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="relatorio-simplificado" titulo="Relatório Simplificado dos Atendimentos" screenshotSrc="/assets/screenshots/page-117.webp" paginaFisica={117}
+            anotacoes={[
+              { numero: 1, texto: 'Módulo <strong>Relatório Simplificado</strong> — visão consolidada dos atendimentos realizados.' },
+              { numero: 2, texto: '<strong>Parâmetros de busca</strong> por período, tipo de atendimento e unidade.' },
+              { numero: 3, texto: 'Geração de <strong>relatório em PDF</strong> com os dados filtrados.' },
+            ]}
+          />
+                  </section>
+
+        <EncaminhamentosIntersetorialidade />
+
+        <FluxoAtendimento />
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.planejamento.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="atendimento-coletivo-lista" titulo="Atendimento Coletivo — Lista de Atendimentos" screenshotSrc="/assets/screenshots/page-118.webp" paginaFisica={118}
+            anotacoes={[
+              { numero: 1, texto: 'Menu <strong>Atendimento Coletivo</strong> — acesso ao módulo de atendimentos coletivos.' },
+              { numero: 2, texto: 'Funcionalidade <strong>Selecionar Unidade</strong> — lista todas as unidades do usuário.' },
+              { numero: 3, texto: '<strong>Lista de Atendimentos Coletivos</strong> com N.º, Data, Tipo de Atendimento, Descrição e Ações.' },
+              { numero: 4, texto: 'Opção <strong>Incluir Atendimento</strong> para registrar novo atendimento coletivo.' },
+            ]}
+          />
+        </section>
+
+        <AtendimentoColetivoExpandido />
+      </div>
+    </div>
+
+    <!-- BLOCO 3: Migrar Prontuário -->
+    <div data-block-group="migrar-prontuario">
+      <SectionHeader title="Bloco 3 — Migrar Prontuário" accent="cyan" />
+      <div data-block-content="migrar-prontuario" class="space-y-6">
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.reprogramacao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="migrar-prontuario" titulo="Migrar Prontuário" screenshotSrc="/assets/screenshots/page-129.webp" paginaFisica={129}
+            anotacoes={[
+              { numero: 1, texto: 'Módulo <strong>Migrar Prontuário</strong> — gerencia transferências entre unidades.' },
+              { numero: 2, texto: 'Permite <strong>registrar pedido de transferência</strong> para outra unidade.' },
+              { numero: 3, texto: 'Permite <strong>receber prontuários</strong> de outras unidades.' },
+            ]}
+            observacao="A família sempre estará vinculada ao serviço mais adequado ao seu território."
+          />
+        </section>
+
+        <MigracaoProntuarioExpandido />
+
+        <PapelProfissionais />
+      </div>
+    </div>
+
+    <!-- BLOCO 4: Painel Estatístico -->
+    <div data-block-group="painel-estatistico">
+      <SectionHeader title="Bloco 4 — Painel Estatístico" accent="pink" />
+      <div data-block-content="painel-estatistico" class="space-y-6">
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.controle.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="painel-estatistico" titulo="Painel Estatístico" screenshotSrc="/assets/screenshots/page-140.webp" paginaFisica={140}
+            anotacoes={[
+              { numero: 1, texto: 'Módulo <strong>Painel Estatístico</strong> — visão agregada dos atendimentos.' },
+              { numero: 2, texto: '<strong>Parâmetros de Refinamento</strong> — filtros por período, tipo, unidade e público.' },
+              { numero: 3, texto: '<strong>Indicadores</strong> de volume, perfil e evolução das ações.' },
+            ]}
+          />
+        </section>
+
+        <PainelEstatisticoExpandido />
+      </div>
+    </div>
+
+    <RegrasOuroProntuario />
+    <ResumoPodeNaoPode />
+    <ChecklistProntuario />
+    <BaseNormativaProntuario />
+
+    <ContraCapa />
+  </div>
+</BaseLayout>

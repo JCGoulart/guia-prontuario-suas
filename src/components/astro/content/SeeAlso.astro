@@ -1,0 +1,64 @@
+---
+import InfoCard from '@/components/astro/content/InfoCard.astro'
+
+export interface SeeAlsoLink {
+  label: string
+  href: string
+  icon?: string
+}
+
+export interface Props {
+  links: SeeAlsoLink[]
+  accent?: 'blue' | 'green'
+  title?: string
+  class?: string
+}
+
+const { links, accent = 'blue', title = 'Veja também', class: className } = Astro.props
+
+const arrowRightIcon =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>'
+
+const externalLinkIcon =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'
+
+const accentIconColor: Record<string, string> = {
+  blue: 'text-institucional-blue',
+  green: 'text-institucional-green',
+}
+
+function isExternal(href: string): boolean {
+  return href.startsWith('http://') || href.startsWith('https://')
+}
+
+function resolveIcon(link: SeeAlsoLink): string {
+  if (link.icon) return link.icon
+  return isExternal(link.href) ? externalLinkIcon : arrowRightIcon
+}
+
+function resolveTarget(href: string): Record<string, string> {
+  if (!isExternal(href)) return {}
+  return { target: '_blank', rel: 'noopener noreferrer' }
+}
+---
+
+<div class:list={[className]}>
+  <InfoCard title={title} accent={accent}>
+    <ul class="flex flex-col divide-y divide-slate-200 dark:divide-slate-700 -my-1">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              {...resolveTarget(link.href)}
+              class="flex items-center gap-3 px-1 py-3.5 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-700/40 rounded-md transition-colors group"
+            >
+              <span class={`flex-shrink-0 flex items-center ${accentIconColor[accent]}`} set:html={resolveIcon(link)} />
+              <span class="flex-1">{link.label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </InfoCard>
+</div>

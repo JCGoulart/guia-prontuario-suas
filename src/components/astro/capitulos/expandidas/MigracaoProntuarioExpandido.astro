@@ -1,0 +1,215 @@
+---
+// Migração de Prontuário Expandido — tutorial aprofundado sobre o fluxo de migração de prontuários entre CRAS
+import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import AlertBox from '@/components/astro/content/AlertBox.astro'
+import SeeAlso from '@/components/astro/content/SeeAlso.astro'
+import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
+import FeatureCard from '@/components/astro/content/FeatureCard.astro'
+import type { Anotacao } from '@/types'
+
+const anotacoes: Anotacao[] = [
+  { numero: 1, texto: 'Tela "Aprovação de pedido de migração" — lista de prontuários aguardando análise para migração entre unidades.' },
+  { numero: 2, texto: '<strong>N.º do prontuário</strong> — coluna que informa o número do prontuário eletrônico da pessoa.' },
+  { numero: 3, texto: '<strong>Nome</strong> — coluna que informa o nome da pessoa vinculada ao prontuário eletrônico.' },
+  { numero: 4, texto: '<strong>Data da solicitação</strong> — coluna que informa a data da solicitação da migração.' },
+  { numero: 5, texto: '<strong>Unidade de origem</strong> — coluna que informa o código da unidade de origem do prontuário.' },
+  { numero: 6, texto: '<strong>Município/UF</strong> — coluna que informa o município e UF da unidade de origem.' },
+  { numero: 7, texto: '<strong>Situação</strong> — coluna que informa a situação da solicitação (aguardando, aprovada, etc.).' },
+  { numero: 8, texto: '<strong>Ações</strong> — coluna com opções: <strong>Visualizar</strong> (detalhes da solicitação) e <strong>Aprovar migração</strong> (confirmar recebimento).' },
+]
+
+const fluxogramaSteps = [
+  { number: 1, title: 'Unidade de Origem', description: 'Identifica a necessidade de migração e registra a solicitação no sistema. Após a aprovação, perde o acesso ao prontuário.', accent: 'blue' as const },
+  { number: 2, title: 'Sistema', description: 'Processa a solicitação sem alterar dados e disponibiliza para a unidade de destino. Após aprovação, atualiza o vínculo territorial.', accent: 'slate' as const },
+  { number: 3, title: 'Unidade de Destino', description: 'Visualiza a solicitação, confere os dados e aprova a migração. A família fica vinculada ao novo território.', accent: 'green' as const },
+]
+---
+
+<section
+  id="migracao-prontuario-expandido"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none print:break-before-page"
+>
+  <SectionHeader title="Migração de Prontuário: Guia Completo" accent="blue" />
+
+  <!-- Prosa conceitual -->
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-6 text-base leading-relaxed mb-10">
+
+    <!-- Quando Migrar -->
+    <section>
+      <AlertBox variant="info" title="Quando Migrar um Prontuário?">
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+          A migração de prontuário é o procedimento que transfere o histórico de atendimento de uma família de uma unidade do SUAS para outra. Esse recurso existe para garantir que a mobilidade territorial não signifique perda de direitos ou descontinuidade do acompanhamento socioassistencial.
+        </p>
+      </AlertBox>
+
+      <p>
+        A necessidade de migrar um prontuário surge em três cenários principais:
+      </p>
+      <ul class="space-y-2 list-disc pl-5 marker:text-cyan-600">
+        <li>
+          <strong class="text-slate-800 dark:text-white">Mudança de território da família</strong> — quando uma família se muda para uma região atendida por outro CRAS, o prontuário deve acompanhá-la para que a nova equipe tenha acesso ao histórico completo de atendimentos, vulnerabilidades identificadas, planos de acompanhamento e encaminhamentos realizados.
+        </li>
+        <li>
+          <strong class="text-slate-800 dark:text-white">Reorganização administrativa</strong> — quando há redefinição das áreas de abrangência dos CRAS no município, alguns prontuários precisam ser transferidos para a unidade que passou a atender o território onde a família reside.
+        </li>
+        <li>
+          <strong class="text-slate-800 dark:text-white">Correção cadastral</strong> — quando se identifica que uma família foi cadastrada em uma unidade que não corresponde ao seu território de residência, a migração corrige a vinculação territorial.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Vinculação Territorial -->
+    <section>
+      <AlertBox variant="info" title="Vinculação Territorial no SUAS" />
+
+      <p>
+        O princípio da <strong class="text-slate-800 dark:text-white">vinculação territorial</strong> é estruturante para a Política Nacional de Assistência Social (PNAS). Cada família deve estar vinculada ao CRAS que atende o território onde reside, pois é essa unidade que conhece a realidade local, as redes de serviços disponíveis e as dinâmicas comunitárias daquela área.
+      </p>
+      <p>
+        A territorialização da proteção social básica permite que as equipes desenvolvam um olhar integral sobre o território: mapeiam vulnerabilidades coletivas, articulam parcerias com escolas, postos de saúde e organizações comunitárias, e planejam ações preventivas com base no perfil da população atendida. Quando uma família é atendida por um CRAS que não corresponde ao seu território, essa lógica se rompe — a equipe não tem vínculo orgânico com aquela comunidade e a família fica descolada da rede de proteção local.
+      </p>
+      <p>
+        A migração de prontuário é, portanto, um instrumento de <strong class="text-slate-800 dark:text-white">gestão do território</strong>: ela restabelece a coerência entre a localização da família e a unidade responsável por seu acompanhamento, sem que isso represente uma ruptura no cuidado.
+      </p>
+    </section>
+
+    <!-- Fluxo Completo -->
+    <section>
+      <AlertBox variant="info" title="O Fluxo de Migração: Passo a Passo">
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+          A migração de prontuário envolve três atores — a unidade de origem, o sistema e a unidade de destino — cada um com responsabilidades específicas em um processo que preserva a integridade dos dados.
+        </p>
+      </AlertBox>
+
+      <ol class="space-y-4 list-decimal pl-5 marker:text-cyan-600 marker:font-bold mt-3">
+        <li class="text-slate-600 dark:text-slate-400">
+          <span class="font-medium text-slate-700 dark:text-slate-300">A unidade de origem identifica a necessidade de migração</span>. O técnico ou coordenador constata que a família não reside mais no território de abrangência da unidade — seja por comunicação da própria família, por atualização cadastral ou por verificação em visita domiciliar.
+        </li>
+        <li class="text-slate-600 dark:text-slate-400">
+          <span class="font-medium text-slate-700 dark:text-slate-300">A unidade de origem registra a solicitação</span>. No módulo de migração do sistema, o operador informa o prontuário a ser migrado e a unidade de destino. Nesse momento, o prontuário permanece acessível na unidade de origem, mas sinalizado como "em processo de migração".
+        </li>
+        <li class="text-slate-600 dark:text-slate-400">
+          <span class="font-medium text-slate-700 dark:text-slate-300">O sistema processa a solicitação</span>. A plataforma disponibiliza o pedido de migração na unidade de destino, na tela ilustrada abaixo. Nenhum dado é alterado durante essa etapa — o sistema apenas prepara a transferência.
+        </li>
+        <li class="text-slate-600 dark:text-slate-400">
+          <span class="font-medium text-slate-700 dark:text-slate-300">A unidade de destino recebe e analisa</span>. A equipe da unidade de destino visualiza a lista de solicitações pendentes. Pode consultar os dados do prontuário (opção Visualizar) antes de decidir, verificando se a família de fato reside em seu território.
+        </li>
+        <li class="text-slate-600 dark:text-slate-400">
+          <span class="font-medium text-slate-700 dark:text-slate-300">A unidade de destino aprova a migração</span>. Ao acionar "Aprovar migração", o vínculo territorial do prontuário é atualizado. A partir desse momento, a unidade de origem perde o acesso ao prontuário e a unidade de destino assume integralmente a responsabilidade pelo acompanhamento da família.
+        </li>
+      </ol>
+    </section>
+
+    <!-- O que é transferido -->
+    <section>
+      <AlertBox variant="info" title="O Que é Transferido — e o Que Não é" />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-4 stagger">
+        <FeatureCard
+          title="Dados Transferidos"
+          description="Identificação, histórico de atendimentos, vulnerabilidades, planos de acompanhamento, encaminhamentos, visitas domiciliares, relatórios técnicos."
+          accent="green"
+          icon="CheckCircle"
+        />
+        <FeatureCard
+          title="Dados Não Transferidos"
+          description="Dados administrativos internos, atribuições de profissionais específicos, controles internos, dados do Cadastro Único."
+          accent="red"
+          icon="X"
+        />
+      </div>
+
+      <p class="mt-5">
+        É importante compreender que a migração <strong class="text-slate-800 dark:text-white">não duplica</strong> o prontuário: trata-se de uma transferência de titularidade. O prontuário migrado mantém o mesmo número de identificação, garantindo rastreabilidade e unicidade em toda a rede SUAS. Os dados que não são transferidos permanecem sob a guarda da unidade de origem para fins de arquivo e auditoria.
+      </p>
+    </section>
+
+    <!-- Continuidade do Cuidado -->
+    <section>
+      <AlertBox variant="info" title="Continuidade do Cuidado: Por que a Migração é Essencial" />
+
+      <p>
+        Sem o mecanismo de migração, uma família que muda de território precisaria "recomeçar do zero" no novo CRAS: abrir um novo prontuário, repetir informações já registradas, refazer diagnósticos de vulnerabilidade e reconstituir todo o histórico de acompanhamento. Isso representa:
+      </p>
+      <ul class="space-y-2 list-disc pl-5 marker:text-cyan-600 mt-2">
+        <li><strong class="text-slate-800 dark:text-white">Retrabalho para a equipe técnica</strong>, que despende horas reconstruindo um histórico que já existe em outro lugar;</li>
+        <li><strong class="text-slate-800 dark:text-white">Risco de perda de informações críticas</strong>, como vulnerabilidades previamente diagnosticadas, encaminhamentos em andamento e planos de acompanhamento que não foram concluídos;</li>
+        <li><strong class="text-slate-800 dark:text-white">Descontinuidade da proteção social</strong>, pois a nova equipe não tem acesso imediato ao que já foi feito, comprometendo a qualidade e a tempestividade das intervenções;</li>
+        <li><strong class="text-slate-800 dark:text-white">Fragilização do vínculo com a família</strong>, que se vê obrigada a repetir sua história, muitas vezes revivendo situações de vulnerabilidade e sofrimento.</li>
+      </ul>
+      <p class="mt-3">
+        A migração de prontuário resolve esses problemas ao garantir que <strong class="text-slate-800 dark:text-white">o cuidado não seja interrompido pela geografia</strong>. A equipe da unidade de destino recebe um prontuário íntegro, com todo o histórico da família, e pode retomar o acompanhamento exatamente de onde a unidade de origem parou — respeitando, evidentemente, a autonomia técnica para reavaliar prioridades e adequar o plano de acompanhamento à realidade do novo território.
+      </p>
+    </section>
+  </div>
+
+  <!-- Tutorial com screenshot -->
+  <SecaoTutorial
+    id="aprovacao-pedido-migracao"
+    titulo="Aprovação de Pedido de Migração"
+    screenshotSrc="/assets/screenshots/page-131.webp"
+    paginaFisica={131}
+    anotacoes={anotacoes}
+    observacao="A tela de aprovação de migração é acessada pela unidade de destino. Cabe à equipe revisar os dados antes de aprovar — a migração é irreversível e transfere a titularidade do prontuário."
+  />
+
+  <!-- SVG Flowchart -->
+  <div class="mt-10">
+    <AlertBox variant="info" title="Fluxograma da Migração de Prontuário">
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+        O diagrama abaixo ilustra as três etapas do processo de migração e os papéis de cada ator envolvido.
+      </p>
+    </AlertBox>
+
+    <ProcessStepper steps={fluxogramaSteps} />
+  </div>
+
+  <!-- Boas Práticas -->
+  <div class="mt-10">
+    <AlertBox variant="info" title="Boas Práticas na Migração de Prontuário" />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 stagger">
+      <div class="bg-cyan-50 dark:bg-cyan-900/20 rounded-xl p-5 border border-cyan-600/10 dark:border-cyan-700/30">
+        <div class="w-8 h-8 rounded-lg bg-cyan-600/10 dark:bg-cyan-800/40 flex items-center justify-center mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-600"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h4 class="font-bold text-slate-800 dark:text-white text-sm mb-2">Verifique a Mudança de Território</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Antes de migrar, confirme que a família de fato mudou de território. A migração indevida pode gerar duplicidade de prontuários ou desvinculação de uma família de sua unidade correta, comprometendo o acompanhamento. Sempre que possível, cruze informações com o Cadastro Único e realize contato telefônico ou visita domiciliar para confirmação.</p>
+      </div>
+
+      <div class="bg-cyan-50 dark:bg-cyan-900/20 rounded-xl p-5 border border-cyan-600/10 dark:border-cyan-700/30">
+        <div class="w-8 h-8 rounded-lg bg-cyan-600/10 dark:bg-cyan-800/40 flex items-center justify-center mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-600"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h4 class="font-bold text-slate-800 dark:text-white text-sm mb-2">Comunique-se com a Unidade de Destino</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Quando possível, estabeleça contato prévio com a equipe da unidade de destino antes de iniciar o processo. Um alinhamento entre as equipes facilita a transição, permite compartilhar informações contextuais que não constam no prontuário e prepara a unidade de destino para receber e dar continuidade ao acompanhamento da família.</p>
+      </div>
+
+      <div class="bg-cyan-50 dark:bg-cyan-900/20 rounded-xl p-5 border border-cyan-600/10 dark:border-cyan-700/30">
+        <div class="w-8 h-8 rounded-lg bg-cyan-600/10 dark:bg-cyan-800/40 flex items-center justify-center mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-600"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <h4 class="font-bold text-slate-800 dark:text-white text-sm mb-2">Revise os Dados Antes de Migrar</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Antes de solicitar a migração, revise os dados do prontuário na unidade de origem. Corrija inconsistências cadastrais, complete registros pendentes e verifique se os encaminhamentos estão atualizados. Dados inconsistentes que migrarem se propagarão para a unidade de destino, gerando retrabalho e possível prejuízo ao acompanhamento da família.</p>
+      </div>
+
+      <div class="bg-cyan-50 dark:bg-cyan-900/20 rounded-xl p-5 border border-cyan-600/10 dark:border-cyan-700/30">
+        <div class="w-8 h-8 rounded-lg bg-cyan-600/10 dark:bg-cyan-800/40 flex items-center justify-center mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-600"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h4 class="font-bold text-slate-800 dark:text-white text-sm mb-2">Confirme a Conclusão do Processo</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Após a aprovação da migração pela unidade de destino, a unidade de origem perde o acesso ao prontuário. Certifique-se de que o processo foi concluído integralmente — extraia relatórios ou imprima documentos que possam ser necessários para arquivo físico antes que o acesso seja revogado. A migração, uma vez aprovada, é irreversível.</p>
+      </div>
+    </div>
+  </div>
+
+  <SeeAlso
+    links={[
+      { label: 'Migrar Prontuário', href: '#migrar-prontuario' },
+      { label: 'Gestão de Prontuário', href: '#gestao-prontuario' },
+      { label: 'Informações do Prontuário', href: '#informacoes-prontuario' },
+    ]}
+    accent="blue"
+  />
+</section>

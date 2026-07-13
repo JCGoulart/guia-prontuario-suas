@@ -1,0 +1,32 @@
+---
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import Timeline from '@/components/astro/content/Timeline.astro'
+
+const normativos = [
+  { title: 'Lei nº 13.709/2018 (LGPD)', date: '2018', description: 'Lei Geral de Proteção de Dados Pessoais. Estabelece regras para tratamento de dados pessoais, incluindo dados sensíveis como os contidos nos prontuários.', variant: 'purple' as const },
+  { title: 'NOB-SUAS 2012', date: '2012', description: 'Norma Operacional Básica do SUAS. Define a gestão da informação como eixo estruturante e estabelece a obrigatoriedade de sistemas de registro.', variant: 'default' as const },
+  { title: 'PNAS 2004', date: '2004', description: 'Política Nacional de Assistência Social. Institui a vigilância socioassistencial e a necessidade de sistemas de informação padronizados.', variant: 'default' as const },
+  { title: 'Lei nº 12.435/2011', date: '2011', description: 'Lei Orgânica da Assistência Social (LOAS). Organiza o SUAS e define competências dos entes federados na gestão da informação.', variant: 'blue' as const },
+  { title: 'Resolução CNAS nº 33/2012', date: '2012', description: 'Aprova a Norma Operacional Básica do SUAS (NOB-SUAS 2012). Reforça a necessidade de prontuário único por família.', variant: 'default' as const },
+  { title: 'Resolução CIT nº 4/2018', date: '2018', description: 'Estabelece diretrizes para o Prontuário Eletrônico do SUAS como instrumento de gestão e acompanhamento familiar.', variant: 'green' as const },
+  { title: 'Portaria MDS nº 113/2023', date: '2023', description: 'Regulamenta o Prontuário Eletrônico do SUAS no âmbito federal, definindo campos obrigatórios, perfis de acesso e interoperabilidade.', variant: 'green' as const },
+  { title: 'Resolução CNAS nº 1054/2026', date: '2026', description: 'Dispõe sobre a execução financeira por blocos de proteção e estabelece requisitos para registro e prestação de contas.', variant: 'purple' as const },
+]
+---
+
+<div id="base-normativa" class="mb-16 animate-on-scroll">
+  <SectionHeader title="Base Normativa do Prontuário Eletrônico" accent="blue" />
+
+  <div class="prose max-w-none text-slate-700 dark:text-slate-300 mb-8">
+    <p>
+      O Prontuário Eletrônico do SUAS está amparado por um conjunto de normas
+      federais e resoluções que estabelecem desde a proteção de dados pessoais
+      até a obrigatoriedade de sistemas de registro e acompanhamento familiar.
+      A linha do tempo abaixo apresenta os principais marcos legais que
+      fundamentam a existência e a operação do prontuário eletrônico no âmbito
+      da assistência social brasileira.
+    </p>
+  </div>
+
+  <Timeline items={normativos} />
+</div>

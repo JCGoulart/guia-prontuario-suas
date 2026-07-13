@@ -1,0 +1,135 @@
+---
+// Diagnóstico Socioeconômico da Família — tutorial expandido com screenshot, anotações, tabela comparativa e boas práticas
+import SecaoTutorial from '../SecaoTutorial.astro'
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import AlertBox from '@/components/astro/content/AlertBox.astro'
+import SeeAlso from '@/components/astro/content/SeeAlso.astro'
+import type { Anotacao } from '@/types'
+import ProgramsTable from '@/components/react/content/ProgramsTable.tsx'
+import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
+
+const programas = [
+  {
+    id: 'bolsa-familia',
+    name: 'Bolsa Família',
+    icon: 'Banknote',
+    org: 'MDS',
+    eligibility: 'Famílias em situação de pobreza e extrema pobreza com renda per capita de até R$ 218,00',
+    registration: 'Cadastro Único para Programas Sociais (CadÚnico)',
+    details: {
+      documentos: ['RG e CPF de todos os membros', 'Comprovante de residência', 'Carteira de Trabalho (se aplicável)', 'Número do NIS'],
+      prazo: 'Até 45 dias após atualização cadastral',
+      observacoes: 'Benefício variáveis de R$ 93,00 a R$ 600,00 por família',
+    },
+  },
+  {
+    id: 'bpc',
+    name: 'Benefício de Prestação Continuada (BPC)',
+    icon: 'Accessibility',
+    org: 'MDS',
+    eligibility: 'Pessoas com deficiência e idosos a partir de 65 anos em situação de extrema pobreza (renda per capita de até R$ 218,00)',
+    registration: 'CadÚnico + requerimento no CRAS ou INSS',
+    details: {
+      documentos: ['RG e CPF', 'Comprovante de residência', 'Laudo médico (para deficiência)', 'CadÚnico atualizado'],
+      prazo: 'Até 90 dias para análise pelo INSS',
+      observacoes: 'Valor de R$ 1.412,00 em 2024. Não gera direito a 13ª parcela.',
+    },
+  },
+  {
+    id: 'seguro-desemprego',
+    name: 'Seguro Desemprego',
+    icon: 'Briefcase',
+    org: 'Ministério do Trabalho',
+    eligibility: 'Trabalhadores formais dispensados sem justa causa e atletas profissionais',
+    registration: 'Aplicativo Carteira de Trabalho Digital, SINE ou PAT',
+    details: {
+      documentos: ['Guia de Recolhimento FGTS (GRRF)', 'Termo de Rescisão do Contrato de Trabalho', 'Cadastro no SINE'],
+      prazo: 'A partir do 7º dia após demissão, em até 120 dias',
+      observacoes: 'Parcelas variando de R$ 1.412,00 a R$ 2.313,02 conforme média salarial',
+    },
+  },
+  {
+    id: 'pensao-alimenticia',
+    name: 'Pensão Alimentícia',
+    icon: 'Scale',
+    org: 'Poder Judiciário',
+    eligibility: 'Filhos e dependentes de pais ausentes ou que não cumprem espontaneamente a obrigação alimentar',
+    registration: 'Via judicial — ação de alimentos no Fórum',
+    details: {
+      documentos: ['Certidão de nascimento do filho/dependente', 'Comprovante de renda do requerido', 'Prova de dependência econômica'],
+      prazo: 'Variável — depende de decisão judicial',
+      observacoes: 'Pode ser requerida em qualquer idade; prescreve aos 18 anos dos alimentos devidos',
+    },
+  },
+]
+
+const anotacoes: Anotacao[] = [
+  { numero: 1, texto: 'Janela "Incluir forma de ingresso" — formulário para registrar como a família acessou a unidade e o motivo do primeiro atendimento.' },
+  { numero: 2, texto: '<strong>Pessoa(s)</strong> — campo que informa o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+  { numero: 3, texto: '<strong>Data do atendimento</strong> — campo que informa a data em que o atendimento foi realizado.' },
+  { numero: 4, texto: '<strong>Número do prontuário físico</strong> — informa o número do prontuário físico da pessoa/família.' },
+  { numero: 5, texto: '<strong>De que forma a família acessou a unidade para o primeiro atendimento</strong> — informa como a pessoa/família acessou a unidade para o primeiro atendimento.' },
+  { numero: 6, texto: '<strong>Razões que motivaram o primeiro atendimento</strong> — campo que apresenta as informações adicionais ao atendimento. Acione <strong>Incluir</strong> para salvar o registro.' },
+]
+---
+<section
+  id="diagnostico-socioeconomico"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none mt-6"
+>
+  <SectionHeader title="Diagnóstico Socioeconômico da Família" accent="blue" />
+
+  <!-- Prosa conceitual -->
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed">
+    <p>
+      O <strong class="text-slate-800 dark:text-white">Diagnóstico Socioeconômico</strong> é uma etapa fundamental do acompanhamento familiar no SUAS. Diferente do Cadastro Único — que tem caráter declaratório e finalidade de elegibilidade para programas —, o diagnóstico realizado pelo técnico do CRAS busca compreender a <strong class="text-slate-800 dark:text-white">realidade concreta da família</strong>: suas fontes de renda, condições de moradia, acesso a serviços públicos, dinâmicas de trabalho e estratégias de sobrevivência. Esses dados alimentam o plano de acompanhamento e permitem planejar intervenções mais efetivas, monitorar mudanças ao longo do tempo e produzir evidências sobre o impacto das políticas socioassistenciais no território.
+    </p>
+    <p>
+      O registro da <strong class="text-slate-800 dark:text-white">Forma de Ingresso</strong> é o ponto de partida — a porta de entrada que documenta como e por que a família chegou até a unidade. É o primeiro contato formal entre a família e o CRAS, e a qualidade desse registro influencia diretamente a capacidade da equipe de compreender a demanda inicial e traçar uma rota de acompanhamento adequada. Cada novo atendimento pode gerar uma nova forma de ingresso, permitindo que o histórico reflita a trajetória da família ao longo do tempo.
+    </p>
+    <p>
+      As informações coletadas aqui — somadas aos dados do CadÚnico, à composição familiar e aos registros de vulnerabilidades — compõem um panorama multidimensional que subsidia tanto a <strong class="text-slate-800 dark:text-white">avaliação de risco e vulnerabilidade</strong> quanto o <strong class="text-slate-800 dark:text-white">monitoramento familiar</strong>. Um diagnóstico bem fundamentado é a base para decisões técnicas seguras e para a garantia de direitos.
+    </p>
+  </div>
+
+  <!-- Screenshot com anotações -->
+  <SecaoTutorial
+    screenshotSrc="assets/screenshots/page-034.webp"
+    titulo="Diagnóstico Socioeconômico da Família"
+    subtitulo="Forma de ingresso na unidade e motivo do primeiro atendimento"
+    anotacoes={anotacoes}
+    paginaFisica={34}
+    id="diagnostico-socioeconomico-tutorial"
+  />
+
+  <!-- Tabela comparativa de programas de transferência de renda -->
+  <div class="mt-10">
+    <AlertBox variant="info">
+      <h3 class="text-xl font-bold text-slate-800 dark:text-white">Programas de Transferência de Renda</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 italic leading-relaxed">
+        O prontuário eletrônico permite registrar os principais programas de transferência de renda acessados pela família. A tabela a seguir resume os critérios de cada programa e como registrá-los no sistema.
+      </p>
+    </AlertBox>
+
+    <ProgramsTable client:load programs={programas} />
+  </div>
+
+  <!-- Boas Práticas -->
+  <BestPracticesList
+    title="Boas Práticas no Diagnóstico Socioeconômico"
+    items={[
+      "Atualize os dados de renda e trabalho sempre que houver mudança na composição familiar.",
+      "Verifique se a família já possui cadastro no CadÚnico antes de duplicar informações.",
+      "Registre todos os programas sociais que a família acessa, mesmo que de outras políticas setoriais.",
+      "Utilize o campo de observações para anotar informações qualitativas que os campos estruturados não capturam.",
+    ]}
+    accent="green"
+  />
+
+  <SeeAlso
+    links={[
+      { label: 'Situações de Vulnerabilidade', href: '#vulnerabilidades' },
+      { label: 'Acesso a Benefícios Eventuais', href: '#acesso-beneficios' },
+    ]}
+    accent="blue"
+  />
+</section>

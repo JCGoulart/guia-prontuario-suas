@@ -1,0 +1,129 @@
+---
+// Encaminhamentos e Intersetorialidade no SUAS — tutorial expandido
+import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import AlertBox from '@/components/astro/content/AlertBox.astro'
+import SeeAlso from '@/components/astro/content/SeeAlso.astro'
+import type { Anotacao } from '@/types'
+import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
+
+const anotacoes: Anotacao[] = [
+  {
+    numero: 1,
+    texto: 'Janela "Incluir encaminhamento" — formulário para registrar o encaminhamento de pessoa(s) a serviços de outras políticas setoriais.',
+  },
+  {
+    numero: 2,
+    texto: '<strong>Pessoa(s)</strong> — campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s).',
+  },
+  {
+    numero: 3,
+    texto: '<strong>Data do encaminhamento</strong> — campo para informar a data em que o atendimento foi realizado.',
+  },
+  {
+    numero: 4,
+    texto: '<strong>Nome do técnico responsável</strong> — campo que informa o nome do técnico responsável pelo registro.',
+  },
+  {
+    numero: 5,
+    texto: '<strong>Área para a qual está sendo realizado o encaminhamento</strong> — campo para informar a área de destino.',
+  },
+  {
+    numero: 6,
+    texto: 'Alternativas de área: <strong>5</strong> — Serviços de Convivência e Fortalecimento de Vínculos para crianças e adolescentes; <strong>6</strong> — SCFV para idosos.',
+  },
+  {
+    numero: 7,
+    texto: '<strong>7</strong> — Atualização cadastral no CadÚnico; <strong>8</strong> — Inclusão no CadÚnico; <strong>9</strong> — INSS, visando acesso ao BPC.',
+  },
+  {
+    numero: 8,
+    texto: 'Acione <strong>Incluir</strong> — o sistema fecha a janela, atualiza a lista e apresenta a mensagem "Encaminhamento incluído com sucesso".',
+  },
+]
+---
+
+<section
+  id="encaminhamentos-intersetorialidade"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none print:break-before-page"
+>
+  <!-- Título -->
+  <SectionHeader title="Encaminhamentos e Intersetorialidade" accent="blue" />
+
+  <!-- Prosa Conceitual -->
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-5 text-base leading-relaxed mb-10">
+    <p>
+      O princípio da <strong class="text-slate-800 dark:text-white">intersetorialidade</strong> reconhece que nenhuma política pública
+      isolada é capaz de resolver problemas sociais complexos. No SUAS, isso significa que o CRAS não atua sozinho: ele articula
+      ações com saúde, educação, justiça, trabalho, habitação e outras áreas para garantir a proteção integral das famílias.
+    </p>
+
+    <p>
+      O <strong class="text-slate-800 dark:text-white">encaminhamento</strong> é o instrumento que operacionaliza essa articulação.
+      Sempre que a equipe do CRAS identifica uma demanda que extrapola o escopo da assistência social — como uma consulta médica
+      especializada, uma vaga em escola, orientação jurídica ou atualização cadastral — ela registra o encaminhamento no sistema.
+      O registro informa <em>quem</em> foi encaminhado, <em>para qual área</em>, em que <em>data</em> e por qual <em>motivo</em>.
+    </p>
+
+    <p>
+      As áreas de destino mais comuns incluem: <strong>Saúde</strong> (UBS, CAPS, hospitais), <strong>Educação</strong>
+      (escolas), <strong>Justiça</strong> (Defensoria Pública, CREAS), <strong>Trabalho</strong> (SINE, programas
+      de qualificação profissional) e <strong>Habitação</strong> (programas de moradia). O campo de seleção do formulário
+      apresenta essas opções codificadas, facilitando o registro padronizado.
+    </p>
+
+    <p>
+      O <strong class="text-slate-800 dark:text-white">acompanhamento do encaminhamento</strong> é tão importante quanto o
+      próprio registro. Após encaminhar, a equipe deve verificar — em atendimentos subsequentes ou por contato com a unidade
+      de destino — se a pessoa efetivamente acessou o serviço. Esse retorno, chamado de
+      <strong>contrarreferência</strong>, fecha o ciclo da intersetorialidade: o CRAS encaminha e a rede responde, permitindo
+      avaliar se a demanda foi atendida ou se novas ações são necessárias.
+    </p>
+
+    <p>
+      A diferença conceitual é relevante: o <strong>encaminhamento</strong> é o ato de direcionar a pessoa a outro serviço
+      (fluxo de saída), enquanto a <strong>contrarreferência</strong> é a resposta que retorna ao CRAS (fluxo de entrada),
+      confirmando o atendimento, informando o desfecho ou solicitando informações complementares. Ambos os movimentos são
+      registrados no prontuário para compor o histórico integral do atendimento.
+    </p>
+  </div>
+
+  <!-- Screenshot com anotações -->
+  <div class="mb-10">
+    <SecaoTutorial
+      screenshotSrc="assets/screenshots/page-104.webp"
+      titulo="Formulário de Controle de Encaminhamentos"
+      paginaFisica={104}
+      anotacoes={anotacoes}
+    />
+  </div>
+
+  <!-- Rede Intersetorial - descrição -->
+  <div class="mb-10">
+    <AlertBox variant="info" title="Rede de Articulação Intersetorial do CRAS">
+      <p class="text-sm leading-relaxed">
+        O CRAS ocupa posição central na rede socioassistencial, articulando encaminhamentos bidirecionais com: <strong>Saúde</strong> (UBS, CAPS, hospitais), <strong>Educação</strong> (escolas), <strong>CREAS</strong> (Proteção Especial), <strong>Justiça</strong> (Defensoria Pública), <strong>Trabalho</strong> (SINE, qualificação profissional), <strong>Habitação</strong> (programas de moradia) e <strong>CadÚnico</strong> (atualização e inclusão cadastral). As setas indicam fluxos de encaminhamento (ida) e contrarreferência (volta), fechando o ciclo da intersetorialidade.
+      </p>
+    </AlertBox>
+  </div>
+
+  <!-- Boas Práticas -->
+  <BestPracticesList
+    title="Boas Práticas"
+    items={[
+      "Preencha todos os campos do formulário de encaminhamento com informações precisas. O campo de motivo é essencial para que a unidade de destino compreenda o contexto da demanda.",
+      "Não basta registrar e esquecer. Nos atendimentos seguintes, verifique se a pessoa acessou o serviço. Se não acessou, investigue os motivos e reoriente.",
+      "Sempre que possível, estabeleça contato prévio com a unidade de destino antes de encaminhar. Isso evita a peregrinação da família entre serviços.",
+    ]}
+    accent="blue"
+  />
+
+  <SeeAlso
+    links={[
+      { label: 'Vulnerabilidades e Riscos Sociais', href: '#vulnerabilidades' },
+      { label: 'Condições de Saúde', href: '#condicoes-saude' },
+      { label: 'Condições Educacionais', href: '#condicoes-educacionais' },
+    ]}
+    accent="blue"
+  />
+</section>

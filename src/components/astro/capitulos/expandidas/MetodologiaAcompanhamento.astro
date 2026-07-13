@@ -1,0 +1,115 @@
+---
+// Metodologia do Acompanhamento Familiar — seção expandida com conceitos, timeline e boas práticas
+import type { Anotacao } from '@/types'
+import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
+import SeeAlso from '@/components/astro/content/SeeAlso.astro'
+import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
+
+const anotacoes: Anotacao[] = [
+  { numero: 1, texto: 'Janela <strong>Incluir acompanhamento familiar</strong> — formulário para iniciar ou editar o acompanhamento sistemático da família.' },
+  { numero: 2, texto: '<strong>Data do ingresso</strong> — indica a data em que a composição familiar foi incluída no acompanhamento.' },
+  { numero: 3, texto: '<strong>Planejamento inicial</strong> — registra como o técnico pretende organizar e acompanhar as ações planejadas para o atendimento da família, definindo os passos e estratégias que orientarão o acompanhamento.' },
+  { numero: 4, texto: '<strong>Data do desligamento</strong> — indica a data em que a família foi desvinculada do acompanhamento.' },
+  { numero: 5, texto: '<strong>Razão do desligamento</strong> — indica o motivo. Valores: Avaliação técnica, Evasão ou recusa da família, Mudança de Município, Outros.' },
+  { numero: 6, texto: 'Lista de acompanhamentos ativos — exibe Data de Ingresso, Data de Desligamento e Razão do desligamento.' },
+  { numero: 7, texto: 'Acione <strong>Incluir</strong> para salvar o registro e atualizar a lista de acompanhamentos.' },
+]
+
+const acompanhamentoSteps = [
+  { number: 1, title: 'Ingresso', description: 'A família é inserida no acompanhamento sistemático pelo técnico de referência do CRAS, com registro da data de ingresso e planejamento inicial.', accent: 'blue' as const },
+  { number: 2, title: 'Diagnóstico', description: 'Levantamento das vulnerabilidades, potencialidades e demandas da família, fundamentando as decisões técnicas subsequentes.', accent: 'blue' as const },
+  { number: 3, title: 'Plano de Acompanhamento', description: 'Definição estruturada de objetivos, ações e prazos que orientarão o trabalho social com a família.', accent: 'green' as const },
+  { number: 4, title: 'Evoluções Periódicas', description: 'Registros contínuos das interações, avanços, encaminhamentos e percepções técnicas a cada contato com a família.', accent: 'green' as const },
+  { number: 5, title: 'Reavaliação', description: 'Análise crítica dos resultados alcançados e eventuais ajustes no plano de acompanhamento.', accent: 'slate' as const },
+  { number: 6, title: 'Desligamento', description: 'Encerramento do ciclo quando os objetivos são atingidos ou por critérios técnicos como evasão, mudança de município ou outros motivos justificados.', accent: 'slate' as const },
+]
+---
+
+<section
+  id="metodologia-acompanhamento"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none"
+>
+  <SectionHeader title="Metodologia do Acompanhamento Familiar" accent="blue" />
+
+  <!-- Introdução conceitual -->
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed mb-10">
+    <p>
+      O <strong class="text-slate-800 dark:text-white">acompanhamento familiar</strong> no âmbito do PAIF — Serviço de Proteção e
+      Atendimento Integral à Família — não se reduz a visitas domiciliares ou contatos pontuais. Trata-se de um
+      <strong class="text-slate-800 dark:text-white">processo sistemático e planejado</strong>, conduzido pela equipe de
+      referência do CRAS, que estabelece objetivos claros, ações estruturadas e instrumentos de avaliação contínua
+      para apoiar as famílias na superação de vulnerabilidades e no fortalecimento de vínculos.
+    </p>
+
+    <p>
+      Estruturar um plano de acompanhamento significa articular três dimensões interdependentes:
+      <strong class="text-slate-800 dark:text-white">objetivos</strong> (o que se pretende alcançar com a família),
+      <strong class="text-slate-800 dark:text-white">ações</strong> (as estratégias e atividades que serão desenvolvidas
+      em cada etapa) e <strong class="text-slate-800 dark:text-white">prazos</strong> (os marcos temporais para
+      reavaliação dos resultados). Esse tripé garante intencionalidade ao trabalho social e impede que o
+      acompanhamento se torne uma sucessão desconexa de atendimentos.
+    </p>
+
+    <p>
+      O <strong class="text-slate-800 dark:text-white">técnico de referência</strong> desempenha papel central nesse
+      processo: é dele a responsabilidade de manter contato regular com a família, registrar as
+      <strong class="text-slate-800 dark:text-white">evoluções</strong> (descrições do que foi observado, dialogado e
+      encaminhado a cada interação) e ajustar o plano conforme as circunstâncias se modificam. As evoluções são o
+      fio condutor que documenta a trajetória da família, permitindo que qualquer profissional que acesse o prontuário
+      compreenda o percurso já trilhado e as decisões tomadas.
+    </p>
+
+    <p>
+      O <strong class="text-slate-800 dark:text-white">desligamento</strong> do acompanhamento não deve ser confundido
+      com abandono ou ausência da família. Os critérios para encerrar o ciclo são bem definidos: a
+      <strong class="text-slate-800 dark:text-white">avaliação técnica</strong> conclui que os objetivos foram
+      alcançados e a família demonstra autonomia para seguir sem suporte intensivo; a
+      <strong class="text-slate-800 dark:text-white">evasão ou recusa</strong> da família, quando esta opta por não
+      continuar; a <strong class="text-slate-800 dark:text-white">mudança de município</strong>, que exige a migração
+      do prontuário para a nova unidade de referência; ou <strong class="text-slate-800 dark:text-white">outros</strong>
+      motivos devidamente justificados.
+    </p>
+
+    <p>
+      Registrar as evoluções com regularidade é mais do que um dever burocrático: é o que transforma o prontuário
+      em um <strong class="text-slate-800 dark:text-white">instrumento vivo de gestão do cuidado</strong>. Cada
+      evolução documenta avanços, retrocessos, novas demandas e respostas da rede, construindo uma memória técnica
+      que fundamenta decisões futuras e protege tanto a família quanto o profissional.
+    </p>
+  </div>
+
+  <!-- Screenshot com anotações -->
+  <SecaoTutorial
+    screenshotSrc="/assets/screenshots/page-086.webp"
+    titulo="Planejamento e Evolução do Acompanhamento"
+    paginaFisica={86}
+    anotacoes={anotacoes}
+  />
+
+  <!-- Timeline do acompanhamento familiar -->
+  <ProcessStepper steps={acompanhamentoSteps} class="mt-10" />
+
+  <!-- Boas práticas -->
+  <div class="mt-10">
+    <BestPracticesList
+      title="Boas Práticas no Acompanhamento Familiar"
+      items={[
+        "Estabeleça uma frequência mínima de contato com cada família em acompanhamento — seja presencial, domiciliar ou remoto. A regularidade constrói vínculo e permite observar mudanças ao longo do tempo.",
+        "As evoluções devem ir além de 'família atendida'. Registre o que foi observado, as demandas apresentadas, os encaminhamentos realizados e as percepções técnicas.",
+        "O desligamento deve ser uma decisão técnica fundamentada, registrada no prontuário com justificativa clara. Antes de desligar, avalie se os objetivos do plano foram atingidos.",
+      ]}
+      accent="green"
+    />
+  </div>
+
+  <SeeAlso
+    links={[
+      { label: 'Situações de Vulnerabilidades e Desproteções Sociais', href: '#vulnerabilidades' },
+      { label: 'Acesso a Benefícios Eventuais', href: '#acesso-beneficios' },
+      { label: 'Formulário de Controle de Encaminhamentos', href: '#encaminhamentos' },
+    ]}
+    accent="green"
+  />
+</section>

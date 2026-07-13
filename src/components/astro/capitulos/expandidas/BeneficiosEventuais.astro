@@ -1,0 +1,144 @@
+---
+// Benefícios Eventuais no SUAS — conceptual expansion with typology, best practices, and cross-references
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import AlertBox from '@/components/astro/content/AlertBox.astro'
+import SeeAlso from '@/components/astro/content/SeeAlso.astro'
+import ProgramsTable from '@/components/react/content/ProgramsTable.tsx'
+import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
+
+const beneficios = [
+  {
+    id: 'auxilio-natalidade',
+    name: 'Auxílio Natalidade',
+    icon: 'Baby',
+    org: 'SUAS / Prefeitura',
+    eligibility: 'Famílias em vulnerabilidade social com recém-nascidos, mediante avaliação do assistente social',
+    registration: 'CRAS — requerimento com avaliação social',
+    details: {
+      documentos: ['Certidão de nascimento', 'RG e CPF dos pais', 'Comprovante de residência', 'Avaliação social'],
+      prazo: 'Até 30 dias após nascimento',
+      observacoes: 'Pode ser em forma de kit de enxoval ou valor em dinheiro, conforme municipais'
+    }
+  },
+  {
+    id: 'auxilio-funerario',
+    name: 'Auxílio Funeral',
+    icon: 'Heart',
+    org: 'SUAS / Prefeitura',
+    eligibility: 'Famílias em vulnerabilidade que não possuem recursos para despesas com funeral',
+    registration: 'CRAS — requerimento com avaliação social',
+    details: {
+      documentos: ['Declaração de óbito', 'RG e CPF do responsável', 'Comprovante de residência', 'Avaliação social'],
+      prazo: 'Atendimento de urgência — liberação em até 48h',
+      observacoes: 'Custeio de até 2 salários mínimos para despesas funerárias'
+    }
+  },
+  {
+    id: 'cesta-emergencial',
+    name: 'Cesta Emergencial de Alimentos',
+    icon: 'ShoppingBasket',
+    org: 'SUAS / Defesa Civil',
+    eligibility: 'Famílias em situação de emergência ou calamidade pública reconhecida',
+    registration: 'CRAS ou Defesa Civil Municipal',
+    details: {
+      documentos: ['Documento de identificação', 'Comprovante de residência na área afetada', 'Declaração de situação de vulnerabilidade'],
+      prazo: 'Imediato em situações de emergência',
+      observacoes: 'A cesta deve atender necessidades alimentares por no mínimo 15 dias'
+    }
+  },
+  {
+    id: 'passagem-interior',
+    name: 'Passagem para Interiorização',
+    icon: 'Train',
+    org: 'SUAS / Ministério',
+    eligibility: 'Pessoas em situação de rua ou vulnerabilidade extrema que necessitam deslocamento para reassentamento',
+    registration: 'CREAS / Centro Pop',
+    details: {
+      documentos: ['Documento de identificação', 'Encaminhamento do CREAS ou Centro Pop', 'Comprovação de destino'],
+      prazo: 'Conforme disponibilidade de vagas',
+      observacoes: 'Inclui transporte, alimentação e acompanhamento social no deslocamento'
+    }
+  }
+]
+---
+
+<section
+  id="beneficios-eventuais-expandido"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none mt-6"
+>
+  <SectionHeader title="Benefícios Eventuais no SUAS" accent="blue" />
+
+  <!-- Prosa conceitual -->
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed">
+    <p>
+      Os <strong class="text-slate-800 dark:text-white">Benefícios Eventuais</strong> são provisões suplementares e provisórias
+      que integram as garantias da <strong class="text-slate-800 dark:text-white">Política Nacional de Assistência Social</strong>.
+      Previstos no art. 22 da <strong class="text-slate-800 dark:text-white">Lei Orgânica da Assistência Social — LOAS</strong>
+      (Lei nº 8.742, de 7 de dezembro de 1993), regulamentados pelo
+      <strong class="text-slate-800 dark:text-white">Decreto nº 6.307/2007</strong> e disciplinados por sucessivas
+      <strong class="text-slate-800 dark:text-white">Resoluções do CNAS</strong> (em especial a Resolução CNAS nº 212/2006 e
+      a Resolução CNAS nº 39/2010), o direito aos benefícios eventuais constitui uma garantia constitucional derivada do art. 203
+      da Constituição Federal, que assegura a proteção à família, à maternidade, à infância, à adolescência e à velhice, bem como
+      a habilitação e reabilitação das pessoas com deficiência e a promoção de sua integração à vida comunitária.
+    </p>
+    <p>
+      Diferentemente dos programas de transferência continuada de renda — como o
+      <strong class="text-slate-800 dark:text-white">Bolsa Família</strong> e o
+      <strong class="text-slate-800 dark:text-white">Benefício de Prestação Continuada (BPC)</strong> —, os benefícios
+      eventuais não possuem caráter permanente. Eles se destinam a responder a
+      <strong class="text-slate-800 dark:text-white">situações específicas e transitórias</strong> de vulnerabilidade,
+      configurando uma ação protetiva imediata para cidadãos e famílias que, em determinado momento, não possuem condições
+      de arcar com despesas essenciais decorrentes de nascimento, morte, calamidade pública ou outras situações de
+      vulnerabilidade temporária.
+    </p>
+    <p>
+      O fluxo operacional dos benefícios eventuais no CRAS segue uma sequência estruturada:
+      <strong class="text-slate-800 dark:text-white">(1) identificação da necessidade</strong> por meio da escuta
+      qualificada ou de busca ativa no território;
+      <strong class="text-slate-800 dark:text-white">(2) registro no prontuário eletrônico</strong> com a
+      documentação comprobatória da situação geradora;
+      <strong class="text-slate-800 dark:text-white">(3) encaminhamento</strong> para a equipe responsável pela
+      avaliação e concessão; e
+      <strong class="text-slate-800 dark:text-white">(4) acompanhamento pós-concessão</strong>, que pode revelar
+      outras demandas da família e desencadear a inserção no PAIF ou o acionamento da rede intersetorial. O
+      benefício eventual, portanto, não é um fim em si mesmo — é frequentemente a
+      <strong class="text-slate-800 dark:text-white">porta de entrada</strong> para um acompanhamento sistemático
+      e continuado da família no âmbito da Proteção Social Básica.
+    </p>
+  </div>
+
+  <!-- Tabela de tipologia -->
+  <div class="mt-10">
+    <AlertBox variant="success">
+      <h3 class="text-xl font-bold text-slate-800 dark:text-white">Tipologia dos Benefícios Eventuais</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 italic leading-relaxed">
+        A tabela a seguir resume as quatro modalidades de benefícios eventuais previstas na legislação,
+        com as respectivas situações geradoras, documentações exigidas e prazos de referência.
+      </p>
+    </AlertBox>
+
+    <ProgramsTable client:load programs={beneficios} />
+  </div>
+
+  <!-- Boas Práticas -->
+  <BestPracticesList
+    title="Boas Práticas na Concessão de Benefícios Eventuais"
+    items={[
+      "Realize a escuta qualificada antes de registrar o benefício — entenda a situação geradora em sua totalidade.",
+      "Documente no prontuário o motivo da concessão, mesmo que o sistema não exija campo específico.",
+      "Acompanhe a família após a concessão — o benefício eventual pode ser a porta de entrada para o acompanhamento sistemático.",
+      "Articule com a rede intersetorial quando a necessidade extrapolar o escopo do benefício eventual.",
+    ]}
+    accent="green"
+  />
+
+  <SeeAlso
+    links={[
+      { label: 'Acesso a Benefícios — Registro no Prontuário', href: '#acesso-beneficios' },
+      { label: 'Diagnóstico Socioeconômico da Família', href: '#diagnostico-socioeconomico' },
+      { label: 'Situações de Vulnerabilidade e Proteções Sociais', href: '#vulnerabilidades' },
+      { label: 'Encaminhamentos e Articulação Intersetorial', href: '#encaminhamentos' },
+    ]}
+    accent="blue"
+  />
+</section>

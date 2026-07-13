@@ -1,0 +1,106 @@
+---
+// Condições de Vida: Saúde e Educação no Olhar do SUAS — expansão conceitual
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import SeeAlso from '@/components/astro/content/SeeAlso.astro'
+import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
+import HealthEducationIndicators from '@/components/react/content/HealthEducationIndicators'
+---
+
+<section
+  id="condicoes-vida-expandido"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none"
+>
+  <SectionHeader title="Condições de Vida da Família" accent="blue" />
+
+  <!-- Prosa Conceitual -->
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-5 text-base leading-relaxed mb-10">
+    <p>
+      O <strong class="text-slate-800 dark:text-white">Sistema Único de Assistência Social (SUAS)</strong> não
+      substitui as políticas setoriais de Saúde e Educação — mas precisa conhecê-las profundamente para exercer sua
+      função de proteção social de forma integral. O princípio da
+      <strong class="text-slate-800 dark:text-white">matricialidade sociofamiliar</strong>, eixo estruturante do SUAS,
+      exige que a família seja compreendida em sua totalidade, e não fragmentada por recortes setoriais. Uma criança
+      que não frequenta a escola não é apenas um "problema da Educação"; é também um sinal de que a rede de proteção
+      pode estar falhando — e cabe ao técnico do SUAS articular as pontas.
+    </p>
+    <p>
+      Os <strong class="text-slate-800 dark:text-white">marcadores de saúde e educação</strong> registrados no
+      Prontuário Eletrônico cumprem exatamente esse papel: são janelas de observação que permitem ao profissional
+      identificar, em um único olhar, se as políticas setoriais estão chegando àquela família — ou se há lacunas
+      que demandam ação intersetorial. Não se trata de diagnosticar doenças ou avaliar desempenho escolar, mas de
+      <strong class="text-slate-800 dark:text-white">reconhecer vulnerabilidades que se manifestam nesses campos</strong>
+      e que, se não endereçadas, podem agravar o quadro de risco social.
+    </p>
+    <p>
+      No campo da <strong class="text-slate-800 dark:text-white">saúde</strong>, os marcadores vão além da
+      presença ou ausência de uma doença: "<strong>Doença grave</strong>" sinaliza que a família convive com uma
+      condição crônica que impõe sobrecarga de cuidados, pode afetar a renda (gastos com medicamentos, transporte
+      para tratamento) e reconfigurar a dinâmica familiar. "<strong>Remédios controlados</strong>" indica a
+      dependência de acesso contínuo a medicamentos — e, portanto, o risco de descontinuidade se o vínculo com a
+      UBS estiver fragilizado. Já o "<strong>Uso abusivo de álcool e outras drogas</strong>" é tratado pelo SUAS
+      como indicador de <em>vulnerabilidade social</em>, não como diagnóstico clínico: o que se avalia é o impacto
+      desse uso sobre os vínculos familiares, a capacidade laboral e o acesso a direitos, podendo demandar
+      articulação com CAPS-AD e CREAS.
+    </p>
+    <p>
+      No campo da <strong class="text-slate-800 dark:text-white">educação</strong>, o marcador
+      "<strong>Sabe ler e escrever</strong>" investiga a alfabetização funcional dos membros da família — uma
+      condição que afeta diretamente a capacidade de acessar informações sobre direitos, compreender
+      encaminhamentos e navegar pelos serviços públicos. "<strong>Frequenta escola</strong>" permite verificar
+      a presença escolar por faixa etária: crianças e adolescentes fora da escola são um dos sinais mais
+      contundentes de desproteção. Por fim, a "<strong>Vulnerabilidade educacional</strong>" captura situações
+      de defasagem idade-série, evasão ou analfabetismo entre adultos — todas demandando articulação com
+      Educação, EJA e programas de alfabetização.
+    </p>
+    <p>
+      Na prática, um marcador deve disparar um <strong class="text-slate-800 dark:text-white">encaminhamento
+      intersetorial</strong> sempre que indicar que a política setorial correspondente não está alcançando a
+      família: criança fora da escola → articulação com a Secretaria de Educação e/ou Conselho Tutelar; doença
+      crônica sem acompanhamento regular → encaminhamento à UBS de referência; uso abusivo de substâncias com
+      ruptura de vínculos → articulação com CAPS-AD e CREAS. O SUAS atua como <em>hub de proteção</em>: identifica
+      a lacuna, aciona a rede e acompanha se o encaminhamento produziu efeito.
+    </p>
+  </div>
+
+  <!-- Infográfico de Indicadores -->
+  <div class="mb-10">
+    <HealthEducationIndicators client:load />
+  </div>
+
+  <!-- Chamada de Referência Cruzada -->
+  <div class="bg-institucional-lightBlue dark:bg-blue-950/30 rounded-xl p-5 border border-institucional-blue/10 mb-10">
+    <div class="flex items-start gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-institucional-blue flex-shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        <strong class="text-slate-800 dark:text-white">Estes indicadores não substituem diagnósticos setoriais</strong>,
+        mas permitem ao técnico do SUAS identificar rapidamente situações que demandam atenção integrada e encaminhamentos
+        intersetoriais. Cada marcador é um ponto de partida para o diálogo com as políticas de Saúde e Educação — e um
+        lembrete de que a proteção social só se efetiva quando as políticas operam em rede.
+      </p>
+    </div>
+  </div>
+
+  <!-- Boas Práticas -->
+  <div class="mb-10">
+    <BestPracticesList
+      title="Boas Práticas no Registro de Condições de Vida"
+      items={[
+        "Atualize os marcadores a cada evolução do acompanhamento. Situações de saúde e educação mudam ao longo do tempo — uma doença pode ser superada, uma criança pode retornar à escola. Marcadores desatualizados distorcem o histórico familiar e enfraquecem o plano de acompanhamento.",
+        "Utilize o campo de observações para detalhar. Os marcadores binários (sim/não) são insuficientes para capturar a complexidade das situações. Registre no campo de observações informações como nome do medicamento controlado, série escolar em que houve evasão ou o histórico de tentativas de encaminhamento já realizadas.",
+        "Articule-se previamente com UBS e escolas do território. Conhecer os serviços de referência do território — UBS, CAPS, escolas, EJA — antes que a demanda surja agiliza os encaminhamentos e fortalece o vínculo de confiança com a família, que percebe a rede operando de forma coordenada.",
+        "Respeite o sigilo das informações de saúde. Compartilhe apenas os dados estritamente necessários para viabilizar o encaminhamento — a condição de saúde é informação sensível e seu manejo deve observar os princípios éticos do serviço social e a LGPD.",
+      ]}
+      accent="blue"
+    />
+  </div>
+
+  <SeeAlso
+    links={[
+      { label: 'Condições Educacionais', href: '#condicoes-educacionais' },
+      { label: 'Condições de Saúde', href: '#condicoes-saude' },
+      { label: 'Vulnerabilidades e Proteções', href: '#vulnerabilidades' },
+      { label: 'Encaminhamentos Intersetoriais', href: '#encaminhamentos' },
+    ]}
+    accent="blue"
+  />
+</section>

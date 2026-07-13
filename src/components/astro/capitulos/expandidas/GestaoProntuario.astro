@@ -1,0 +1,106 @@
+---
+// Gestão do Prontuário — Ciclo de Vida e Política de Dados
+// Seção conceitual expandida. Suplementa #informacoes-prontuario; sem screenshot próprio.
+import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
+import AlertBox from '@/components/astro/content/AlertBox.astro'
+import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
+import SeeAlso from '@/components/astro/content/SeeAlso.astro'
+import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
+---
+
+<section
+  id="gestao-prontuario"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none mt-6"
+>
+  <SectionHeader title="Gestão do Prontuário: Ciclo de Vida e Política de Dados" accent="blue" />
+
+  <!-- Prosa conceitual -->
+  <div class="prose max-w-none text-slate-600 dark:text-slate-400 space-y-4 text-base leading-relaxed mb-10">
+    <p>
+      No contexto do <strong class="text-slate-800 dark:text-white">Sistema Único de Assistência Social (SUAS)</strong>,
+      o <strong class="text-slate-800 dark:text-white">Prontuário Eletrônico</strong> transcende a função de um simples
+      formulário digital. Ele constitui um <strong class="text-slate-800 dark:text-white">registro vivo</strong> da
+      trajetória da família na rede socioassistencial — um
+      documento dinâmico que centraliza o histórico de atendimentos, viabiliza a colaboração entre os membros da
+      equipe técnica e fundamenta decisões baseadas em evidências. Cada atualização do prontuário reflete um
+      momento do percurso familiar, permitindo que profissionais que atuam em diferentes turnos ou que assumem
+      o caso posteriormente compreendam integralmente o contexto e a evolução do acompanhamento.
+    </p>
+    <p>
+      O <strong class="text-slate-800 dark:text-white">número do prontuário</strong> é gerado automaticamente
+      pelo sistema no momento da abertura e é <strong class="text-slate-800 dark:text-white">único por família</strong>
+      dentro da unidade. Ele atua como o identificador primário para todas as operações — consultas, registros
+      de atendimento, encaminhamentos e relatórios — e é
+      <strong class="text-slate-800 dark:text-white">distinto do NIS e dos códigos do CadÚnico</strong>.
+      Enquanto o NIS identifica o cidadão para políticas federais e o CadÚnico cataloga a composição familiar
+      para programas sociais, o número do prontuário organiza internamente o trabalho da equipe do CRAS,
+      vinculando cada intervenção a uma família específica e garantindo a rastreabilidade completa das ações.
+    </p>
+    <p>
+      Por conter <strong class="text-slate-800 dark:text-white">dados pessoais sensíveis</strong> — informações
+      sobre saúde, violência, vulnerabilidades, composição e dinâmica familiar — o prontuário está sujeito às
+      disposições da <strong class="text-slate-800 dark:text-white">Lei Geral de Proteção de Dados Pessoais
+      (LGPD, Lei nº 13.709/2018)</strong>. O acesso é controlado por perfil de usuário, e a visualização de
+      prontuários fora do contexto de atendimento ativo exige
+      <strong class="text-slate-800 dark:text-white">justificativa registrada</strong>. A administração pública
+      detém a responsabilidade solidária pela segurança dos dados, devendo adotar medidas técnicas e
+      administrativas para prevenir acessos não autorizados, vazamentos e incidentes de segurança que
+      possam comprometer a privacidade das famílias atendidas.
+    </p>
+  </div>
+
+  <!-- Ciclo de Vida do Prontuário -->
+  <div class="mt-10">
+    <div class="border-l-4 border-institucional-blue bg-gradient-to-br from-institucional-lightBlue to-blue-100/60 dark:from-blue-950/40 dark:to-blue-900/20 rounded-r-xl pl-5 py-3 mb-6">
+      <h3 class="text-xl font-bold text-slate-800 dark:text-white">Ciclo de Vida do Prontuário</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 italic leading-relaxed">
+        O diagrama abaixo representa os estados pelos quais um prontuário pode transitar desde a abertura até a exclusão, com as respectivas condições de transição.
+      </p>
+    </div>
+
+    <ProcessStepper
+      steps={[
+        { number: 1, title: "Abertura", description: "Prontuário criado sem atendimento", accent: "blue" },
+        { number: 2, title: "Ativo", description: "Em acompanhamento familiar", accent: "green" },
+        { number: 3, title: "Inativo", description: "Sem acompanhamento ativo", accent: "slate" },
+        { number: 4, title: "Excluído", description: "Irreversível", accent: "slate" },
+      ]}
+    />
+  </div>
+
+  <!-- Alerta: Atenção — exclusão irreversível -->
+  <div class="mt-10">
+    <AlertBox variant="warning" title="Atenção: Proteção de Dados">
+      <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        A exclusão de um prontuário é <strong class="text-amber-800 dark:text-amber-300">irreversível</strong>.
+        Antes de excluir, certifique-se de que: (1) não há acompanhamento familiar ativo;
+        (2) todos os encaminhamentos foram concluídos; (3) a decisão está documentada e justificada
+        conforme a LGPD.
+      </p>
+    </AlertBox>
+  </div>
+
+  <!-- Boas práticas -->
+  <div class="mt-10">
+    <BestPracticesList
+      title="Boas Práticas na Gestão do Prontuário"
+      items={[
+        "Mantenha os dados cadastrais sempre atualizados. Informações desatualizadas comprometem o planejamento das ações e podem levar a encaminhamentos inadequados ou à subnotificação de vulnerabilidades que exigem intervenção imediata.",
+        "Utilize a busca pelo número do prontuário para localizar rapidamente famílias já cadastradas, evitando duplicidade de registros e fragmentação do histórico de atendimento.",
+        "Antes de abrir um novo prontuário, verifique se a família já possui registro na unidade. A busca prévia por CPF, NIS ou nome da pessoa de referência evita retrabalho e assegura a continuidade do histórico.",
+        "Documente no campo de observações qualquer alteração relevante no status do prontuário. Mudanças como inativação, reativação ou transferência devem ser registradas com data, justificativa e identificação do profissional responsável.",
+      ]}
+      accent="blue"
+    />
+  </div>
+
+  <SeeAlso
+    links={[
+      { label: 'Informações do Prontuário', href: '#informacoes-prontuario' },
+      { label: 'Excluir Prontuário', href: '#excluir-prontuario' },
+      { label: 'Migrar Prontuário', href: '#migrar-prontuario' },
+      { label: 'Diagnóstico Socioeconômico', href: '#diagnostico-socioeconomico' },
+    ]}
+    accent="blue"
+  />
+</section>
