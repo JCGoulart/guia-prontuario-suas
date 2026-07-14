@@ -1,23 +1,9 @@
 ---
 // Atendimento Coletivo Expandido — tutorial aprofundado sobre o módulo de Atendimento Coletivo no SUAS
-import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
 import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
 import ColetivoVsIndividual from '@/components/react/content/ColetivoVsIndividual.tsx'
-import type { Anotacao } from '@/types'
-
-const anotacoes: Anotacao[] = [
-  { numero: 1, texto: 'Tela de inclusão de Atendimento Coletivo — formulário completo para registrar uma atividade coletiva (oficina, palestra, grupo, ação comunitária).' },
-  { numero: 2, texto: '<strong>Adicionar pessoa</strong> — opção que ao ser acionada adiciona a pessoa na lista de pessoas atendidas.' },
-  { numero: 3, texto: 'Lista de pessoas participantes do atendimento coletivo, com opção de <strong>Excluir</strong> para remover da lista.' },
-  { numero: 4, texto: '<strong>Data do atendimento</strong> — campo para informar a data em que o atendimento foi realizado.' },
-  { numero: 5, texto: '<strong>Nome do técnico responsável</strong> — campo que informa o nome do técnico responsável pelo registro do atendimento.' },
-  { numero: 6, texto: '<strong>Tipo de atendimento coletivo</strong> — campo para informar o tipo. <strong>Domínio</strong>: Oficinas do PAIF; Acolhida em Grupo; Ações Comunitárias (eventos, campanhas temáticas e rodas de conversa).' },
-  { numero: 7, texto: '<strong>Descrição</strong> — campo para informar a descrição detalhada do atendimento.' },
-  { numero: 8, texto: '<strong>Unidade</strong> — campo que informa o nome da unidade de atendimento.' },
-  { numero: 9, texto: 'Acione <strong>Incluir</strong> para salvar o atendimento. O registro será automaticamente replicado no prontuário individual de cada participante.' },
-]
 ---
 
 <section
@@ -92,16 +78,6 @@ const anotacoes: Anotacao[] = [
       </p>
     </section>
   </div>
-
-  <!-- Tutorial com screenshot -->
-  <SecaoTutorial
-    id="atendimento-coletivo-inclusao"
-    titulo="Inclusão de Atendimento Coletivo"
-    screenshotSrc="/assets/screenshots/page-121.webp"
-    paginaFisica={121}
-    anotacoes={anotacoes}
-    observacao="O formulário de atendimento coletivo é idêntico em estrutura ao atendimento individual, com o acréscimo da lista de participantes. A diferença está no comportamento pós-salvamento: um único registro gera múltiplas entradas nos prontuários."
-  />
 
   <div class="mt-10">
     <AlertBox variant="success" title="Fluxo: do Planejamento à Replicação">

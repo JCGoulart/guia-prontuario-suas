@@ -1,45 +1,8 @@
 ---
 // Encaminhamentos e Intersetorialidade no SUAS — tutorial expandido
-import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
-import type { Anotacao } from '@/types'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
-
-const anotacoes: Anotacao[] = [
-  {
-    numero: 1,
-    texto: 'Janela "Incluir encaminhamento" — formulário para registrar o encaminhamento de pessoa(s) a serviços de outras políticas setoriais.',
-  },
-  {
-    numero: 2,
-    texto: '<strong>Pessoa(s)</strong> — campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s).',
-  },
-  {
-    numero: 3,
-    texto: '<strong>Data do encaminhamento</strong> — campo para informar a data em que o atendimento foi realizado.',
-  },
-  {
-    numero: 4,
-    texto: '<strong>Nome do técnico responsável</strong> — campo que informa o nome do técnico responsável pelo registro.',
-  },
-  {
-    numero: 5,
-    texto: '<strong>Área para a qual está sendo realizado o encaminhamento</strong> — campo para informar a área de destino.',
-  },
-  {
-    numero: 6,
-    texto: 'Alternativas de área: <strong>5</strong> — Serviços de Convivência e Fortalecimento de Vínculos para crianças e adolescentes; <strong>6</strong> — SCFV para idosos.',
-  },
-  {
-    numero: 7,
-    texto: '<strong>7</strong> — Atualização cadastral no CadÚnico; <strong>8</strong> — Inclusão no CadÚnico; <strong>9</strong> — INSS, visando acesso ao BPC.',
-  },
-  {
-    numero: 8,
-    texto: 'Acione <strong>Incluir</strong> — o sistema fecha a janela, atualiza a lista e apresenta a mensagem "Encaminhamento incluído com sucesso".',
-  },
-]
 ---
 
 <section
@@ -110,14 +73,6 @@ const anotacoes: Anotacao[] = [
     </div>
   </div>
 
-  <!-- Screenshot com anotações -->
-  <div class="mb-10">
-    <SecaoTutorial
-      screenshotSrc="assets/screenshots/page-104.webp"
-      titulo="Formulário de Controle de Encaminhamentos"
-      paginaFisica={104}
-      anotacoes={anotacoes}
-    />
   </div>
 
   <!-- Rede Intersetorial - descrição -->

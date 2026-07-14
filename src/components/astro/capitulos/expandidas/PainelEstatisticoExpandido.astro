@@ -1,21 +1,9 @@
 ---
 // Painel Estatístico Expandido — tutorial aprofundado sobre leitura e uso gerencial do Painel Estatístico no SUAS
-import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
 import FeatureCard from '@/components/astro/content/FeatureCard.astro'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
-import type { Anotacao } from '@/types'
-
-const anotacoes: Anotacao[] = [
-  { numero: 1, texto: 'Painel Estatístico — tela de parâmetros para refinar a consulta. Preencha os filtros desejados e acione Pesquisar.' },
-  { numero: 2, texto: '<strong>Período</strong> — selecione o intervalo de datas para a consulta.' },
-  { numero: 3, texto: '<strong>Tipo de Atendimento</strong> — selecione o tipo de atendimento. Opções incluem: Atendimento Individual, Atendimento Coletivo, Encaminhamentos, entre outros.' },
-  { numero: 4, texto: '<strong>Tipo</strong> — coluna para informar o tipo específico de atendimento, conforme o campo anterior. Ex: Comprimento Histórico de Medidas Socioeducativas, Acompanhamento Familiar.' },
-  { numero: 5, texto: '<strong>Limpar</strong> — opção que limpa as informações preenchidas e permanece na mesma tela.' },
-  { numero: 6, texto: '<strong>Pesquisar</strong> — realiza a busca dos atendimentos realizados no período, de acordo com os parâmetros informados, e exibe o Painel Estatístico correspondente.' },
-  { numero: 7, texto: 'Quanto mais específicos forem os filtros aplicados, mais precisos serão os resultados apresentados nos painéis.' },
-]
 ---
 
 <section
@@ -103,15 +91,7 @@ const anotacoes: Anotacao[] = [
     </div>
   </div>
 
-  <!-- Tutorial com screenshot -->
-  <SecaoTutorial
-    id="painel-estatistico-parametros"
-    titulo="Painel Estatístico — Parâmetros de Consulta"
-    screenshotSrc="/assets/screenshots/page-142.webp"
-    paginaFisica={142}
-    anotacoes={anotacoes}
-    observacao="A tela de parâmetros é o ponto de partida do Painel Estatístico. Os filtros definidos aqui determinam quais dados serão exibidos nos gráficos e tabelas do painel. A combinação de múltiplos filtros permite análises cada vez mais específicas."
-  />
+  </div>
 
   <!-- Boas Práticas -->
   <div class="mt-10">

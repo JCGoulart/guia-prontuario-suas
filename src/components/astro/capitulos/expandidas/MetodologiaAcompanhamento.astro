@@ -1,20 +1,8 @@
 ---
 // Metodologia do Acompanhamento Familiar — seção expandida com conceitos, timeline e boas práticas
-import type { Anotacao } from '@/types'
-import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
-
-const anotacoes: Anotacao[] = [
-  { numero: 1, texto: 'Janela <strong>Incluir acompanhamento familiar</strong> — formulário para iniciar ou editar o acompanhamento sistemático da família.' },
-  { numero: 2, texto: '<strong>Data do ingresso</strong> — indica a data em que a composição familiar foi incluída no acompanhamento.' },
-  { numero: 3, texto: '<strong>Planejamento inicial</strong> — registra como o técnico pretende organizar e acompanhar as ações planejadas para o atendimento da família, definindo os passos e estratégias que orientarão o acompanhamento.' },
-  { numero: 4, texto: '<strong>Data do desligamento</strong> — indica a data em que a família foi desvinculada do acompanhamento.' },
-  { numero: 5, texto: '<strong>Razão do desligamento</strong> — indica o motivo. Valores: Avaliação técnica, Evasão ou recusa da família, Mudança de Município, Outros.' },
-  { numero: 6, texto: 'Lista de acompanhamentos ativos — exibe Data de Ingresso, Data de Desligamento e Razão do desligamento.' },
-  { numero: 7, texto: 'Acione <strong>Incluir</strong> para salvar o registro e atualizar a lista de acompanhamentos.' },
-]
 
 const acompanhamentoSteps = [
   { number: 1, title: 'Ingresso', description: 'A família é inserida no acompanhamento sistemático pelo técnico de referência do CRAS, com registro da data de ingresso e planejamento inicial.', accent: 'blue' as const },
@@ -99,14 +87,6 @@ const acompanhamentoSteps = [
       </p>
     </div>
   </div>
-
-  <!-- Screenshot com anotações -->
-  <SecaoTutorial
-    screenshotSrc="/assets/screenshots/page-086.webp"
-    titulo="Planejamento e Evolução do Acompanhamento"
-    paginaFisica={86}
-    anotacoes={anotacoes}
-  />
 
   <!-- Timeline do acompanhamento familiar -->
   <ProcessStepper steps={acompanhamentoSteps} class="mt-10" />

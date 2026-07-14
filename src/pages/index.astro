@@ -66,6 +66,8 @@ const b = BLOCK_ACCENTS
     <div data-block-group="atendimento-individual">
       <SectionHeader title="Bloco 1 — Atendimento Individual e Familiar" accent="blue" />
       <div data-block-content="atendimento-individual" class="space-y-6">
+        <FluxoAtendimento />
+
         <!-- Realizar Atendimento — Carrossel de 5 páginas (17–21) -->
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
           <SecaoTutorialCarousel
@@ -214,6 +216,8 @@ const b = BLOCK_ACCENTS
           />
         </section>
 
+        <DiagnosticoSocioeconomico />
+
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
           <SecaoTutorial id="informacoes-familia" titulo="Informações da Família" screenshotSrc="/assets/screenshots/page-030.webp" paginaFisica={30}
             anotacoes={[
@@ -347,6 +351,8 @@ const b = BLOCK_ACCENTS
           />
         </section>
 
+        <CondicoesVida />
+
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
           <SecaoTutorialCarousel
             id="condicoes-habitacionais"
@@ -458,10 +464,6 @@ const b = BLOCK_ACCENTS
           />
         </section>
 
-        <DiagnosticoSocioeconomico />
-
-        <CicloAcompanhamento />
-
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
           <SecaoTutorialCarousel
             id="condicoes-educacionais"
@@ -561,7 +563,7 @@ const b = BLOCK_ACCENTS
           />
         </section>
 
-        <CondicoesVida />
+        <CicloAcompanhamento />
 
         <TiposRegistro />
 
@@ -634,25 +636,136 @@ const b = BLOCK_ACCENTS
           />
         </section>
 
-        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="vulnerabilidades" titulo="Situações de Vulnerabilidades e Desproteções Sociais" screenshotSrc="/assets/screenshots/page-073.webp" paginaFisica={73}
-            anotacoes={[
-              { numero: 1, texto: 'Bloco <strong>Situações de Vulnerabilidades e Desproteções Sociais</strong>.' },
-              { numero: 2, texto: '<strong>Indicadores Automáticos</strong> — Família com pessoas com deficiência e Família com pessoa idosa.' },
-              { numero: 3, texto: '<strong>Lista de Vulnerabilidades</strong> registradas manualmente: Data, Vulnerabilidade, Técnico, Continua na vulnerabilidade.' },
-              { numero: 4, texto: 'Opção <strong>Incluir Vulnerabilidade</strong> para adicionar novo registro.' },
-            ]}
-          />
-        </section>
-
         <VulnerabilidadesProtecoes />
 
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="acesso-beneficios" titulo="Acesso a Benefícios Eventuais" screenshotSrc="/assets/screenshots/page-066.webp" paginaFisica={66}
-            anotacoes={[
-              { numero: 1, texto: 'Bloco <strong>Acesso a Benefícios Eventuais</strong> — benefícios oferecidos por membro da família.' },
-              { numero: 2, texto: '<strong>Lista de Benefícios</strong> com Pessoa, Benefício, Descrição e Ações.' },
-              { numero: 3, texto: 'Opção <strong>Incluir Benefício Eventual</strong> — cadastro de novo benefício (morte, nascimento, calamidade, vulnerabilidade temporária).' },
+          <SecaoTutorialCarousel
+            id="vulnerabilidades"
+            titulo="Situações de Vulnerabilidades e Desproteções Sociais"
+            descricao="Consulta e registro das vulnerabilidades e desproteções sociais da família, com indicadores automáticos do CadÚnico e registros manuais do técnico."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-073.webp",
+                paginaFisica: 73,
+                tituloPagina: "Indicadores Automáticos",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Situações de Vulnerabilidades e Desproteções Sociais</strong> — expanda para consultar os indicadores de vulnerabilidade social da família.' },
+                  { numero: 2, texto: '<strong>Indicadores Automáticos</strong> — <strong>Família com pessoas com deficiência</strong> (Sim/Não) e <strong>Família com pessoa idosa</strong> (Sim/Não), preenchidos a partir do CadÚnico.' },
+                  { numero: 3, texto: '<strong>Lista de Vulnerabilidades</strong> — registros inseridos manualmente pelo técnico com Data, Vulnerabilidade, Técnico e Continua na vulnerabilidade.' },
+                  { numero: 4, texto: '<strong>Incluir Vulnerabilidade</strong> — acione para abrir a janela de cadastro de nova vulnerabilidade.' },
+                ],
+                textoExplicativo: "O bloco Situações de Vulnerabilidades e Desproteções Sociais da Família apresenta duas categorias de indicadores: os automáticos, gerados a partir dos dados do Cadastro Único (Pessoa com Deficiência e Pessoa Idosa), e os registros manuais inseridos pelo técnico com base na escuta e análise da realidade familiar. Ambos os tipos alimentam o diagnóstico social e orientam o plano de acompanhamento.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-074.webp",
+                paginaFisica: 74,
+                tituloPagina: "Lista de Vulnerabilidades",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Situações de Vulnerabilidades e Desproteções Sociais</strong> expandido, exibindo indicadores automáticos no topo.' },
+                  { numero: 2, texto: '<strong>Indicadores Automáticos</strong> — Família com pessoas com deficiência e Família com pessoa idosa, preenchidos pelo sistema.' },
+                  { numero: 3, texto: '<strong>Lista de Vulnerabilidades</strong> — registros manuais com colunas: Data da anotação, Vulnerabilidade, Nome do técnico, Continua na vulnerabilidade.' },
+                  { numero: 4, texto: 'Opção <strong>Incluir vulnerabilidade</strong> — acione para adicionar um novo registro manual de vulnerabilidade.' },
+                ],
+                textoExplicativo: "A lista de vulnerabilidades apresenta os registros inseridos manualmente pelo técnico responsável. Cada registro contém a data da anotação, o tipo de vulnerabilidade identificada, o nome do profissional e a informação se a família permanece na situação. Para adicionar uma nova vulnerabilidade, utilize o botão Incluir vulnerabilidade.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-075.webp",
+                paginaFisica: 75,
+                tituloPagina: "Incluir Vulnerabilidade",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Data da anotação</strong> — campo para informar a data em que o atendimento foi realizado.' },
+                  { numero: 2, texto: '<strong>Situação</strong> — campo para selecionar a vulnerabilidade e desproteção social verificada.' },
+                  { numero: 3, texto: 'Valores possíveis: <strong>Insegurança alimentar</strong>, <strong>Vulnerabilidades ou desproteções relacionais</strong>, <strong>Família com gestante ou criança na primeira infância</strong>.' },
+                  { numero: 4, texto: 'Opções <strong>Cancelar</strong> (cancela a ação) e <strong>Incluir</strong> (salva o registro e atualiza a lista).' },
+                ],
+                textoExplicativo: "A janela de inclusão de vulnerabilidade permite ao técnico registrar a data da anotação e selecionar a situação de vulnerabilidade identificada entre as opções disponíveis: insegurança alimentar, vulnerabilidades relacionais ou família com gestante/criança na primeira infância. Ao confirmar com Incluir, o sistema salva o registro e atualiza a lista.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-076.webp",
+                paginaFisica: 76,
+                tituloPagina: "Visualizar Registro de Vulnerabilidade",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Visualizar vulnerabilidade</strong> — acione para abrir a janela de consulta do registro.' },
+                  { numero: 2, texto: '<strong>Data da anotação</strong> — exibe a data em que a vulnerabilidade foi registrada.' },
+                  { numero: 3, texto: '<strong>Situação</strong> — exibe a vulnerabilidade e desproteção social verificada.' },
+                  { numero: 4, texto: 'Opção <strong>Fechar</strong> — acione para fechar a janela de visualização.' },
+                ],
+                textoExplicativo: "A visualização do registro de vulnerabilidade exibe os dados completos da anotação em modo somente leitura: data da anotação e situação identificada. Utilize o botão Fechar para retornar à lista principal.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-077.webp",
+                paginaFisica: 77,
+                tituloPagina: "Detalhes e Edição do Registro",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Data da anotação</strong> — exibe a data do atendimento.' },
+                  { numero: 2, texto: '<strong>Situação</strong> — indica a vulnerabilidade e desproteção social verificada.' },
+                  { numero: 3, texto: '<strong>Data da atualização</strong> — exibe a data em que o registro foi editado.' },
+                  { numero: 4, texto: '<strong>Continua em vulnerabilidade</strong> — indica se a família permanece na situação.' },
+                  { numero: 5, texto: 'Opção <strong>Alterar</strong> — acione para editar os dados do registro de vulnerabilidade.' },
+                ],
+                textoExplicativo: "A janela de detalhes do registro exibe as informações completas da vulnerabilidade, incluindo as atualizações já realizadas. Para editar o registro, acione o botão Alterar — o sistema abre o formulário com os campos habilitados para ajuste dos dados.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-078.webp",
+                paginaFisica: 78,
+                tituloPagina: "Editar Atualização",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Data da anotação</strong> — indica a data original do atendimento.' },
+                  { numero: 2, texto: '<strong>Situação</strong> — exibe a vulnerabilidade registrada (somente leitura).' },
+                  { numero: 3, texto: '<strong>Data da atualização</strong> — campo para informar a nova data de edição.' },
+                  { numero: 4, texto: '<strong>Continua em vulnerabilidade</strong> — campo para indicar se a família permanece na situação.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> (cancela) e <strong>Atualizar</strong> (salva a alteração).' },
+                ],
+                textoExplicativo: "A janela de edição da atualização permite modificar os dados de um registro de vulnerabilidade já existente. A data da anotação e a situação são exibidas como informação de referência, enquanto os campos Data da atualização e Continua em vulnerabilidade podem ser editados pelo profissional.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-079.webp",
+                paginaFisica: 79,
+                tituloPagina: "Excluir e Incluir Atualização",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Excluir vulnerabilidade</strong> — remove a atualização do registro após confirmação.' },
+                  { numero: 2, texto: 'Opção <strong>Incluir atualização</strong> — acione para abrir a janela de cadastro de uma nova atualização para o registro.' },
+                  { numero: 3, texto: 'Ao confirmar a exclusão, o sistema atualiza a lista e exibe a mensagem de confirmação.' },
+                ],
+                textoExplicativo: "O sistema oferece duas ações complementares no gerenciamento de vulnerabilidades: excluir uma atualização existente (com confirmação obrigatória) e incluir uma nova atualização para o registro, permitindo acompanhar a evolução da situação ao longo do tempo.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-080.webp",
+                paginaFisica: 80,
+                tituloPagina: "Incluir Atualização",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Data da anotação</strong> — exibe a data original do registro (sem possibilidade de edição).' },
+                  { numero: 2, texto: '<strong>Situação</strong> — exibe a vulnerabilidade registrada (sem possibilidade de edição).' },
+                  { numero: 3, texto: '<strong>Data da atualização</strong> — campo para inclusão da data em que o registro foi atualizado.' },
+                  { numero: 4, texto: '<strong>Continua em vulnerabilidade</strong> — campo para indicar se a família permanece na situação.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> e <strong>Atualizar</strong>.' },
+                ],
+                textoExplicativo: "A janela de inclusão de atualização permite ao técnico registrar uma nova anotação sobre a vulnerabilidade já cadastrada. Os campos Data da anotação e Situação são mantidos como referência (somente leitura), enquanto Data da atualização e Continua em vulnerabilidade devem ser preenchidos para registrar a evolução do caso.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-081.webp",
+                paginaFisica: 81,
+                tituloPagina: "Alterar Vulnerabilidade",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Data da anotação</strong> — indica a data em que o atendimento foi realizado.' },
+                  { numero: 2, texto: '<strong>Situação</strong> — indica a vulnerabilidade e desproteção social verificada.' },
+                  { numero: 3, texto: 'Opção <strong>Cancelar</strong> — cancela a ação e fecha a janela.' },
+                  { numero: 4, texto: 'Opção <strong>Atualizar</strong> — salva a alteração realizada e atualiza a lista.' },
+                ],
+                textoExplicativo: "A janela de alteração da vulnerabilidade permite editar os campos principais do registro: Data da anotação e Situação. Após realizar os ajustes necessários, utilize o botão Atualizar para salvar as modificações ou Cancelar para descartá-las.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-082.webp",
+                paginaFisica: 82,
+                tituloPagina: "Excluir e Observações",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Excluir vulnerabilidade</strong> — remove o registro da lista após confirmação.' },
+                  { numero: 2, texto: '<strong>Registro de observações</strong> — campo para anotações complementares sobre as vulnerabilidades identificadas.' },
+                  { numero: 3, texto: '<strong>Ícone para retrair ou reexibir</strong> as informações do bloco.' },
+                  { numero: 4, texto: 'Para mais informações sobre o registro de observações, consulte a página 19.' },
+                ],
+                textoExplicativo: "A exclusão do registro de vulnerabilidade remove permanentemente a anotação após confirmação do sistema. O bloco também dispõe de campo de observações para informações complementares e do ícone de expandir/recolher para controle da visualização. Consulte a página 19 do manual para detalhes sobre o registro de observações.",
+              },
             ]}
           />
         </section>
@@ -660,23 +773,210 @@ const b = BLOCK_ACCENTS
         <BeneficiosEventuais />
 
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="planejamento-evolucao" titulo="Planejamento e Evolução do Acompanhamento Familiar" screenshotSrc="/assets/screenshots/page-084.webp" paginaFisica={84}
-            anotacoes={[
-              { numero: 1, texto: 'Bloco <strong>Planejamento e Evolução do Acompanhamento Familiar</strong>.' },
-              { numero: 2, texto: '<strong>Lista de Inserção e Desligamento</strong> com Data de Ingresso, Nome, Data de Desligamento e Razão.' },
-              { numero: 3, texto: 'Opção <strong>Incluir Acompanhamento</strong> para adicionar a família ao acompanhamento.' },
+          <SecaoTutorialCarousel
+            id="acesso-beneficios"
+            titulo="Acesso a Benefícios Eventuais"
+            descricao="Consulta, inclusão, edição e exclusão de benefícios eventuais concedidos por membro da composição familiar, com tipos predefinidos e observações complementares."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-066.webp",
+                paginaFisica: 66,
+                tituloPagina: "Lista de Benefícios Eventuais",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Acesso a Benefícios Eventuais</strong> — expanda para consultar os benefícios concedidos por membro da família.' },
+                  { numero: 2, texto: '<strong>Lista de Benefícios</strong> — colunas: Pessoa, Benefício, Descrição e Ações.' },
+                  { numero: 3, texto: 'Coluna <strong>Ações</strong> — ícones para visualizar, alterar ou excluir o registro do benefício.' },
+                  { numero: 4, texto: '<strong>Registro de observações</strong> — campo para anotações complementares sobre os benefícios.' },
+                ],
+                textoExplicativo: "O bloco Acesso a Benefícios Eventuais apresenta a lista de benefícios concedidos à família, organizada por membro da composição familiar. Cada registro exibe o nome da pessoa solicitante, o tipo de benefício, uma descrição e as ações disponíveis. O bloco também dispõe de campo de observações para informações complementares.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-067.webp",
+                paginaFisica: 67,
+                tituloPagina: "Incluir Benefício Eventual",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Incluir benefício eventual</strong> — acione para abrir a janela de cadastro de novo benefício.' },
+                  { numero: 2, texto: '<strong>Pessoa(s)</strong> — campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 3, texto: '<strong>Benefício</strong> — campo para selecionar o tipo de benefício concedido.' },
+                  { numero: 4, texto: '<strong>Descrição</strong> — campo para registrar informações adicionais sobre o benefício.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> (cancela) e <strong>Incluir</strong> (salva o registro e atualiza a lista).' },
+                ],
+                textoExplicativo: "Para adicionar um novo benefício eventual, acione o botão Incluir benefício eventual. A janela de cadastro exibe os campos Pessoa(s), Benefício e Descrição. Preencha os dados e confirme com Incluir para salvar o registro e atualizar a lista de benefícios da família.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-068.webp",
+                paginaFisica: 68,
+                tituloPagina: "Tipos de Benefício Eventual",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Pessoa(s)</strong> — campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 2, texto: '<strong>Benefício</strong> — campo de seleção com os tipos predefinidos de benefício eventual.' },
+                  { numero: 3, texto: 'Valores possíveis: <strong>Situação de morte</strong>, <strong>Situação de nascimento</strong>, <strong>Situação de calamidade</strong>, <strong>Situação de vulnerabilidade temporária</strong>.' },
+                  { numero: 4, texto: '<strong>Descrição</strong> — campo para registrar informações adicionais sobre o benefício.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> e <strong>Incluir</strong>.' },
+                ],
+                textoExplicativo: "A janela de inclusão de benefício eventual oferece quatro tipos predefinidos de benefício: Situação de morte, nascimento, calamidade e vulnerabilidade temporária. Selecione o tipo adequado à situação da família e preencha a descrição com informações complementares que ajudem a contextualizar a concessão.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-069.webp",
+                paginaFisica: 69,
+                tituloPagina: "Visualizar Benefício Eventual",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Pessoa(s)</strong> — exibe o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 2, texto: '<strong>Benefícios eventuais</strong> — exibe o(s) benefício(s) eventual(is) concedido(s).' },
+                  { numero: 3, texto: '<strong>Descrição</strong> — exibe a descrição do(s) benefício(s) concedido(s).' },
+                  { numero: 4, texto: 'Opção <strong>Fechar</strong> — acione para fechar a janela de visualização.' },
+                ],
+                textoExplicativo: "A janela de visualização exibe os dados completos do benefício eventual em modo somente leitura, incluindo a pessoa solicitante, o tipo de benefício concedido e a descrição registrada. Utilize o botão Fechar para retornar à lista principal.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-070.webp",
+                paginaFisica: 70,
+                tituloPagina: "Editar Benefício Eventual",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Alterar benefício</strong> — acione para abrir a janela de edição do registro.' },
+                  { numero: 2, texto: '<strong>Pessoa(s)</strong> — campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 3, texto: '<strong>Benefícios eventuais</strong> — campo para informar o(s) benefício(s) concedido(s).' },
+                  { numero: 4, texto: '<strong>Descrição</strong> — campo para registrar informações adicionais.' },
+                  { numero: 5, texto: 'Opção <strong>Atualizar</strong> — salva a alteração realizada e atualiza a lista.' },
+                ],
+                textoExplicativo: "Para editar um benefício eventual, acione o ícone de Alterar benefício na lista. A janela de edição exibe os campos habilitados para ajuste: Pessoa(s), Benefícios eventuais e Descrição. Após realizar as modificações, confirme com Atualizar para salvar.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-071.webp",
+                paginaFisica: 71,
+                tituloPagina: "Excluir e Observações",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Excluir benefício</strong> — remove o registro da lista após confirmação.' },
+                  { numero: 2, texto: '<strong>Registro de observações</strong> — campo para anotações complementares sobre os benefícios eventuais.' },
+                  { numero: 3, texto: '<strong>Ícone para retrair ou reexibir</strong> as informações do bloco.' },
+                  { numero: 4, texto: 'Para mais informações sobre o registro de observações, consulte a página 19 do manual.' },
+                ],
+                textoExplicativo: "A exclusão do benefício eventual remove permanentemente o registro após confirmação do sistema. O bloco também dispõe de campo de observações para informações complementares e do ícone de expandir/recolher para controle da visualização. Consulte a página 19 do manual para detalhes sobre o registro de observações.",
+              },
             ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="convivencia-familiar" titulo="Convivência Familiar e Comunitária" screenshotSrc="/assets/screenshots/page-072.webp" paginaFisica={72}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Convivência Familiar e Comunitária</strong> — expanda para consultar as observações registradas sobre a convivência familiar e comunitária.' },
+              { numero: 2, texto: '<strong>Registro de observações</strong> — campo para anotações complementares sobre a convivência familiar e comunitária.' },
+              { numero: 3, texto: '<strong>Ícone para retrair ou reexibir</strong> as informações do bloco.' },
+            ]}
+            observacao="Para mais informações sobre o registro de observações, consulte a página 19 do manual."
           />
         </section>
 
         <MetodologiaAcompanhamento />
 
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="encaminhamentos" titulo="Formulário de Controle de Encaminhamentos" screenshotSrc="/assets/screenshots/page-102.webp" paginaFisica={102}
-            anotacoes={[
-              { numero: 1, texto: 'Bloco <strong>Encaminhamentos</strong> — registro de encaminhamentos para a rede de serviços.' },
-              { numero: 2, texto: '<strong>Lista de Encaminhamentos</strong> com Data, Código da Área, Nome, Técnico e Ações.' },
-              { numero: 3, texto: 'Opção <strong>Incluir Encaminhamento</strong> — cadastro com Pessoa(s), Data, Área de encaminhamento.' },
+          <SecaoTutorialCarousel
+            id="planejamento-evolucao"
+            titulo="Planejamento e Evolução do Acompanhamento Familiar"
+            descricao="Consulta, inclusão, edição e exclusão dos registros de acompanhamento familiar, com controle de inserção, desligamento e observações complementares."
+            observacao="As observações do bloco Planejamento e evolução do acompanhamento familiar estão disponíveis apenas para a equipe técnica de nível superior."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-084.webp",
+                paginaFisica: 84,
+                tituloPagina: "Lista de Inserção e Desligamento",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Planejamento e Evolução do Acompanhamento Familiar</strong> — expanda para consultar os registros de acompanhamento da família.' },
+                  { numero: 2, texto: '<strong>Lista de Inserção e Desligamento</strong> — colunas: Data do ingresso, Nome, Data do desligamento, Razão do desligamento.' },
+                  { numero: 3, texto: 'Opção <strong>Incluir acompanhamento</strong> — acione para adicionar a família ao acompanhamento sistemático.' },
+                  { numero: 4, texto: '<strong>Registro de observações</strong> — campo para anotações complementares sobre o acompanhamento.' },
+                ],
+                textoExplicativo: "O bloco Planejamento e Evolução do Acompanhamento Familiar apresenta a lista de inserções e desligamentos da família no acompanhamento sistemático do PAIF. Cada registro exibe a data de ingresso, o nome dos membros, a data de desligamento e a razão do desligamento, além de opções de ações e campo de observações.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-085.webp",
+                paginaFisica: 85,
+                tituloPagina: "Incluir Acompanhamento",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Incluir acompanhamento</strong> — acione para abrir a janela de cadastro de novo acompanhamento.' },
+                  { numero: 2, texto: '<strong>Data do ingresso</strong> — campo para informar a data em que a família foi incluída no acompanhamento.' },
+                  { numero: 3, texto: '<strong>Planejamento inicial</strong> — campo para registrar as estratégias e passos planejados para o acompanhamento.' },
+                  { numero: 4, texto: '<strong>Data do desligamento</strong> e <strong>Razão do desligamento</strong> — campos opcionais no momento da inclusão.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> e <strong>Incluir</strong> (salva o registro e atualiza a lista).' },
+                ],
+                textoExplicativo: "Para iniciar o acompanhamento sistemático de uma família, acione o botão Incluir acompanhamento. A janela de cadastro exibe os campos Data do ingresso, Planejamento inicial, Data do desligamento e Razão do desligamento. Preencha os dados e confirme com Incluir para salvar o registro.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-086.webp",
+                paginaFisica: 86,
+                tituloPagina: "Detalhes da Inclusão",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Data do ingresso</strong> — indica a data em que a composição familiar foi incluída no acompanhamento.' },
+                  { numero: 2, texto: '<strong>Planejamento inicial</strong> — registra como o técnico pretende organizar e acompanhar as ações planejadas.' },
+                  { numero: 3, texto: '<strong>Data do desligamento</strong> — indica a data em que a família foi desvinculada do acompanhamento.' },
+                  { numero: 4, texto: '<strong>Razão do desligamento</strong> — valores possíveis: Avaliação técnica, Evasão ou recusa da família, Mudança de Município, Outros.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> e <strong>Incluir</strong>.' },
+                ],
+                textoExplicativo: "A janela de inclusão de acompanhamento oferece os campos necessários para registrar o início do acompanhamento familiar. A Data do ingresso é obrigatória, enquanto a Data do desligamento e a Razão do desligamento podem ser preenchidas posteriormente. O Planejamento inicial deve descrever as estratégias que orientarão o trabalho com a família.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-087.webp",
+                paginaFisica: 87,
+                tituloPagina: "Visualizar Acompanhamento",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Visualizar acompanhamento</strong> — acione para abrir a janela de consulta do registro.' },
+                  { numero: 2, texto: '<strong>Data do ingresso</strong> — exibe a data em que a família foi incluída no acompanhamento.' },
+                  { numero: 3, texto: '<strong>Planejamento inicial</strong> — exibe as estratégias registradas para o acompanhamento.' },
+                  { numero: 4, texto: '<strong>Data do desligamento</strong> e <strong>Razão do desligamento</strong> — exibe os dados de desligamento, se houver.' },
+                  { numero: 5, texto: 'Opção <strong>Fechar</strong> — acione para fechar a janela de visualização.' },
+                ],
+                textoExplicativo: "A visualização do acompanhamento exibe os dados completos do registro em modo somente leitura: data de ingresso, planejamento inicial e informações de desligamento quando aplicável. Utilize o botão Fechar para retornar à lista principal.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-088.webp",
+                paginaFisica: 88,
+                tituloPagina: "Visualizar e Editar",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Alterar acompanhamento</strong> — acione para abrir a janela de edição do registro.' },
+                  { numero: 2, texto: '<strong>Data do ingresso</strong> — exibe a data original de inclusão.' },
+                  { numero: 3, texto: '<strong>Planejamento inicial</strong> — campo editável para atualizar as estratégias de acompanhamento.' },
+                  { numero: 4, texto: '<strong>Data do desligamento</strong> e <strong>Razão do desligamento</strong> — campos editáveis.' },
+                  { numero: 5, texto: 'Opção <strong>Alterar</strong> — salva as modificações e atualiza a lista.' },
+                ],
+                textoExplicativo: "Para editar um registro de acompanhamento, acione o ícone de Alterar acompanhamento na lista. A janela de edição exibe os campos habilitados para ajuste dos dados: Data do ingresso, Planejamento inicial, Data do desligamento e Razão do desligamento. Confirme com Alterar para salvar.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-089.webp",
+                paginaFisica: 89,
+                tituloPagina: "Alterar Acompanhamento",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Data do ingresso</strong> — campo para editar a data de inclusão.' },
+                  { numero: 2, texto: '<strong>Planejamento inicial</strong> — campo para editar as estratégias de acompanhamento.' },
+                  { numero: 3, texto: '<strong>Data do desligamento</strong> — campo para informar ou alterar a data de desligamento.' },
+                  { numero: 4, texto: '<strong>Razão do desligamento</strong> — campo para selecionar o motivo do desligamento.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> e <strong>Atualizar</strong>.' },
+                ],
+                textoExplicativo: "A janela de alteração do acompanhamento familiar permite modificar todos os campos do registro. O profissional pode ajustar a data de ingresso, revisar o planejamento inicial e atualizar as informações de desligamento conforme a evolução do caso.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-090.webp",
+                paginaFisica: 90,
+                tituloPagina: "Alterar e Excluir",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Razão do desligamento</strong> — valores possíveis: Avaliação técnica, Evasão ou recusa da família, Mudança de Município, Outros.' },
+                  { numero: 2, texto: 'Opção <strong>Cancelar</strong> — cancela a ação e fecha a janela.' },
+                  { numero: 3, texto: 'Opção <strong>Atualizar</strong> — salva a alteração realizada e atualiza a lista.' },
+                  { numero: 4, texto: 'Opção <strong>Excluir acompanhamento</strong> — remove o registro da lista após confirmação.' },
+                ],
+                textoExplicativo: "Na edição do acompanhamento, a Razão do desligamento oferece quatro opções predefinidas. Para excluir um registro de acompanhamento, acione o ícone Excluir acompanhamento e confirme a ação — o sistema remove o registro e atualiza a lista automaticamente.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-091.webp",
+                paginaFisica: 91,
+                tituloPagina: "Observações",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Registro de observações</strong> — campo para anotações complementares sobre o acompanhamento.' },
+                  { numero: 2, texto: '<strong>Ícone para retrair ou reexibir</strong> as informações do bloco.' },
+                  { numero: 3, texto: 'Para mais informações sobre o registro de observações, consulte a página 19 do manual.' },
+                ],
+                textoExplicativo: "O bloco dispõe de campo de observações para informações complementares sobre o planejamento e evolução do acompanhamento, disponível apenas para a equipe técnica de nível superior. Utilize o ícone de expandir/recolher para controlar a visualização do bloco.",
+              },
             ]}
           />
         </section>
@@ -691,11 +991,114 @@ const b = BLOCK_ACCENTS
         </section>
 
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="medidas-socioeducativas" titulo="Histórico de Cumprimento de Medidas Socioeducativas" screenshotSrc="/assets/screenshots/page-093.webp" paginaFisica={93}
-            anotacoes={[
-              { numero: 1, texto: 'Bloco <strong>Medidas Socioeducativas</strong> — consulta de medidas para adolescentes.' },
-              { numero: 2, texto: '<strong>Lista de Medidas</strong> com Data, Nome do adolescente, Tipo de medida, Técnico e Unidade.' },
-              { numero: 3, texto: 'Opção <strong>Incluir Medida</strong> para adicionar nova medida socioeducativa.' },
+          <SecaoTutorialCarousel
+            id="medidas-socioeducativas"
+            titulo="Histórico de Cumprimento de Medidas Socioeducativas"
+            descricao="Consulta, inclusão, edição e exclusão de medidas socioeducativas para adolescentes, com registro de processo, técnico responsável e observações complementares."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-093.webp",
+                paginaFisica: 93,
+                tituloPagina: "Lista de Medidas Socioeducativas",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Histórico de Cumprimento de Medidas Socioeducativas</strong> — expanda para consultar as medidas para adolescentes.' },
+                  { numero: 2, texto: '<strong>Lista de Medidas</strong> — colunas: Data do atendimento, Nome, Tipo de medida, Nome do técnico, Unidade e Ações.' },
+                  { numero: 3, texto: 'Coluna <strong>Ações</strong> — ícones para visualizar, alterar ou excluir o registro da medida.' },
+                  { numero: 4, texto: 'Opção <strong>Incluir medida</strong> — acione para adicionar nova medida socioeducativa.' },
+                ],
+                textoExplicativo: "O bloco Histórico de Cumprimento de Medidas Socioeducativas apresenta a lista de medidas (cumpridas e/ou em acompanhamento) para adolescentes membros da composição familiar. Cada registro exibe a data do atendimento, o nome do adolescente, o tipo de medida, o técnico responsável e a unidade, com ações disponíveis para visualização e gerenciamento.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-094.webp",
+                paginaFisica: 94,
+                tituloPagina: "Incluir Medida Socioeducativa",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Incluir medida</strong> — acione para abrir a janela de cadastro de nova medida socioeducativa.' },
+                  { numero: 2, texto: '<strong>Pessoa</strong> — campo para informar o adolescente atendido.' },
+                  { numero: 3, texto: '<strong>Número do processo</strong> — campo para informar o número do processo da medida.' },
+                  { numero: 4, texto: '<strong>Data de início</strong>, <strong>Data de fim</strong> e <strong>Tipo de medida</strong> — campos para registro da medida.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> e <strong>Incluir</strong> (salva o registro e atualiza a lista).' },
+                ],
+                textoExplicativo: "Para adicionar uma medida socioeducativa, acione o botão Incluir medida. A janela de cadastro exibe os campos Pessoa (adolescente), Número do processo, Nome do técnico responsável, Data de início, Data de fim e Tipo de medida. Preencha os dados e confirme com Incluir para salvar o registro.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-095.webp",
+                paginaFisica: 95,
+                tituloPagina: "Detalhes da Inclusão",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Pessoa</strong> — campo para informar o adolescente atendido.' },
+                  { numero: 2, texto: '<strong>Número do processo</strong> — campo para informar o número do processo da medida socioeducativa.' },
+                  { numero: 3, texto: '<strong>Nome do técnico responsável</strong> — campo que informa o nome do técnico responsável pelo registro.' },
+                  { numero: 4, texto: '<strong>Data de início</strong> — campo para informar a data de início do cumprimento da medida.' },
+                  { numero: 5, texto: '<strong>Data de fim</strong> e <strong>Tipo de medida</strong> — campos para informar o término e o tipo da medida.' },
+                  { numero: 6, texto: 'Opções <strong>Cancelar</strong> e <strong>Incluir</strong>.' },
+                ],
+                textoExplicativo: "A janela de inclusão de medida socioeducativa reúne todos os dados necessários para o registro: identificação do adolescente, número do processo judicial, dados do técnico responsável e as datas de início e fim da medida, além da tipificação da medida socioeducativa aplicada.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-096.webp",
+                paginaFisica: 96,
+                tituloPagina: "Visualizar Medida Socioeducativa",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Visualizar medida</strong> — acione para abrir a janela de consulta do registro.' },
+                  { numero: 2, texto: '<strong>Pessoa</strong> — exibe o nome do adolescente.' },
+                  { numero: 3, texto: '<strong>Número do processo</strong> — exibe o número do processo da medida.' },
+                  { numero: 4, texto: '<strong>Data de início</strong>, <strong>Data de fim</strong> e <strong>Tipo de medida</strong> — dados da medida.' },
+                  { numero: 5, texto: 'Opção <strong>Fechar</strong> — acione para fechar a janela de visualização.' },
+                ],
+                textoExplicativo: "A visualização da medida socioeducativa exibe os dados completos do registro em modo somente leitura: adolescente, número do processo, técnico responsável, datas e tipo de medida. Utilize o botão Fechar para retornar à lista principal.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-097.webp",
+                paginaFisica: 97,
+                tituloPagina: "Detalhes da Visualização",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Pessoa</strong> — campo que informa o adolescente atendido.' },
+                  { numero: 2, texto: '<strong>Número do processo</strong> — campo que informa o número do processo da medida.' },
+                  { numero: 3, texto: '<strong>Nome do técnico responsável</strong> — campo que informa o técnico responsável.' },
+                  { numero: 4, texto: '<strong>Data de início</strong> — campo que informa a data de início do cumprimento.' },
+                  { numero: 5, texto: '<strong>Data de fim</strong> e <strong>Tipo de medida</strong> — campos com os dados da medida.' },
+                  { numero: 6, texto: 'Opção <strong>Fechar</strong> — fecha a janela de visualização.' },
+                ],
+                textoExplicativo: "A janela de visualização detalhada exibe todas as informações registradas para a medida socioeducativa, permitindo ao profissional consultar o histórico completo do adolescente em relação às medidas aplicadas.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-098.webp",
+                paginaFisica: 98,
+                tituloPagina: "Editar Medida Socioeducativa",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Alterar medida</strong> — acione para abrir a janela de edição do registro.' },
+                  { numero: 2, texto: '<strong>Pessoa</strong> — campo para editar o adolescente atendido.' },
+                  { numero: 3, texto: '<strong>Número do processo</strong> — campo para editar o número do processo.' },
+                  { numero: 4, texto: '<strong>Data de início</strong>, <strong>Data de fim</strong> e <strong>Tipo de medida</strong> — campos editáveis.' },
+                  { numero: 5, texto: 'Opção <strong>Alterar</strong> — salva as modificações e atualiza a lista.' },
+                ],
+                textoExplicativo: "Para editar uma medida socioeducativa, acione o ícone de Alterar medida na lista. A janela de edição exibe os campos habilitados para ajuste de todos os dados do registro: adolescente, processo, técnico, datas e tipo de medida. Confirme com Alterar para salvar.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-099.webp",
+                paginaFisica: 99,
+                tituloPagina: "Alterar e Excluir",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Pessoa</strong> — campo para editar o adolescente atendido.' },
+                  { numero: 2, texto: '<strong>Número do processo</strong> — campo para editar o número do processo.' },
+                  { numero: 3, texto: '<strong>Data de início</strong> e <strong>Data de fim</strong> — campos para editar as datas da medida.' },
+                  { numero: 4, texto: '<strong>Tipo de medida</strong> — campo para editar o tipo de medida socioeducativa.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong>, <strong>Alterar</strong> e <strong>Excluir medida</strong>.' },
+                ],
+                textoExplicativo: "A janela de alteração permite modificar todos os campos da medida socioeducativa. Para excluir um registro, acione o ícone Excluir medida e confirme a ação — o sistema remove o registro e atualiza a lista automaticamente.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-100.webp",
+                paginaFisica: 100,
+                tituloPagina: "Observações",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Registro de observações</strong> — campo para anotações complementares sobre as medidas socioeducativas.' },
+                  { numero: 2, texto: '<strong>Ícone para retrair ou reexibir</strong> as informações do bloco.' },
+                  { numero: 3, texto: 'Para mais informações sobre o registro de observações, consulte a página 19 do manual.' },
+                ],
+                textoExplicativo: "O bloco dispõe de campo de observações para informações complementares sobre as medidas socioeducativas registradas. Utilize o ícone de expandir/recolher para controlar a visualização do bloco.",
+              },
             ]}
           />
         </section>
@@ -708,6 +1111,164 @@ const b = BLOCK_ACCENTS
             ]}
           />
         </section>
+
+        <EncaminhamentosIntersetorialidade />
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorialCarousel
+            id="encaminhamentos"
+            titulo="Formulário de Controle de Encaminhamentos"
+            descricao="Consulta, inclusão, edição, exclusão e geração de PDF dos encaminhamentos registrados para os membros da composição familiar."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-102.webp",
+                paginaFisica: 102,
+                tituloPagina: "Lista de Encaminhamentos",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Formulário de Controle de Encaminhamento</strong> — expanda para consultar os encaminhamentos registrados.' },
+                  { numero: 2, texto: '<strong>Lista de Registro</strong> — colunas: Data do encaminhamento, Código da área, Nome, Nome do técnico e Ações.' },
+                  { numero: 3, texto: 'Coluna <strong>Ações</strong> — ícones para visualizar, alterar ou excluir o encaminhamento.' },
+                  { numero: 4, texto: 'Opção <strong>Incluir encaminhamento</strong> — acione para adicionar novo encaminhamento.' },
+                ],
+                textoExplicativo: "O bloco Formulário de Controle de Encaminhamentos apresenta a lista de encaminhamentos realizados para os membros da composição familiar. Cada registro exibe a data, o código da área de encaminhamento, o nome da pessoa encaminhada, o técnico responsável e as ações disponíveis para gerenciamento do registro.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-103.webp",
+                paginaFisica: 103,
+                tituloPagina: "Incluir Encaminhamento",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Incluir encaminhamento</strong> — acione para abrir a janela de cadastro.' },
+                  { numero: 2, texto: '<strong>Pessoa(s)</strong> — campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 3, texto: '<strong>Data do encaminhamento</strong> — campo para informar a data do atendimento.' },
+                  { numero: 4, texto: '<strong>Área de encaminhamento</strong> — campo para selecionar a área de destino.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> e <strong>Incluir</strong> (salva o registro e atualiza a lista).' },
+                ],
+                textoExplicativo: "Para adicionar um encaminhamento, acione o botão Incluir encaminhamento. A janela de cadastro exibe os campos para informar a(s) pessoa(s), a data do encaminhamento, o técnico responsável e a área de destino. Após preencher os dados, confirme com Incluir.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-104.webp",
+                paginaFisica: 104,
+                tituloPagina: "Campos da Inclusão — Áreas (Parte 1)",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Pessoa(s)</strong> — campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 2, texto: '<strong>Data do encaminhamento</strong> — campo para informar a data do atendimento.' },
+                  { numero: 3, texto: '<strong>Nome do técnico responsável</strong> — campo que informa o técnico responsável.' },
+                  { numero: 4, texto: '<strong>Área de encaminhamento</strong> — códigos 5 a 12: SCFV, CadÚnico, INSS/BPC, Benefícios Eventuais, Documentação Civil, CRAS/CREAS.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> e <strong>Incluir</strong>.' },
+                ],
+                textoExplicativo: "A janela de inclusão de encaminhamento reúne os dados essenciais para o registro: identificação da(s) pessoa(s), data, técnico e a área de destino. As áreas de encaminhamento são organizadas por código numérico, abrangendo serviços do SUAS, saúde, educação, trabalho e outros setores.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-105.webp",
+                paginaFisica: 105,
+                tituloPagina: "Campos da Inclusão — Áreas (Parte 2)",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Área de encaminhamento</strong> — códigos 13 a 41: CREAS para CRAS, Proteção Social Especial, Saúde Bucal, Saúde Mental, Órteses e Próteses, USF, SUS, Creche e Pré-escola, Ensino Fundamental e Médio.' },
+                  { numero: 2, texto: 'Cada código representa uma área ou serviço específico da rede socioassistencial e de políticas públicas.' },
+                ],
+                textoExplicativo: "A lista de áreas de encaminhamento continua com os códigos 13 a 41, abrangendo encaminhamentos entre CRAS e CREAS, serviços de saúde em suas diversas especialidades e a rede de educação infantil e regular.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-106.webp",
+                paginaFisica: 106,
+                tituloPagina: "Campos da Inclusão — Áreas (Parte 3)",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Área de encaminhamento</strong> — códigos 42 a 89: EJA, capacitação profissional, trabalho e renda, BPC-Trabalho, ACESSUAS, habitação, Tarifa Social, Conselho Tutelar, Judiciário, MP, Defensoria, Delegacias.' },
+                  { numero: 2, texto: 'Códigos 85 a 89 — <strong>Outros encaminhamentos</strong> (códigos livres para uso conforme interesse específico de cada município).' },
+                ],
+                textoExplicativo: "Os códigos 42 a 89 completam as opções de áreas de encaminhamento, incluindo Educação de Jovens e Adultos, programas de qualificação profissional, habitação, Tarifa Social, órgãos do Sistema de Garantia de Direitos e códigos livres para usos municipais específicos.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-107.webp",
+                paginaFisica: 107,
+                tituloPagina: "Campos da Inclusão — Complementos",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Órgão/Unidade</strong> — campo para informar o órgão para o qual a pessoa está sendo encaminhada.' },
+                  { numero: 2, texto: '<strong>Unidade</strong> — campo para informar a unidade de destino do encaminhamento.' },
+                  { numero: 3, texto: '<strong>Outros</strong> — campo para informar órgão não listado nas opções anteriores.' },
+                  { numero: 4, texto: '<strong>Objetivo/Motivo</strong> — campo para informar o objetivo ou motivo do encaminhamento.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> e <strong>Incluir</strong>.' },
+                ],
+                textoExplicativo: "Além da área de encaminhamento, a janela de inclusão solicita o órgão e a unidade de destino, um campo para outros órgãos não previstos e o objetivo ou motivo do encaminhamento. Esses campos garantem a rastreabilidade e a fundamentação técnica de cada encaminhamento.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-108.webp",
+                paginaFisica: 108,
+                tituloPagina: "Visualizar Encaminhamento",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Visualizar encaminhamento</strong> — acione para abrir a janela de consulta.' },
+                  { numero: 2, texto: '<strong>Pessoa(s)</strong> — exibe o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 3, texto: '<strong>Data do encaminhamento</strong> — exibe a data do atendimento.' },
+                  { numero: 4, texto: '<strong>Área</strong>, <strong>Órgão/Unidade</strong> e <strong>Objetivo</strong> — dados do encaminhamento.' },
+                  { numero: 5, texto: 'Opção <strong>Fechar</strong> — acione para fechar a janela.' },
+                ],
+                textoExplicativo: "A visualização do encaminhamento exibe os dados completos do registro em modo somente leitura: pessoa(s), data, técnico responsável, área, órgão/unidade de destino e objetivo/motivo. Utilize o botão Fechar para retornar à lista principal.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-109.webp",
+                paginaFisica: 109,
+                tituloPagina: "Detalhes da Visualização",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Pessoa(s)</strong> — campo que informa o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 2, texto: '<strong>Data do encaminhamento</strong> — campo que informa a data do atendimento.' },
+                  { numero: 3, texto: '<strong>Nome do técnico responsável</strong> — campo com o nome do técnico.' },
+                  { numero: 4, texto: '<strong>Área</strong>, <strong>Órgão/Unidade</strong>, <strong>Unidade</strong>, <strong>Outros</strong> e <strong>Objetivo/Motivo</strong> — todos os dados do encaminhamento.' },
+                  { numero: 5, texto: 'Opção <strong>Fechar</strong> — fecha a janela de visualização.' },
+                ],
+                textoExplicativo: "A janela de visualização detalhada exibe todas as informações registradas para o encaminhamento, permitindo ao profissional consultar o histórico completo dos encaminhamentos realizados para a família, incluindo dados de órgão, unidade e objetivo.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-110.webp",
+                paginaFisica: 110,
+                tituloPagina: "Editar Encaminhamento",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Alterar encaminhamento</strong> — acione para abrir a janela de edição.' },
+                  { numero: 2, texto: '<strong>Pessoa</strong> — campo para editar o(s) nome(s) da(s) pessoa(s).' },
+                  { numero: 3, texto: '<strong>Data do encaminhamento</strong> — campo para editar a data.' },
+                  { numero: 4, texto: '<strong>Área</strong>, <strong>Órgão/Unidade</strong> e <strong>Objetivo</strong> — campos editáveis.' },
+                  { numero: 5, texto: 'Opção <strong>Alterar</strong> — salva as modificações e atualiza a lista.' },
+                ],
+                textoExplicativo: "Para editar um encaminhamento, acione o ícone de Alterar encaminhamento na lista. A janela de edição exibe os campos habilitados para ajuste de todos os dados do registro. Confirme com Alterar para salvar as modificações.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-111.webp",
+                paginaFisica: 111,
+                tituloPagina: "Alterar — Detalhes",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Pessoa</strong> — campo para editar o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 2, texto: '<strong>Data do encaminhamento</strong> — campo para editar a data do atendimento.' },
+                  { numero: 3, texto: '<strong>Área de encaminhamento</strong> — campo para selecionar nova área.' },
+                  { numero: 4, texto: '<strong>Órgão/Unidade</strong>, <strong>Unidade</strong>, <strong>Outros</strong> e <strong>Objetivo/Motivo</strong> — campos editáveis.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> e <strong>Alterar</strong>.' },
+                ],
+                textoExplicativo: "A janela de alteração do encaminhamento permite modificar todos os campos do registro, incluindo pessoa, data, área, órgão/unidade e objetivo. Utilize o botão Cancelar para descartar as alterações ou Alterar para salvar.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-112.webp",
+                paginaFisica: 112,
+                tituloPagina: "Excluir, Gerar PDF e Observações",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Excluir encaminhamento</strong> — remove o registro da lista após confirmação.' },
+                  { numero: 2, texto: 'Opção <strong>Gerar PDF</strong> — gera um arquivo PDF do encaminhamento e abre em nova aba.' },
+                  { numero: 3, texto: '<strong>PDF gerado</strong> — contém dados da unidade, da pessoa encaminhada, relato da demanda e assinatura do técnico.' },
+                  { numero: 4, texto: '<strong>Ícone para retrair ou reexibir</strong> as informações do bloco.' },
+                ],
+                textoExplicativo: "O bloco de encaminhamentos oferece duas funcionalidades adicionais: exclusão do registro (com confirmação obrigatória) e geração de PDF do encaminhamento, que produz um documento formal com os dados da unidade, da pessoa encaminhada, relato da demanda e identificação do técnico responsável.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/modelo_formulario_encaminhamento.png",
+                tituloPagina: "Modelo de Formulário de Encaminhamento",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Modelo de formulário de encaminhamento</strong> — documento gerado pelo sistema com os dados do encaminhamento.' },
+                  { numero: 2, texto: '<strong>Cabeçalho</strong> — identificação da unidade CRAS, município e data de emissão.' },
+                  { numero: 3, texto: '<strong>Corpo</strong> — nome da pessoa encaminhada, CPF, instituição de destino e relato da demanda.' },
+                  { numero: 4, texto: '<strong>Assinatura</strong> — identificação e assinatura do técnico responsável pelo encaminhamento.' },
+                ],
+                textoExplicativo: "O formulário de encaminhamento gerado pelo sistema contém a identificação da unidade CRAS, os dados da pessoa encaminhada, a instituição de destino, o relato da demanda e a assinatura do técnico responsável. Esse documento formaliza o encaminhamento e serve como comprovante para a família e para a unidade receptora.",
+              },
+            ]}
+          />
+        </section>
       </div>
     </div>
 
@@ -715,42 +1276,204 @@ const b = BLOCK_ACCENTS
     <div data-block-group="atendimento-coletivo">
       <SectionHeader title="Bloco 2 — Atendimento Coletivo" accent="green" />
       <div data-block-content="atendimento-coletivo" class="space-y-6">
-        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.planejamento.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="controle-encaminhamentos" titulo="Controle de Encaminhamentos" screenshotSrc="/assets/screenshots/page-102.webp" paginaFisica={102}
-            anotacoes={[
-              { numero: 1, texto: 'Bloco <strong>Formulário de Controle de Encaminhamentos</strong>.' },
-              { numero: 2, texto: '<strong>Lista de Registro</strong> com Data, Código da área, Nome, Técnico e Ações.' },
-              { numero: 3, texto: 'Opção <strong>Incluir Encaminhamento</strong> — cadastro de novo encaminhamento com Pessoa(s), Data e Área.' },
-            ]}
-          />
-        </section>
-
-        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.planejamento.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="relatorio-simplificado" titulo="Relatório Simplificado dos Atendimentos" screenshotSrc="/assets/screenshots/page-117.webp" paginaFisica={117}
-            anotacoes={[
-              { numero: 1, texto: 'Módulo <strong>Relatório Simplificado</strong> — visão consolidada dos atendimentos realizados.' },
-              { numero: 2, texto: '<strong>Parâmetros de busca</strong> por período, tipo de atendimento e unidade.' },
-              { numero: 3, texto: 'Geração de <strong>relatório em PDF</strong> com os dados filtrados.' },
-            ]}
-          />
-                  </section>
-
-        <EncaminhamentosIntersetorialidade />
-
-        <FluxoAtendimento />
-
-        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.planejamento.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="atendimento-coletivo-lista" titulo="Atendimento Coletivo — Lista de Atendimentos" screenshotSrc="/assets/screenshots/page-118.webp" paginaFisica={118}
-            anotacoes={[
-              { numero: 1, texto: 'Menu <strong>Atendimento Coletivo</strong> — acesso ao módulo de atendimentos coletivos.' },
-              { numero: 2, texto: 'Funcionalidade <strong>Selecionar Unidade</strong> — lista todas as unidades do usuário.' },
-              { numero: 3, texto: '<strong>Lista de Atendimentos Coletivos</strong> com N.º, Data, Tipo de Atendimento, Descrição e Ações.' },
-              { numero: 4, texto: 'Opção <strong>Incluir Atendimento</strong> para registrar novo atendimento coletivo.' },
-            ]}
-          />
-        </section>
-
         <AtendimentoColetivoExpandido />
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.planejamento.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorialCarousel
+            id="relatorio-participacao-coletivos"
+            titulo="Relatório de Participação em Atendimentos Coletivos"
+            descricao="Consulta dos atendimentos coletivos em que a pessoa ou família participou, com visualização detalhada de cada registro."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-113.webp",
+                paginaFisica: 113,
+                tituloPagina: "Lista de Atendimentos Coletivos",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Relatório de Participação em Atendimentos Coletivos</strong> — expanda para consultar os atendimentos da pessoa.' },
+                  { numero: 2, texto: '<strong>Lista de Atendimentos</strong> — colunas: Data do atendimento, Tipo de atendimento, Unidade, Município/UF e Ações.' },
+                  { numero: 3, texto: 'Opção <strong>Visualizar atendimento coletivo</strong> — acione para abrir a janela de consulta do registro.' },
+                  { numero: 4, texto: '<strong>Ícone para retrair ou reexibir</strong> as informações do bloco.' },
+                ],
+                textoExplicativo: "O bloco Relatório de Participação em Atendimentos Coletivos apresenta a lista de atendimentos coletivos dos quais a pessoa ou família participou. Cada registro exibe a data, o tipo de atendimento, a unidade responsável e o município, com opção de visualizar os detalhes completos.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-114.webp",
+                paginaFisica: 114,
+                tituloPagina: "Visualizar Atendimento Coletivo",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Número do atendimento</strong> — campo que informa o número do atendimento coletivo.' },
+                  { numero: 2, texto: '<strong>Data do atendimento</strong> — campo que informa a data em que o atendimento foi realizado.' },
+                  { numero: 3, texto: '<strong>Tipo do atendimento coletivo</strong> — campo que informa o tipo de atividade ofertada.' },
+                  { numero: 4, texto: '<strong>Nome do técnico responsável</strong> e <strong>Descrição</strong> — dados do profissional e descrição do atendimento.' },
+                  { numero: 5, texto: 'Opção <strong>Fechar</strong> — acione para fechar a janela de visualização.' },
+                ],
+                textoExplicativo: "A janela de visualização do atendimento coletivo exibe os dados completos do registro: número do atendimento, data, tipo de atividade, nome do técnico responsável, descrição e unidade. Utilize o botão Fechar para retornar à lista principal.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-115.webp",
+                paginaFisica: 115,
+                tituloPagina: "Detalhes e Observações",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Unidade</strong> — campo que informa o nome da unidade de atendimento.' },
+                  { numero: 2, texto: 'Opção <strong>Fechar</strong> — acione para fechar a janela de visualização.' },
+                  { numero: 3, texto: '<strong>Ícone para retrair ou reexibir</strong> as informações do bloco.' },
+                ],
+                textoExplicativo: "Além dos dados principais do atendimento, a janela de visualização exibe a unidade onde o atendimento foi realizado. Utilize o ícone de expandir/recolher para controlar a visualização do bloco na tela principal.",
+              },
+            ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.planejamento.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorial id="relatorio-simplificado" titulo="Relatório Simplificado dos Atendimentos" screenshotSrc="/assets/screenshots/page-116.webp" paginaFisica={116}
+            anotacoes={[
+              { numero: 1, texto: 'Bloco <strong>Relatório Simplificado dos Atendimentos</strong> — expanda para consultar os atendimentos individuais e coletivos da família.' },
+              { numero: 2, texto: '<strong>Lista de Atendimentos</strong> — colunas: Data do atendimento, Tipo de atendimento, Descrição, Unidade, Nome do técnico e Município/UF.' },
+              { numero: 3, texto: '<strong>Ícone para retrair ou reexibir</strong> as informações do bloco.' },
+            ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.planejamento.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorialCarousel
+            id="atendimento-coletivo-lista"
+            titulo="Atendimento Coletivo — Lista de Atendimentos"
+            descricao="Fluxo completo de seleção de unidade, consulta, inclusão, edição, exclusão e clonagem de atendimentos coletivos."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-118.webp",
+                paginaFisica: 118,
+                tituloPagina: "Selecionar Unidade",
+                anotacoes: [
+                  { numero: 1, texto: 'Menu <strong>Atendimento Coletivo</strong> — acione para acessar o módulo de atendimentos coletivos.' },
+                  { numero: 2, texto: 'Funcionalidade <strong>Selecionar Unidade</strong> — lista as unidades atribuídas ao usuário conforme perfil no CadSUAS.' },
+                  { numero: 3, texto: '<strong>Lista de Unidades</strong> — Código, Nome, Município/UF, Endereço e Telefone.' },
+                  { numero: 4, texto: 'Opção <strong>Pesquisar</strong> — refine a lista informando parâmetros. Acione o <strong>registro</strong> para acessar a unidade.' },
+                ],
+                textoExplicativo: "Para iniciar o gerenciamento de atendimentos coletivos, acione o menu Atendimento Coletivo. Caso possua mais de uma unidade vinculada, o sistema exibe a tela de seleção com a lista de unidades atribuídas ao perfil, permitindo refinar a busca e selecionar a unidade desejada.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-119.webp",
+                paginaFisica: 119,
+                tituloPagina: "Lista de Atendimentos Coletivos",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Lista de Atendimentos Coletivos</strong> — colunas: N.º do atendimento, Data, Tipo de atendimento, Descrição e Ações.' },
+                  { numero: 2, texto: 'Coluna <strong>Ações</strong> — ícones para visualizar, alterar, excluir ou clonar o registro.' },
+                  { numero: 3, texto: 'Opção <strong>Incluir atendimento</strong> — acione para registrar novo atendimento coletivo.' },
+                ],
+                textoExplicativo: "A lista de atendimentos coletivos exibe todos os registros da unidade selecionada, com número, data, tipo, descrição e ações disponíveis. Para adicionar um novo atendimento, utilize o botão Incluir atendimento.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-120.webp",
+                paginaFisica: 120,
+                tituloPagina: "Incluir Atendimento — Pessoa",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>CPF</strong> — campo para informar o CPF da pessoa atendida.' },
+                  { numero: 2, texto: '<strong>Buscar pessoa</strong> — acione para localizar a pessoa na base do Cadastro Único.' },
+                  { numero: 3, texto: '<strong>Nome</strong> — campo que informa o nome da pessoa atendida após a busca.' },
+                  { numero: 4, texto: '<strong>Adicionar pessoa</strong> — acione para incluir a pessoa na lista de participantes.' },
+                ],
+                textoExplicativo: "A janela de inclusão de atendimento coletivo permite adicionar participantes informando o CPF de cada pessoa. O sistema busca automaticamente os dados no Cadastro Único. Utilize Adicionar pessoa para incluir cada participante na lista.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-121.webp",
+                paginaFisica: 121,
+                tituloPagina: "Incluir Atendimento — Campos",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Data do atendimento</strong> — campo para informar a data do atendimento.' },
+                  { numero: 2, texto: '<strong>Nome do técnico responsável</strong> — campo que informa o técnico responsável.' },
+                  { numero: 3, texto: '<strong>Tipo de atendimento coletivo</strong> — valores: Oficinas do PAIF, Acolhida em Grupo, Ações Comunitárias.' },
+                  { numero: 4, texto: '<strong>Descrição</strong> — campo para informar a descrição do atendimento.' },
+                  { numero: 5, texto: 'Opções <strong>Cancelar</strong> e <strong>Incluir</strong> (salva o registro e atualiza a lista).' },
+                ],
+                textoExplicativo: "Preencha os dados do atendimento coletivo: data, técnico responsável, tipo de atividade (Oficinas do PAIF, Acolhida em Grupo ou Ações Comunitárias) e descrição. O sistema exibe automaticamente a unidade selecionada anteriormente.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-122.webp",
+                paginaFisica: 122,
+                tituloPagina: "Visualizar Atendimento Coletivo",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Visualizar atendimento coletivo</strong> — acione na coluna Ações para abrir a janela de consulta.' },
+                  { numero: 2, texto: '<strong>CPF</strong> e <strong>Nome</strong> — colunas com os dados dos participantes.' },
+                  { numero: 3, texto: '<strong>Data</strong>, <strong>Técnico</strong>, <strong>Tipo</strong>, <strong>Descrição</strong> e <strong>Unidade</strong> — dados do atendimento.' },
+                  { numero: 4, texto: 'Opção <strong>Fechar</strong> — acione para fechar a janela de visualização.' },
+                ],
+                textoExplicativo: "A visualização do atendimento coletivo exibe a lista de participantes (CPF e Nome) e os dados completos do atendimento: data, técnico responsável, tipo de atividade, descrição e unidade. Utilize o botão Fechar para retornar à lista.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-123.webp",
+                paginaFisica: 123,
+                tituloPagina: "Detalhes da Visualização",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>CPF</strong> — coluna que informa o CPF da(s) pessoa(s) atendida(s).' },
+                  { numero: 2, texto: '<strong>Nome</strong> — coluna que informa o nome da(s) pessoa(s) atendida(s).' },
+                  { numero: 3, texto: '<strong>Data do atendimento</strong>, <strong>Nome do técnico</strong>, <strong>Tipo</strong>, <strong>Descrição</strong> e <strong>Unidade</strong> — todos os dados do registro.' },
+                  { numero: 4, texto: 'Opção <strong>Fechar</strong> — fecha a janela de visualização.' },
+                ],
+                textoExplicativo: "A janela de visualização detalhada exibe todas as informações do atendimento coletivo, incluindo a lista completa de participantes com CPF e nome, além dos dados gerais do atendimento registrado.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-124.webp",
+                paginaFisica: 124,
+                tituloPagina: "Editar Atendimento Coletivo",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Alterar atendimento coletivo</strong> — acione na coluna Ações para abrir a janela de edição.' },
+                  { numero: 2, texto: '<strong>CPF</strong> e <strong>Buscar pessoa</strong> — campos para adicionar novos participantes.' },
+                  { numero: 3, texto: '<strong>Data</strong>, <strong>Técnico</strong>, <strong>Tipo</strong> e <strong>Descrição</strong> — campos editáveis.' },
+                  { numero: 4, texto: 'Opção <strong>Alterar</strong> — salva as modificações e atualiza a lista.' },
+                ],
+                textoExplicativo: "Para editar um atendimento coletivo, acione o ícone de Alterar na lista. A janela de edição permite modificar participantes, data, técnico, tipo e descrição do atendimento. Confirme com Alterar para salvar.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-125.webp",
+                paginaFisica: 125,
+                tituloPagina: "Alterar — Detalhes",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Tipo de atendimento coletivo</strong> — alternativas: Oficinas, Acolhida coletiva, Ações comunitárias, Rodas de conversa, Arranjos participativos.' },
+                  { numero: 2, texto: '<strong>Descrição</strong> — campo para informar a descrição do atendimento.' },
+                  { numero: 3, texto: '<strong>Unidade</strong> — campo que informa o nome da unidade de atendimento.' },
+                  { numero: 4, texto: 'Opções <strong>Cancelar</strong> e <strong>Alterar</strong>.' },
+                ],
+                textoExplicativo: "A janela de alteração do atendimento coletivo oferece cinco tipos de atividade: Oficinas, Acolhida coletiva, Ações comunitárias, Rodas de conversa e Arranjos participativos. Selecione o tipo adequado e preencha a descrição.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-126.webp",
+                paginaFisica: 126,
+                tituloPagina: "Excluir e Duplicar",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Excluir atendimento coletivo</strong> — remove o registro da lista após confirmação.' },
+                  { numero: 2, texto: 'Opção <strong>Clonar atendimento coletivo</strong> — duplica o registro com os campos habilitados para edição.' },
+                  { numero: 3, texto: 'Ao clonar, o sistema abre a janela de inclusão com os dados do registro original preenchidos.' },
+                ],
+                textoExplicativo: "O sistema oferece duas funcionalidades complementares: excluir um atendimento coletivo (com confirmação obrigatória) e clonar um registro existente, que duplica o atendimento com os dados originais para agilizar o registro de atividades similares.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-127.webp",
+                paginaFisica: 127,
+                tituloPagina: "Clonar Atendimento — Pessoa",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>CPF</strong> — campo para informar o CPF da pessoa atendida.' },
+                  { numero: 2, texto: '<strong>Buscar pessoa</strong> — acione para localizar a pessoa na base do Cadastro Único.' },
+                  { numero: 3, texto: '<strong>Nome</strong> — campo que informa o nome da pessoa atendida.' },
+                  { numero: 4, texto: '<strong>Adicionar pessoa</strong> — acione para incluir a pessoa na lista de participantes.' },
+                ],
+                textoExplicativo: "Ao clonar um atendimento coletivo, o sistema abre a janela de inclusão com os dados preenchidos. É possível ajustar os participantes, a data e demais campos antes de salvar o novo registro.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-128.webp",
+                paginaFisica: 128,
+                tituloPagina: "Clonar — Campos",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Data do atendimento</strong> — campo para editar a data.' },
+                  { numero: 2, texto: '<strong>Tipo de atendimento coletivo</strong> — alternativas: Oficinas, Acolhida coletiva, Ações comunitárias, Rodas de conversa, Arranjos participativos.' },
+                  { numero: 3, texto: '<strong>Descrição</strong> — campo para informar a descrição do atendimento.' },
+                  { numero: 4, texto: 'Opções <strong>Cancelar</strong> e <strong>Incluir</strong> (salva o novo registro clonado).' },
+                ],
+                textoExplicativo: "A funcionalidade de clonagem permite criar um novo atendimento coletivo a partir de um registro existente, aproveitando os dados já preenchidos. Basta ajustar os campos necessários e confirmar com Incluir para salvar o novo registro.",
+              },
+            ]}
+          />
+        </section>
       </div>
     </div>
 
@@ -758,6 +1481,8 @@ const b = BLOCK_ACCENTS
     <div data-block-group="migrar-prontuario">
       <SectionHeader title="Bloco 3 — Migrar Prontuário" accent="cyan" />
       <div data-block-content="migrar-prontuario" class="space-y-6">
+        <MigracaoProntuarioExpandido />
+
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.reprogramacao.border} transition-all hover:shadow-lg`}>
           <SecaoTutorialCarousel
             id="migrar-prontuario"
@@ -867,8 +1592,6 @@ const b = BLOCK_ACCENTS
             ]}
           />
         </section>
-
-        <MigracaoProntuarioExpandido />
       </div>
     </div>
 
@@ -876,24 +1599,88 @@ const b = BLOCK_ACCENTS
     <div data-block-group="painel-estatistico">
       <SectionHeader title="Bloco 4 — Painel Estatístico" accent="pink" />
       <div data-block-content="painel-estatistico" class="space-y-6">
+        <PainelEstatisticoExpandido />
+
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.controle.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="painel-estatistico" titulo="Painel Estatístico" screenshotSrc="/assets/screenshots/page-140.webp" paginaFisica={140}
-            anotacoes={[
-              { numero: 1, texto: 'Módulo <strong>Painel Estatístico</strong> — visão agregada dos atendimentos.' },
-              { numero: 2, texto: '<strong>Parâmetros de Refinamento</strong> — filtros por período, tipo, unidade e público.' },
-              { numero: 3, texto: '<strong>Indicadores</strong> de volume, perfil e evolução das ações.' },
+          <SecaoTutorialCarousel
+            id="painel-estatistico"
+            titulo="Painel Estatístico"
+            descricao="Acesso ao painel, parâmetros de consulta, indicadores de atendimento e exportação de dados para análises gerenciais."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-141.webp",
+                paginaFisica: 141,
+                tituloPagina: "Parâmetros de Consulta",
+                anotacoes: [
+                  { numero: 1, texto: 'Submenu <strong>Painel Estatístico</strong> — acione no menu SUAS para acessar o módulo.' },
+                  { numero: 2, texto: '<strong>Data de início</strong> e <strong>Data de fim</strong> — campos obrigatórios para definir o período da consulta.' },
+                  { numero: 3, texto: '<strong>UF</strong>, <strong>Município</strong> e <strong>Unidade</strong> — filtros de abrangência territorial.' },
+                  { numero: 4, texto: '<strong>Atendimento</strong> — campo para selecionar o tipo: Todos, Particularizados, Coletivo, Benefícios Eventuais, Encaminhamentos, Medidas Socioeducativas, Acompanhamento Familiar.' },
+                ],
+                textoExplicativo: "Para acessar o Painel Estatístico, vá até o menu SUAS e selecione o submenu Painel Estatístico. A tela exibe os filtros de pesquisa que permitem definir os parâmetros da consulta, incluindo período obrigatório, abrangência territorial e tipo de atendimento. Quanto mais específicos forem os filtros, mais precisos serão os resultados.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-142.webp",
+                paginaFisica: 142,
+                tituloPagina: "Filtros e Ações",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Tipo</strong> — campo para informar o tipo específico de atendimento conforme o campo Atendimento selecionado.' },
+                  { numero: 2, texto: '<strong>Limpar</strong> — opção que limpa as informações preenchidas e permanece na mesma tela.' },
+                  { numero: 3, texto: '<strong>Pesquisar</strong> — realiza a busca dos atendimentos conforme os parâmetros e exibe o Painel Estatístico.' },
+                ],
+                textoExplicativo: "Após preencher os filtros desejados, acione Pesquisar para gerar o painel. Use Limpar para reiniciar os filtros. Quanto mais específicos forem os filtros aplicados, mais precisos serão os resultados apresentados nos painéis.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-143.webp",
+                paginaFisica: 143,
+                tituloPagina: "Indicadores: Sexo e Raça/Cor",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Total de atendimentos</strong> — indicador que apresenta a quantidade de atendimentos realizados no período.' },
+                  { numero: 2, texto: '<strong>Sexo</strong> — quantidade de pessoas atendidas classificadas por sexo (Masculino e Feminino).' },
+                  { numero: 3, texto: '<strong>Raça/Cor</strong> — quantidade de pessoas atendidas classificadas por raça/cor (Branca, Preta, Amarela, Parda, Indígena).' },
+                ],
+                textoExplicativo: "O Painel Estatístico apresenta indicadores agregados que permitem visualizar o perfil do público atendido. Os gráficos de Sexo e Raça/Cor auxiliam na análise demográfica e contribuem para o planejamento de políticas mais inclusivas.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-144.webp",
+                paginaFisica: 144,
+                tituloPagina: "Indicadores: Faixa Etária e GPTE",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Faixa Etária</strong> — quantidade de atendimentos por faixa: 0 a 6, 7 a 12, 13 a 15, 16 a 17, 18 a 59, 60 anos ou mais.' },
+                  { numero: 2, texto: '<strong>GPTE</strong> — Grupo Populacional Tradicional e Específico: famílias quilombolas, indígenas, ciganas, ribeirinhas, em situação de rua, entre outras.' },
+                ],
+                textoExplicativo: "Os indicadores de Faixa Etária e Grupo Populacional Tradicional e Específico (GPTE) permitem compreender o perfil etário e a diversidade social do público atendido, auxiliando no monitoramento da inclusão e na atenção a públicos prioritários.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-145.webp",
+                paginaFisica: 145,
+                tituloPagina: "Indicadores: PBF e BPC",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Recebe PBF</strong> — quantidade de atendimentos realizados com participantes do Programa Bolsa Família (Está no PBF / Não está no PBF).' },
+                  { numero: 2, texto: '<strong>Recebe BPC</strong> — quantidade de pessoas atendidas que recebem o Benefício de Prestação Continuada (Recebe o BPC / Não recebe o BPC).' },
+                ],
+                textoExplicativo: "Os indicadores de PBF e BPC mostram a relação entre os atendimentos realizados e a cobertura dos principais programas de transferência de renda, permitindo avaliar o acesso da população atendida a esses benefícios.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-146.webp",
+                paginaFisica: 146,
+                tituloPagina: "Exportação de Dados",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Baixe as informações do painel</strong> — opção que realiza o download de um arquivo CSV com os dados detalhados dos indicadores.' },
+                  { numero: 2, texto: 'Utilize a exportação para análises mais aprofundadas ou para integrar os dados com relatórios e planilhas externas.' },
+                ],
+                textoExplicativo: "O Painel Estatístico oferece a funcionalidade de exportação de dados em formato CSV. Utilize essa opção para realizar análises mais aprofundadas em ferramentas externas ou para integrar os dados com relatórios gerenciais e planilhas de monitoramento.",
+              },
             ]}
           />
         </section>
-
-        <PainelEstatisticoExpandido />
       </div>
     </div>
 
-    <RegrasOuroProntuario />
     <ResumoPodeNaoPode />
     <ChecklistProntuario />
     <BaseNormativaProntuario />
+    <RegrasOuroProntuario />
 
     <ContraCapa />
   </div>

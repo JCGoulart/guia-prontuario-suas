@@ -7,3 +7,5 @@ dist/
 .DS_Store
 .omo/
 .reasonix/
+reasonix.toml
+temp-p40-65.txt

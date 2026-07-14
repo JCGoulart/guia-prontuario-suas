@@ -1,23 +1,10 @@
 ---
 // Seção expandida: Vulnerabilidades e Proteções Sociais — conceitos, cadastro e mapa conceitual
-import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
-import type { Anotacao } from '@/types'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
 import VulnerabilityMap from '@/components/react/content/VulnerabilityMap'
 
-const anotacoes: Anotacao[] = [
-  { numero: 1, texto: 'Lista de vulnerabilidades e desproteções sociais já registradas para a família, com colunas de Data, Situação e Técnico responsável.' },
-  { numero: 2, texto: 'Opção "Incluir Vulnerabilidade" — acione para abrir a janela de cadastro de nova vulnerabilidade.' },
-  { numero: 3, texto: '<strong>Data da anotação</strong> — indica a data em que o atendimento foi realizado.' },
-  { numero: 4, texto: '<strong>Situação</strong> — indica a vulnerabilidade e desproteção social verificada.' },
-  { numero: 5, texto: 'Valores possíveis: <strong>Situação de insegurança alimentar</strong>.' },
-  { numero: 6, texto: '<strong>Situação de vulnerabilidades ou desproteções relacionais</strong>.' },
-  { numero: 7, texto: '<strong>Família com gestante ou criança na primeira infância</strong>.' },
-  { numero: 8, texto: 'Acione <strong>Incluir</strong> para salvar o registro e atualizar a lista de observações.' },
-  { numero: 9, texto: 'Indicadores automáticos exibidos no topo da seção: Pessoa com Deficiência (PCD) e Pessoa Idosa, preenchidos a partir dos dados do CadÚnico.' },
-]
 ---
 
 <section
@@ -93,16 +80,6 @@ const anotacoes: Anotacao[] = [
       </p>
     </div>
   </div>
-
-  <!-- Seção tutorial com screenshot -->
-  <SecaoTutorial
-    id="cadastro-vulnerabilidades"
-    screenshotSrc="/assets/screenshots/page-075.webp"
-    titulo="Cadastro de Vulnerabilidades Sociais"
-    paginaFisica={75}
-    anotacoes={anotacoes}
-    observacao="O bloco de vulnerabilidades é um dos instrumentos centrais do prontuário — ele sintetiza a leitura técnica da equipe sobre as fragilidades da família e orienta todo o plano de acompanhamento."
-  />
 
   <!-- Mapa conceitual SVG: Vulnerabilidades → Proteções -->
   <div class="mt-10">
