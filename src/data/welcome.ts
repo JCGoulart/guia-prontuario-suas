@@ -9,7 +9,7 @@ export const WELCOME_CONFIG = {
 }
 
 export const WELCOME_CONTENT = {
-  title: 'Manual do Prontuário Eletrônico',
+  title: 'Guia do Prontuário Eletrônico',
   subtitle: 'Sistema Único de Assistência Social — SUAS',
   description:
     'Este manual apresenta o passo a passo para utilização do Prontuário Eletrônico do SUAS, abordando desde o login no sistema até o registro de atendimentos individuais, familiares e coletivos. O material é destinado aos profissionais da assistência social que atuam nos CRAS, CREAS e demais unidades socioassistenciais.',
@@ -48,5 +48,11 @@ export const OTHER_CADERNOS = [
     label: 'Caderno de Execução Orçamentária e Financeira do SUAS',
     description: 'Orientações para gestão dos recursos do cofinanciamento estadual',
     accentClass: 'bg-institucional-green',
+  },
+  {
+    href: 'https://sedsodh.github.io/hub-vigilancia-socioassistencial/',
+    label: 'Hub da Vigilância Socioassistencial',
+    description: 'Central de informações, indicadores e dados da Vigilância Socioassistencial',
+    accentClass: 'bg-institucional-blue',
   },
 ]

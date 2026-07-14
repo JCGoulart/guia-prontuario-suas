@@ -1,0 +1,42 @@
+---
+// Situação do Novo Prontuário — página 6 do PDF
+import AlertBox from '@/components/astro/content/AlertBox.astro'
+---
+
+<section
+  id="situacao-prontuario"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none"
+>
+  <div class="flex items-center gap-3 mb-3">
+    <div class="w-10 h-10 rounded-xl flex items-center justify-center shadow-md" style="background: linear-gradient(135deg, #0891b2 0%, #22d3ee 100%)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+    </div>
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white tracking-tight">
+      Situação do Novo Prontuário
+    </h2>
+  </div>
+
+  <div class="h-1 w-20 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-300 mb-8" />
+
+  <div class="space-y-6">
+    <AlertBox variant="info" title="Status Atual">
+      <p class="text-sm leading-relaxed">
+        O Prontuário SUAS está funcionando para o <strong>CRAS</strong> e aberto para utilização de todos os municípios.
+      </p>
+    </AlertBox>
+
+    <AlertBox variant="success" title="Campos Abertos">
+      <p class="text-sm leading-relaxed">
+        O Prontuário possui campos abertos em <strong>todos os blocos</strong>, permitindo registrar informações qualitativas de forma livre e detalhada.
+      </p>
+    </AlertBox>
+
+    <AlertBox variant="warning" title="Em Desenvolvimento">
+      <p class="text-sm leading-relaxed">
+        O sistema continua em desenvolvimento com novas funcionalidades previstas: preenchimento de RMA, novos relatórios, integrações e entrega dos módulos do <strong>CREAS</strong>.
+      </p>
+    </AlertBox>
+  </div>
+</section>

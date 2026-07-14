@@ -1,0 +1,116 @@
+---
+// Dúvidas Recorrentes — páginas 15 e 17 do PDF
+// Gráfico com dados de dúvidas + perguntas sobre segurança com respostas
+import DuvidasChart from '@/components/react/content/DuvidasChart.tsx'
+---
+
+<section
+  id="duvidas-recorrentes"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none"
+>
+  <div class="flex items-center gap-3 mb-3">
+    <div class="w-10 h-10 rounded-xl bg-rose-600 flex items-center justify-center shadow-md shadow-rose-600/25">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+    </div>
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white tracking-tight">
+      Dúvidas Recorrentes
+    </h2>
+  </div>
+
+  <div class="h-1 w-20 rounded-full bg-gradient-to-r from-rose-500 to-rose-300 mb-8" />
+
+  <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 text-base">
+    As principais dúvidas dos profissionais sobre o Prontuário SUAS, coletadas a partir da experiência de assessoramento técnico.
+  </p>
+
+  <!-- Gráfico de Dúvidas -->
+  <div class="mb-10">
+    <h3 class="text-lg font-bold text-slate-700 dark:text-slate-300 mb-4 flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+      Principais Dúvidas dos Profissionais
+    </h3>
+    <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-6 bg-white dark:bg-slate-800/50">
+      <DuvidasChart client:load />
+    </div>
+  </div>
+
+  <!-- Dúvidas sobre Segurança -->
+  <div>
+    <h3 class="text-lg font-bold text-slate-700 dark:text-slate-300 mb-4 flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Dúvidas Sobre Segurança das Informações
+    </h3>
+
+    <div class="grid gap-4">
+      <!-- Pergunta 1 -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-slate-50 to-white dark:from-slate-800/60 dark:to-slate-900/30 p-5">
+        <div class="flex items-start gap-3">
+          <span class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </span>
+          <div>
+            <h4 class="font-bold text-sm text-slate-800 dark:text-white mb-1">
+              "Tenho medo de expor dados pessoais dos usuários no sistema"
+            </h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              O sistema foi desenvolvido com <strong>controle de acesso rigoroso</strong>: cada usuário acessa apenas as informações necessárias para o desempenho de sua função, conforme o perfil de acesso definido no CADSUAS. Além disso, os dados ficam <strong>restritos ao município</strong> e às equipes autorizadas. Nenhum profissional visualiza informações de outros municípios.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pergunta 2 -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-slate-50 to-white dark:from-slate-800/60 dark:to-slate-900/30 p-5">
+        <div class="flex items-start gap-3">
+          <span class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </span>
+          <div>
+            <h4 class="font-bold text-sm text-slate-800 dark:text-white mb-1">
+              "O número do processo fica visível para todo mundo?"
+            </h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Não. O sistema possui <strong>segregação de dados</strong> — cada usuário acessa apenas os dados autorizados para sua atuação. O número do processo e demais informações sensíveis ficam restritos ao profissional responsável pelo atendimento, sua equipe e coordenação da unidade.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pergunta 3 -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-slate-50 to-white dark:from-slate-800/60 dark:to-slate-900/30 p-5">
+        <div class="flex items-start gap-3">
+          <span class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </span>
+          <div>
+            <h4 class="font-bold text-sm text-slate-800 dark:text-white mb-1">
+              "Como a LGPD se aplica?"
+            </h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              O sistema foi desenvolvido considerando os princípios da <strong>LGPD</strong>, priorizando a proteção dos dados pessoais, a necessidade de acesso e a segurança das informações. A guarda de dados de cada pessoa/indivíduo segue as diretrizes da Lei Geral de Proteção de Dados, garantindo que apenas profissionais autorizados tenham acesso aos registros.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pergunta 4 -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-slate-50 to-white dark:from-slate-800/60 dark:to-slate-900/30 p-5">
+        <div class="flex items-start gap-3">
+          <span class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </span>
+          <div>
+            <h4 class="font-bold text-sm text-slate-800 dark:text-white mb-1">
+              "Qual o nível de Segurança nos perfis de acessos?"
+            </h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Por ser uma ferramenta exclusiva para a atuação técnica no SUAS, o Prontuário Eletrônico possui <strong>regras rígidas de segurança e uso restrito</strong>. O acesso às funcionalidades varia conforme o perfil profissional: áreas críticas como as telas de planejamento e evolução do acompanhamento familiar são <strong>privativas</strong> e ficam completamente bloqueadas para usuários sem a devida atribuição técnica. Cada perfil (Coordenação, Técnico Nível Superior, Técnico Nível Médio, Gestor) possui níveis de acesso distintos e controlados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

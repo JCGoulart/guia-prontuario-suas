@@ -32,6 +32,15 @@ import RegrasOuroProntuario from '@/components/astro/capitulos/expandidas/Regras
 import ResumoPodeNaoPode from '@/components/astro/capitulos/expandidas/ResumoPodeNaoPode.astro'
 import ChecklistProntuario from '@/components/astro/capitulos/expandidas/ChecklistProntuario.astro'
 import BaseNormativaProntuario from '@/components/astro/capitulos/expandidas/BaseNormativaProntuario.astro'
+import LinhaTempoProntuario from '@/components/astro/content/LinhaTempoProntuario.astro'
+import ComparativoProntuarios from '@/components/astro/content/ComparativoProntuarios.astro'
+import SituacaoProntuario from '@/components/astro/content/SituacaoProntuario.astro'
+import FuncionalidadesProntuario from '@/components/astro/content/FuncionalidadesProntuario.astro'
+import CadastroAutenticacao from '@/components/astro/content/CadastroAutenticacao.astro'
+import DuvidasRecorrentes from '@/components/astro/content/DuvidasRecorrentes.astro'
+import ProblemasTecnicos from '@/components/astro/content/ProblemasTecnicos.astro'
+import Capacitacao from '@/components/astro/content/Capacitacao.astro'
+import ConceitosGerais from '@/components/astro/content/ConceitosGerais.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import SecaoTutorialCarousel from '@/components/astro/capitulos/SecaoTutorialCarousel.astro'
@@ -50,8 +59,22 @@ const b = BLOCK_ACCENTS
     <Expediente />
     <Sumario />
     <Apresentacao />
+
+    <LinhaTempoProntuario />
+    <ComparativoProntuarios />
+    <SituacaoProntuario />
+    <FuncionalidadesProntuario />
+
+    <ConceitosGerais />
+
     <ProfissionaisPerfis />
     <PapelProfissionais />
+
+    <!-- ============================================ -->
+    <!-- Contexto do Novo Prontuário (PDF Assessoramento) -->
+    <!-- ============================================ -->
+    <CadastroAutenticacao />
+
     <LoginSistema />
     <TermoUso />
 
@@ -1680,6 +1703,14 @@ const b = BLOCK_ACCENTS
     <ResumoPodeNaoPode />
     <ChecklistProntuario />
     <BaseNormativaProntuario />
+
+    <!-- ============================================ -->
+    <!-- Anexos e Apoio (PDF Assessoramento)         -->
+    <!-- ============================================ -->
+    <DuvidasRecorrentes />
+    <ProblemasTecnicos />
+    <Capacitacao />
+
     <RegrasOuroProntuario />
 
     <ContraCapa />

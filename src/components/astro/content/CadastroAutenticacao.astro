@@ -1,0 +1,68 @@
+---
+// Cadastro e Autenticação: Prontuário SUAS — página 9 do PDF
+// Pré-requisito para o Login — posicionado antes de LoginSistema
+import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
+---
+
+<section
+  id="cadastro-autenticacao"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none"
+>
+  <div class="flex items-center gap-3 mb-3">
+    <div class="w-10 h-10 rounded-xl bg-amber-600 flex items-center justify-center shadow-md shadow-amber-600/25">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    </div>
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white tracking-tight">
+      Cadastro e Autenticação
+    </h2>
+  </div>
+
+  <div class="h-1 w-20 rounded-full bg-gradient-to-r from-amber-500 to-amber-300 mb-8" />
+
+  <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 text-base">
+    Antes de acessar o Prontuário SUAS, é necessário realizar o cadastro no <strong>CADSUAS</strong> e autenticar-se com <strong>conta gov.br</strong>. Este fluxo é o pré-requisito essencial para o login no sistema.
+  </p>
+
+  <div class="mb-8">
+    <ProcessStepper
+      steps={[
+        {
+          number: 1,
+          title: 'Cadastro no CADSUAS',
+          description: 'A autorização de acesso ao Novo Prontuário SUAS deve ser efetuada diretamente no CADSUAS (aplicacoes.mds.gov.br/cadsuas). Os níveis de acesso estão diretamente relacionados às informações contidas no CADSUAS. O profissional deve estar obrigatoriamente inserido na aba Recursos Humanos (RH) de sua unidade de referência, com mandato ou exercício vigente.',
+          accent: 'blue',
+        },
+        {
+          number: 2,
+          title: 'Autenticação via GOV.BR',
+          description: 'O GOV.br funciona como o autenticador único de identidade do trabalhador do SUAS. O login é realizado diretamente no site Gov.br por meio de contas nível ouro ou prata. Ao comparar o CPF logado com a base de dados do CADSUAS, o sistema identifica o município, a unidade de lotação e o perfil específico do profissional.',
+          accent: 'green',
+        },
+        {
+          number: 3,
+          title: 'Acesso ao Sistema',
+          description: 'Após a autenticação, o sistema configura automaticamente as permissões na tela conforme o perfil do profissional. As funcionalidades disponíveis variam conforme o nível de acesso atribuído no CADSUAS.',
+          accent: 'slate',
+        },
+      ]}
+    />
+  </div>
+
+  <div class="rounded-xl border border-amber-200 dark:border-amber-800 bg-gradient-to-br from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800/50 p-6">
+    <div class="flex items-start gap-3">
+      <span class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+      </span>
+      <div>
+        <h4 class="font-bold text-sm text-amber-800 dark:text-amber-300">Importante</h4>
+        <p class="text-sm text-amber-700 dark:text-amber-400 mt-1 leading-relaxed">
+          O profissional deve estar obrigatoriamente inserido na aba <strong>Recursos Humanos (RH)</strong> de sua unidade de referência, e seu mandato ou exercício deve constar como <strong>vigente</strong>. Sem esse registro, o acesso ao Prontuário SUAS não será autorizado.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

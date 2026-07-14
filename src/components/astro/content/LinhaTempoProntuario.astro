@@ -1,0 +1,73 @@
+---
+// Linha do Tempo do Prontuário SUAS — página 4 do PDF
+import Timeline from '@/components/astro/content/Timeline.astro'
+---
+
+<section
+  id="linha-tempo-prontuario"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none"
+>
+  <div class="flex items-center gap-3 mb-3">
+    <div
+      class="w-10 h-10 rounded-xl flex items-center justify-center shadow-md"
+      style="background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%)"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+    </div>
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white tracking-tight">
+      Linha do Tempo do Prontuário SUAS
+    </h2>
+  </div>
+
+  <div class="h-1 w-20 rounded-full bg-gradient-to-r from-purple-500 to-purple-300 mb-8" />
+
+  <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 text-base">
+    O Prontuário SUAS percorreu um longo caminho desde seus estudos iniciais até o lançamento do Novo Prontuário Eletrônico. Conheça os marcos dessa trajetória.
+  </p>
+
+  <Timeline
+    items={[
+      {
+        title: 'Marco Inicial',
+        date: '2010',
+        description: 'Pesquisas realizadas pela SNAS (Secretaria Nacional de Assistência Social) e FIOCRUZ sobre o prontuário social.',
+        variant: 'purple',
+      },
+      {
+        title: 'Construção Coletiva',
+        date: '2011 — 2012',
+        description: 'Pactuação com CNAS, CONGEMAS e CFESS para construção conjunta do modelo de prontuário.',
+        variant: 'blue',
+      },
+      {
+        title: 'Primeiros Registros',
+        date: '2013',
+        description: 'Início do uso do prontuário físico e do Registro Familiar. Início do desenvolvimento do Prontuário Eletrônico pela DATAPREV.',
+        variant: 'blue',
+      },
+      {
+        title: 'Capacitação Nacional',
+        date: '2014 — 2015',
+        description: 'Realização de oficinas e teleconferências para capacitação dos profissionais da rede SUAS.',
+        variant: 'default',
+      },
+      {
+        title: 'Publicação da Resolução CIT',
+        date: 'Outubro 2025',
+        description: 'Resolução CIT n° 29/2025 — marco normativo que regulamenta o Novo Prontuário Eletrônico.',
+        variant: 'purple',
+      },
+      {
+        title: 'Lançamento do Novo Prontuário',
+        date: 'Dezembro 2025',
+        description: 'Abertura do Novo Prontuário Eletrônico SUAS para utilização em toda a rede socioassistencial.',
+        variant: 'green',
+      },
+    ]}
+  />
+</section>

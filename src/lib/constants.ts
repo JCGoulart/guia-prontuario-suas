@@ -42,8 +42,21 @@ export const INTRO_SECTIONS = [
   { id: 'papeis-profissionais', title: 'Profissionais do SUAS e Perfis de Acesso' },
 ]
 
+export const ASSESSORAMENTO_SECTIONS = [
+  { id: 'linha-tempo-prontuario', title: 'Linha do Tempo do Prontuário SUAS' },
+  { id: 'diferencas-prontuarios', title: 'Diferenças entre os Prontuários' },
+  { id: 'situacao-prontuario', title: 'Situação do Novo Prontuário' },
+  { id: 'funcionalidades-prontuario', title: 'Funcionalidades do Prontuário' },
+]
+
 export const FINAL_SECTIONS = [
   { id: 'contra-capa', title: 'Contra-Capa' },
+]
+
+export const APPENDIX_SECTIONS = [
+  { id: 'duvidas-recorrentes', title: 'Dúvidas Recorrentes' },
+  { id: 'problemas-tecnicos', title: 'Problemas Técnicos' },
+  { id: 'capacitacao', title: 'Capacitação' },
 ]
 
 export const BLOCKS = [

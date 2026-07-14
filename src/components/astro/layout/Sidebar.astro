@@ -1,9 +1,13 @@
 ---
-import { BLOCKS, FINAL_SECTIONS, BLOCK_ACCENTS } from '@/lib/constants'
+import { BLOCKS, FINAL_SECTIONS, BLOCK_ACCENTS, ASSESSORAMENTO_SECTIONS, APPENDIX_SECTIONS } from '@/lib/constants'
 
 const allSectionIds = [
   'capa', 'expediente', 'sumario', 'apresentacao',
+  ...ASSESSORAMENTO_SECTIONS.map((s) => s.id),
+  'conceitos-gerais',
+  'cadastro-autenticacao',
   ...BLOCKS.flatMap((b) => b.items.map((i) => i.id)),
+  ...APPENDIX_SECTIONS.map((s) => s.id),
   ...FINAL_SECTIONS.map((s) => s.id),
 ]
 
@@ -99,6 +103,12 @@ const blockNavList: Array<{
       <button data-nav="sumario" class="block w-full text-left px-3 py-2 rounded font-medium transition-all duration-200 text-xs text-slate-600 dark:text-slate-400 hover:bg-institucional-lightBlue dark:hover:bg-slate-700 hover:text-institucional-blue dark:hover:text-slate-200">Sumário</button>
       <button data-nav="apresentacao" class="block w-full text-left px-3 py-2 rounded font-medium transition-all duration-200 text-xs text-slate-600 dark:text-slate-400 hover:bg-institucional-lightBlue dark:hover:bg-slate-700 hover:text-institucional-blue dark:hover:text-slate-200">Apresentação</button>
 
+      <div class="pt-2 pb-1 px-3 text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Assessoramento</div>
+      {ASSESSORAMENTO_SECTIONS.map((s) => (
+        <button data-nav={s.id} class="block w-full text-left px-3 py-2 rounded font-medium transition-all duration-200 text-xs text-slate-600 dark:text-slate-400 hover:bg-institucional-lightBlue dark:hover:bg-slate-700 hover:text-institucional-blue dark:hover:text-slate-200">{s.title}</button>
+      ))}
+      <button data-nav="conceitos-gerais" class="block w-full text-left px-3 py-2 rounded font-medium transition-all duration-200 text-xs text-slate-600 dark:text-slate-400 hover:bg-institucional-lightBlue dark:hover:bg-slate-700 hover:text-institucional-blue dark:hover:text-slate-200">Conceitos Gerais</button>
+
       {BLOCKS.map((block) => {
         const accent = BLOCK_ACCENTS[block.accent as keyof typeof BLOCK_ACCENTS]
         return (
@@ -111,6 +121,10 @@ const blockNavList: Array<{
         )
       })}
 
+      <div class="pt-2 pb-1 px-3 text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Anexos</div>
+      {APPENDIX_SECTIONS.map((s) => (
+        <button data-nav={s.id} class="block w-full text-left px-3 py-2 rounded font-medium transition-all duration-200 text-xs text-slate-600 dark:text-slate-400 hover:bg-institucional-lightBlue dark:hover:bg-slate-700 hover:text-institucional-blue dark:hover:text-slate-200">{s.title}</button>
+      ))}
       <div class="pt-2 pb-1 px-3 text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Final</div>
       {FINAL_SECTIONS.map((s) => (
         <button data-nav={s.id} class="block w-full text-left px-3 py-2 rounded font-medium transition-all duration-200 text-xs text-slate-600 dark:text-slate-400 hover:bg-institucional-lightBlue dark:hover:bg-slate-700 hover:text-institucional-blue dark:hover:text-slate-200">{s.title}</button>

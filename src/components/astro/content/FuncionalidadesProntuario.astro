@@ -1,0 +1,104 @@
+---
+// Funcionalidades do Novo Prontuário SUAS — páginas 7 e 8 do PDF
+import FeatureCard from '@/components/astro/content/FeatureCard.astro'
+---
+
+<section
+  id="funcionalidades-prontuario"
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none"
+>
+  <div class="flex items-center gap-3 mb-3">
+    <div class="w-10 h-10 rounded-xl bg-institucional-blue flex items-center justify-center shadow-md shadow-institucional-blue/25">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>
+      </svg>
+    </div>
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white tracking-tight">
+      Funcionalidades do Novo Prontuário SUAS
+    </h2>
+  </div>
+
+  <div class="h-1 w-20 rounded-full bg-gradient-to-r from-institucional-blue to-blue-300 mb-8" />
+
+  <!-- Principais Funcionalidades -->
+  <h3 class="text-xl font-bold text-slate-700 dark:text-slate-300 mb-4 flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    Funcionalidades Principais
+  </h3>
+  <div class="grid md:grid-cols-2 gap-4 mb-10">
+    <FeatureCard
+      title="Informações Familiares"
+      description="Informações de todos os membros da família com possibilidade de inserções para um, alguns ou todos os membros."
+      icon="Users"
+      accent="blue"
+    />
+    <FeatureCard
+      title="Migração de Informações"
+      description="Migração de informações com mudança de composição familiar, garantindo a continuidade do histórico de atendimento."
+      icon="ShieldCheck"
+      accent="green"
+    />
+    <FeatureCard
+      title="Guarda de Dados LGPD"
+      description="Guarda de informações de cada pessoa/indivíduo para fins da Lei Geral de Proteção de Dados (LGPD)."
+      icon="Shield"
+      accent="purple"
+    />
+    <FeatureCard
+      title="Acesso Nacional"
+      description="Acesso a informações básicas em qualquer lugar do Brasil, permitindo consulta independentemente do município de origem."
+      icon="Target"
+      accent="blue"
+    />
+  </div>
+
+  <!-- Novas Funcionalidades -->
+  <h3 class="text-xl font-bold text-slate-700 dark:text-slate-300 mb-4 flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/></svg>
+    Novas Funcionalidades
+  </h3>
+  <div class="grid md:grid-cols-2 gap-4">
+    <FeatureCard
+      title="Bolsa Família"
+      description="Informações sobre o Programa Bolsa Família diretamente integradas ao prontuário da família."
+      icon="Heart"
+      accent="blue"
+    />
+    <FeatureCard
+      title="Integração CadSUAS"
+      description="Integração automática com o Cadastro Único (CadSUAS) para consulta e atualização de dados cadastrais."
+      icon="BookOpen"
+      accent="green"
+    />
+    <FeatureCard
+      title="Pendências CadÚnico"
+      description="Identificação de pendências da família e da pessoa no Cadastro Único, facilitando a regularização."
+      icon="AlertBox"
+      accent="amber"
+    />
+    <FeatureCard
+      title="Formulário de Encaminhamentos"
+      description="Impressão dos encaminhamentos com formulário padronizado para a rede setorial."
+      icon="TrendingUp"
+      accent="blue"
+    />
+    <FeatureCard
+      title="Valores Recebidos"
+      description="Consulta de valores recebidos por programas sociais, auxiliando na análise da situação socioeconômica."
+      icon="BarChart3"
+      accent="green"
+    />
+    <FeatureCard
+      title="Atendimentos Coletivos"
+      description="Registro de atendimentos coletivos realizados pela equipe técnica da unidade."
+      icon="Users"
+      accent="purple"
+    />
+    <FeatureCard
+      title="Migração de Prontuário"
+      description="Migração do prontuário entre unidades quando a família muda de território, garantindo continuidade do atendimento."
+      icon="ShieldCheck"
+      accent="amber"
+    />
+  </div>
+</section>
