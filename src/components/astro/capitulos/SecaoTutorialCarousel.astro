@@ -1,0 +1,280 @@
+---
+// Componente para seções de tutorial com múltiplos screenshots em carrossel
+import type { CarouselPage } from '@/types'
+
+export interface Props {
+  id?: string
+  titulo: string
+  descricao?: string
+  paginas: CarouselPage[]
+  observacao?: string
+}
+
+const { id, titulo, descricao, paginas, observacao } = Astro.props
+const totalPages = paginas.length
+---
+
+<section
+  id={id || titulo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}
+  class="animate-fade-in bg-white dark:bg-slate-800 shadow-md rounded-xl p-6 md:p-10 print:shadow-none print:rounded-none"
+  data-carousel-root
+>
+  <!-- Cabeçalho -->
+  <div class="mb-6">
+    <div class="flex items-center gap-2 mb-1">
+      <div class="w-1.5 h-1.5 rounded-full bg-institucional-blue flex-shrink-0"></div>
+      <span class="text-xs font-bold text-institucional-blue uppercase tracking-wider">Manual de uso</span>
+    </div>
+    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-1">{titulo}</h3>
+
+    <!-- Navegação de páginas no topo -->
+    <div class="flex items-center gap-3 mb-3">
+      <button data-carousel-prev class="p-1.5 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-500 dark:text-slate-400 transition-colors disabled:opacity-30 disabled:cursor-not-allowed" aria-label="Página anterior">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <span data-carousel-counter class="text-sm font-medium text-slate-500 dark:text-slate-400 min-w-[7rem] text-center">Página <span data-carousel-current>1</span> de {totalPages}</span>
+      <button data-carousel-next class="p-1.5 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-500 dark:text-slate-400 transition-colors disabled:opacity-30 disabled:cursor-not-allowed" aria-label="Próxima página">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    {descricao && <p class="text-sm text-slate-500 dark:text-slate-400 max-w-3xl">{descricao}</p>}
+  </div>
+
+  <!-- Corpo: grid com texto à esquerda e carrossel à direita -->
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6 lg:gap-8 lg:items-start">
+    <!-- Coluna de texto -->
+    <div class="texto-descritivo order-2 lg:order-1">
+      <div id={`${id || 'carousel'}-annotations`}>
+        {paginas.map((pagina, idx) => (
+          <div data-carousel-annotations={idx} class:list={["space-y-4", { "hidden": idx !== 0 }]}>
+            <!-- Subtítulo da página -->
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded">p. {pagina.paginaFisica}</span>
+              <h4 class="text-sm font-semibold text-slate-700 dark:text-slate-300">{pagina.tituloPagina}</h4>
+            </div>
+
+            <!-- Anotações numeradas -->
+            <ol class="anotacoes space-y-3 not-prose list-none pl-0">
+              {pagina.anotacoes.map((a) => (
+                <li class="flex items-start gap-3 group">
+                  <span class="numero-balao flex-shrink-0">{a.numero}</span>
+                  <span class={`text-sm leading-relaxed ${a.destaque ? 'text-slate-800 dark:text-white font-medium' : 'text-slate-600 dark:text-slate-400'}`} set:html={a.texto} />
+                </li>
+              ))}
+            </ol>
+
+            <!-- Texto explicativo -->
+            {pagina.textoExplicativo && (
+              <div class="mt-4 p-4 bg-slate-50 dark:bg-slate-700/30 rounded-lg border border-slate-200 dark:border-slate-600">
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{pagina.textoExplicativo}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {observacao && (
+        <aside class="mt-4 p-3 bg-institucional-lightBlue dark:bg-slate-700/50 rounded-lg border border-institucional-blue/10">
+          <p class="text-xs text-slate-500 dark:text-slate-400">
+            <strong class="text-institucional-blue">Observação:</strong> {observacao}
+          </p>
+        </aside>
+      )}
+    </div>
+
+    <!-- Coluna do carrossel de screenshots -->
+    <div class="screenshot-container order-1 lg:order-2">
+      <!-- Imagens do carrossel -->
+      <div class="relative overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-900">
+        {paginas.map((pagina, idx) => (
+          <div data-carousel-slide={idx} class:list={["transition-opacity duration-300", { "hidden opacity-0": idx !== 0, "opacity-100": idx === 0 }]}>
+            <div class="group cursor-zoom-in relative max-h-[420px] overflow-y-auto" data-carousel-trigger data-carousel-modal-idx={idx}>
+              <img
+                src={`${import.meta.env.BASE_URL}${pagina.screenshotSrc.replace(/^\//, '')}`}
+                alt={`Tela do sistema: ${pagina.tituloPagina}`}
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                class="w-full h-auto"
+              />
+              <!-- Barra "Clique para ampliar" -->
+              <div class="sticky bottom-0 left-0 right-0 flex items-center justify-center gap-1.5 py-1.5 bg-gradient-to-t from-black/60 via-black/40 to-transparent pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                <span class="text-xs text-white font-medium">Clique para ampliar</span>
+              </div>
+              <span class="pagina-indicator">p. {pagina.paginaFisica}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Dots de navegação -->
+      <div class="flex items-center justify-center gap-1.5 mt-3" data-carousel-dots>
+        {paginas.map((_, idx) => (
+          <button
+            data-carousel-dot={idx}
+            class:list={["w-2.5 h-2.5 rounded-full transition-all", idx === 0 ? "bg-institucional-blue scale-110" : "bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"]}
+            aria-label={`Ir para página ${idx + 1}`}
+          ></button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal de imagem ampliada com carrossel -->
+<div id="carousel-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8" role="dialog" aria-modal="true" aria-label="Visualização ampliada da tela do sistema">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" id="carousel-modal-backdrop"></div>
+  <button id="carousel-modal-close" class="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Fechar">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <!-- Navegação modal -->
+  <button id="carousel-modal-prev" class="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed" aria-label="Página anterior">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button id="carousel-modal-next" class="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed" aria-label="Próxima página">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <span id="carousel-modal-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-sm text-white/80 bg-black/40 px-3 py-1 rounded-full">1 / {totalPages}</span>
+  <div class="relative max-w-[95vw] max-h-[90vh] overflow-auto rounded-lg shadow-2xl">
+    <img id="carousel-modal-img" src="" alt="" class="w-auto h-auto max-w-none" />
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    const root = document.querySelector('[data-carousel-root]')
+    if (!root) return
+
+    const slides = root.querySelectorAll('[data-carousel-slide]')
+    const annotationBlocks = document.querySelectorAll('[data-carousel-annotations]')
+    const dots = root.querySelectorAll('[data-carousel-dot]')
+    const prevBtn = root.querySelector('[data-carousel-prev]')
+    const nextBtn = root.querySelector('[data-carousel-next]')
+    const currentSpan = root.querySelector('[data-carousel-current]')
+
+    // Modal elements
+    const modal = document.getElementById('carousel-modal')
+    const modalImg = document.getElementById('carousel-modal-img')
+    const modalBackdrop = document.getElementById('carousel-modal-backdrop')
+    const modalClose = document.getElementById('carousel-modal-close')
+    const modalPrev = document.getElementById('carousel-modal-prev')
+    const modalNext = document.getElementById('carousel-modal-next')
+    const modalCounter = document.getElementById('carousel-modal-counter')
+
+    const totalSlides = slides.length
+    let currentIndex = 0
+    let modalIndex = 0
+
+    function goToSlide(index) {
+      if (index < 0 || index >= totalSlides) return
+      currentIndex = index
+
+      // Update slides
+      slides.forEach((s, i) => {
+        if (i === index) {
+          s.classList.remove('hidden', 'opacity-0')
+          s.classList.add('opacity-100')
+        } else {
+          s.classList.add('hidden', 'opacity-0')
+          s.classList.remove('opacity-100')
+        }
+      })
+
+      // Update annotations
+      annotationBlocks.forEach((b, i) => {
+        if (i === index) b.classList.remove('hidden')
+        else b.classList.add('hidden')
+      })
+
+      // Update dots
+      dots.forEach((d, i) => {
+        if (i === index) {
+          d.classList.add('bg-institucional-blue', 'scale-110')
+          d.classList.remove('bg-slate-300', 'dark:bg-slate-600', 'hover:bg-slate-400', 'dark:hover:bg-slate-500')
+        } else {
+          d.classList.remove('bg-institucional-blue', 'scale-110')
+          d.classList.add('bg-slate-300', 'dark:bg-slate-600', 'hover:bg-slate-400', 'dark:hover:bg-slate-500')
+        }
+      })
+
+      // Update counter
+      if (currentSpan) currentSpan.textContent = String(index + 1)
+
+      // Update button states
+      if (prevBtn) prevBtn.disabled = index === 0
+      if (nextBtn) nextBtn.disabled = index === totalSlides - 1
+    }
+
+    function openModal(startIndex) {
+      modalIndex = startIndex
+      updateModalImage()
+      modal.classList.remove('hidden')
+      modal.classList.add('flex')
+      document.body.style.overflow = 'hidden'
+      updateModalButtons()
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden')
+      modal.classList.remove('flex')
+      document.body.style.overflow = ''
+    }
+
+    function updateModalImage() {
+      const slide = slides[modalIndex]
+      const img = slide.querySelector('img')
+      if (img && modalImg) modalImg.src = img.src
+      if (modalCounter) modalCounter.textContent = `${modalIndex + 1} / ${totalSlides}`
+    }
+
+    function updateModalButtons() {
+      if (modalPrev) modalPrev.disabled = modalIndex === 0
+      if (modalNext) modalNext.disabled = modalIndex === totalSlides - 1
+    }
+
+    function modalPrevSlide() {
+      if (modalIndex > 0) {
+        modalIndex--
+        updateModalImage()
+        updateModalButtons()
+      }
+    }
+
+    function modalNextSlide() {
+      if (modalIndex < totalSlides - 1) {
+        modalIndex++
+        updateModalImage()
+        updateModalButtons()
+      }
+    }
+
+    // Inline carousel events
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1))
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1))
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goToSlide(i)))
+
+    // Modal trigger: attach to screenshot containers inside carousel
+    root.querySelectorAll('[data-carousel-trigger]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        const idx = parseInt(el.getAttribute('data-carousel-modal-idx') || '0', 10)
+        openModal(idx)
+      })
+    })
+
+    // Modal events
+    if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal)
+    if (modalClose) modalClose.addEventListener('click', closeModal)
+    if (modalPrev) modalPrev.addEventListener('click', modalPrevSlide)
+    if (modalNext) modalNext.addEventListener('click', modalNextSlide)
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      const modalOpen = modal && !modal.classList.contains('hidden')
+      if (modalOpen) {
+        if (e.key === 'Escape') closeModal()
+        if (e.key === 'ArrowLeft') modalPrevSlide()
+        if (e.key === 'ArrowRight') modalNextSlide()
+      }
+    })
+  })()
+</script>

@@ -1,10 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import Sidebar from '@/components/astro/layout/Sidebar.astro'
-import ReadingModeToggle from '@/components/astro/layout/ReadingModeToggle.astro'
 import ScrollToTop from '@/components/react/layout/ScrollToTop'
 import BlockAccordion from '@/components/react/layout/BlockAccordion'
-import BookViewport from '@/components/react/layout/BookViewport'
 import { WelcomeModal } from '@/components/react/layout/WelcomeModal'
 import { BLOCK_ACCENTS } from '@/lib/constants'
 
@@ -36,16 +34,15 @@ import ChecklistProntuario from '@/components/astro/capitulos/expandidas/Checkli
 import BaseNormativaProntuario from '@/components/astro/capitulos/expandidas/BaseNormativaProntuario.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
+import SecaoTutorialCarousel from '@/components/astro/capitulos/SecaoTutorialCarousel.astro'
 
 const b = BLOCK_ACCENTS
 ---
 
 <BaseLayout>
   <Sidebar />
-  <ReadingModeToggle />
   <ScrollToTop client:idle />
   <BlockAccordion client:idle />
-  <BookViewport client:load />
   <WelcomeModal client:load />
 
   <div id="main-content" data-pagefind-body class="max-w-4xl mx-auto my-8 px-4 md:px-8 space-y-4 md:space-y-6">
@@ -68,6 +65,80 @@ const b = BLOCK_ACCENTS
     <div data-block-group="atendimento-individual">
       <SectionHeader title="Bloco 1 — Atendimento Individual e Familiar" accent="blue" />
       <div data-block-content="atendimento-individual" class="space-y-6">
+        <!-- Realizar Atendimento — Carrossel de 5 páginas (17–21) -->
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorialCarousel
+            id="realizar-atendimento"
+            titulo="Realizar Atendimento"
+            descricao="Fluxo completo de acesso ao módulo de atendimento: da seleção da unidade e busca do cadastro até os aspectos globais de registro de observações e regras do sistema."
+            observacao="Caso o perfil possua apenas uma unidade de atendimento, a etapa de seleção de unidade não será exibida e o usuário acessará diretamente a busca do cadastro."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-017.webp",
+                paginaFisica: 17,
+                tituloPagina: "Acesso ao Módulo e Consulta Simples",
+                anotacoes: [
+                  { numero: 1, texto: 'Menu <strong>Prontuário</strong> — acione para acessar o módulo de atendimento.' },
+                  { numero: 2, texto: 'Funcionalidade <strong>Selecionar Unidade</strong> — lista as unidades atribuídas ao usuário conforme perfil no CadSUAS.' },
+                  { numero: 3, texto: 'Opção <strong>Pesquisar</strong> — refine a lista de unidades informando os parâmetros desejados.' },
+                  { numero: 4, texto: '<strong>Registro na lista</strong> — acione para selecionar a unidade responsável pelo atendimento.' },
+                  { numero: 5, texto: 'Opção <strong>Pesquisar</strong> — na Consulta Simples, informe o CPF da pessoa e acione para localizar o cadastro.' },
+                ],
+                textoExplicativo: "Para iniciar o atendimento, o profissional aciona o menu Prontuário. Caso possua mais de uma unidade vinculada ao perfil, o sistema exibe a tela de seleção onde é possível filtrar por parâmetros e escolher a unidade desejada. Em seguida, na Consulta Simples, basta informar o CPF da pessoa atendida e pesquisar — o sistema localiza o cadastro único automaticamente.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-018.webp",
+                paginaFisica: 18,
+                tituloPagina: "Consulta Avançada",
+                anotacoes: [
+                  { numero: 1, texto: 'Campo <strong>Nome</strong> — informe o nome completo da pessoa atendida.' },
+                  { numero: 2, texto: 'Campo <strong>Data de Nascimento</strong> — informe a data de nascimento para refinar a busca.' },
+                  { numero: 3, texto: 'Campo <strong>Nome da Mãe</strong> — informe o nome da mãe da pessoa atendida.' },
+                  { numero: 4, texto: 'Opção <strong>Pesquisar</strong> — acione para localizar o cadastro com os dados informados na consulta avançada.' },
+                ],
+                textoExplicativo: "Quando o CPF não está disponível, utiliza-se a Consulta Avançada como via alternativa. Preencha os campos de nome, data de nascimento e nome da mãe para localizar o cadastro único da pessoa. Esse recurso garante que nenhum cidadão deixe de ser atendido por falta de documentação, assegurando o acesso universal aos serviços socioassistenciais.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-019.webp",
+                paginaFisica: 19,
+                tituloPagina: "Registro de Observações — Incluir",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Incluir Observação</strong> — acione para abrir a janela de cadastro de uma nova observação.' },
+                  { numero: 2, texto: 'Opção <strong>Visualizar Observação</strong> — exibe os dados da observação em modo leitura.' },
+                  { numero: 3, texto: 'Opção <strong>Alterar Observação</strong> — permite editar uma observação existente.' },
+                  { numero: 4, texto: 'Opção <strong>Excluir Observação</strong> — remove uma observação após confirmação.' },
+                  { numero: 5, texto: 'Opção <strong>Incluir</strong> — salva o registro da observação e atualiza a lista.' },
+                ],
+                textoExplicativo: "Todos os blocos do Prontuário SUAS permitem o registro de observações textuais. Ao acionar 'Incluir observação', o sistema abre uma janela com os campos Data da Ação e Observação (campo livre para texto). Após preenchimento, a opção 'Incluir' salva o registro, fecha a janela e atualiza a lista de observações com a mensagem de confirmação.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-020.webp",
+                paginaFisica: 20,
+                tituloPagina: "Registro de Observações — Gerenciar",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Visualizar Observação</strong> — janela com Data da Ação, texto da observação e botão Fechar.' },
+                  { numero: 2, texto: 'Opção <strong>Alterar Observação</strong> — habilita os campos para edição; salve com o botão Alterar.' },
+                  { numero: 3, texto: 'Opção <strong>Excluir Observação</strong> — remove permanentemente o registro após confirmação.' },
+                  { numero: 4, texto: 'Botão <strong>Alterar</strong> — confirma as edições realizadas na observação.' },
+                ],
+                textoExplicativo: "Para gerenciar observações já registradas: a opção 'Visualizar' exibe os dados em modo somente leitura; 'Alterar' habilita a edição dos campos (confirmada pelo botão Alterar); 'Excluir' remove o registro após confirmação do sistema. Atenção: estas funcionalidades estão disponíveis apenas para a equipe técnica de nível superior e o coordenador do CRAS.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-021.webp",
+                paginaFisica: 21,
+                tituloPagina: "Aspectos Globais do Módulo",
+                anotacoes: [
+                  { numero: 1, texto: 'Botão <strong>Expandir Todos</strong> — expande simultaneamente todos os blocos de atendimento; clique novamente para recolher.' },
+                  { numero: 2, texto: '<strong>Limite de Caracteres</strong> — campos de observação aceitam até 3.000 caracteres; demais campos abertos, até 2.000.' },
+                  { numero: 3, texto: '<strong>Janela Temporal</strong> — inserções e alterações permitidas apenas em até 30 dias após o registro.' },
+                  { numero: 4, texto: '<strong>Registro de Pessoa e Família</strong> — benefícios podem ser direcionados à família como um todo ou a um membro específico.' },
+                ],
+                textoExplicativo: "O módulo Prontuário possui regras globais importantes: os campos de observação aceitam até 3.000 caracteres (recomenda-se fracionar registros muito longos) e os demais campos abertos até 2.000. Inserções e alterações só são permitidas em uma janela de 30 dias — após esse prazo, o sistema bloqueia edições. O botão 'Expandir todos'/'Recolher todos' facilita a navegação visual pelos blocos. Além disso, o sistema distingue benefícios voltados à família (moradia, renda) daqueles destinados a um membro específico (idoso, gestante, pessoa com deficiência).",
+              },
+            ]}
+          />
+        </section>
+
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
           <SecaoTutorial id="informacoes-prontuario" titulo="Informações do Prontuário" screenshotSrc="/assets/screenshots/page-022.webp" paginaFisica={22}
             anotacoes={[

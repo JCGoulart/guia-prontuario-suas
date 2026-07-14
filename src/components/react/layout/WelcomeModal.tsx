@@ -96,8 +96,6 @@ export function WelcomeModal({ forceShow = false }: WelcomeModalProps) {
   // Show logic — não abre se já estiver em modo livro
   useEffect(() => {
     if (!mounted) return
-    // Não abre o modal se o modo livro já está ativo
-    if (document.body.getAttribute('data-reading-mode') === 'book') return
     const seen = localStorage.getItem(WELCOME_CONFIG.localStorageKey)
     if (forceShow || !seen) {
       const timer = setTimeout(() => {

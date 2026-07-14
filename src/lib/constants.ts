@@ -52,6 +52,7 @@ export const BLOCKS = [
     title: 'Bloco 1 — Atendimento Individual e Familiar',
     accent: 'gestao',
     items: [
+      { id: 'realizar-atendimento', title: 'Realizar Atendimento' },
       { id: 'informacoes-prontuario', title: 'Informações do Prontuário' },
       { id: 'excluir-prontuario', title: 'Excluir Prontuário' },
       { id: 'informacoes-familia', title: 'Informações da Família' },

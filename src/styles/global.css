@@ -204,6 +204,7 @@
   .text-balance { text-wrap: balance; }
 }
 
+
 /* ─── Balões numerados ─── */
 .numero-balao {
   display: inline-flex;
@@ -260,7 +261,7 @@
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   html, body { background: white !important; color: #1e293b !important; font-size: 11pt; line-height: 1.5; }
   .no-print, #sidebar-root, #sidebar-aside, #sidebar-open-btn, #sidebar-close-btn,
-  #sidebar-overlay, #sidebar-bottom-bar, #theme-toggle, #print-btn, #reading-mode-toggle,
+  #sidebar-overlay, #sidebar-bottom-bar, #theme-toggle,
   #top-progress, #toggle-all-blocks, .fixed, .sticky { display: none !important; }
   .animate-on-scroll, .animate-scale, .animate-slide-left, .animate-slide-right, .animate-slide-down {
     opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important;

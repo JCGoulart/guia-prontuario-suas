@@ -5,3 +5,5 @@ dist/
 .omo/run-continuation/
 *.log
 .DS_Store
+.omo/
+.reasonix/

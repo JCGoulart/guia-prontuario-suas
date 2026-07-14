@@ -19,6 +19,14 @@ export interface Anotacao {
   destaque?: boolean
 }
 
+export interface CarouselPage {
+  screenshotSrc: string
+  paginaFisica: number
+  tituloPagina: string
+  anotacoes: Anotacao[]
+  textoExplicativo?: string
+}
+
 export interface TutorialProps {
   screenshotSrc: string
   titulo: string

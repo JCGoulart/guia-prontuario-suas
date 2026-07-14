@@ -6,7 +6,6 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build && npx pagefind --site dist",
-    "postinstall": "node scripts/patch-pageflip.js",
     "preview": "astro preview"
   },
   "dependencies": {
@@ -21,7 +20,6 @@
     "lucide-react": "^0.400.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-pageflip": "^2.0.3",
     "tailwind-merge": "^2.2.0",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.9.3"
