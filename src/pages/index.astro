@@ -166,6 +166,55 @@ const b = BLOCK_ACCENTS
         </section>
 
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorialCarousel
+            id="identificacao-referencia"
+            titulo="Identificação da Pessoa de Referência e Endereço da Família"
+            descricao="Dados pessoais, documentos de identificação e endereço completo da família, oriundos do Cadastro Único, exibidos no prontuário para consulta."
+            observacao="As informações são apenas para consulta, não sendo possível alterá-las por meio do Prontuário Eletrônico."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-027.webp",
+                paginaFisica: 27,
+                tituloPagina: "Identificação e Composição Familiar",
+                anotacoes: [
+                  { numero: 1, texto: 'Agrupamento <strong>Identificação da Pessoa de Referência</strong> — nome, grau de parentesco e dados cadastrais.' },
+                  { numero: 2, texto: '<strong>Nome</strong> — campo que informa o nome da pessoa titular do prontuário.' },
+                  { numero: 3, texto: '<strong>Grau de Parentesco</strong> — RF, Cônjuge, Filho(a), Enteado(a), Neto(a), Pai/Mãe, Sogro(a), Irmão(ã), Genro/Nora, Outro parente, Não parente.' },
+                  { numero: 4, texto: '<strong>Situação Cadastral</strong> e <strong>Data de Nascimento</strong> — informações do Cadastro Único.' },
+                  { numero: 5, texto: '<strong>Nome da Mãe</strong> — campo de identificação complementar da pessoa.' },
+                ],
+                textoExplicativo: "O agrupamento Identificação da pessoa de referência e endereço da família exibe os dados pessoais da pessoa titular do prontuário, incluindo nome, grau de parentesco com a Referência Familiar, situação cadastral, data de nascimento e nome da mãe. Todas as informações são oriundas do Cadastro Único e exibidas apenas para consulta.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-028.webp",
+                paginaFisica: 28,
+                tituloPagina: "Dados Pessoais",
+                anotacoes: [
+                  { numero: 1, texto: 'Funcionalidade <strong>Dados Pessoais</strong> — CPF, NIS e documentos de identificação da pessoa.' },
+                  { numero: 2, texto: '<strong>CPF</strong> — com ícone <strong>Copiar</strong> para facilitar o registro.' },
+                  { numero: 3, texto: '<strong>NIS</strong> — Número de Identificação Social da pessoa.' },
+                  { numero: 4, texto: '<strong>RG</strong>, <strong>Data de Emissão</strong>, <strong>Órgão</strong> e <strong>UF</strong> — dados completos do Registro Geral.' },
+                ],
+                textoExplicativo: "A seção Dados Pessoais concentra os documentos de identificação da pessoa: CPF (com opção de cópia rápida), NIS, RG, data de emissão, órgão expedidor e UF. Esses dados são fundamentais para a correta identificação do usuário nos sistemas da Rede SUAS.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-029.webp",
+                paginaFisica: 29,
+                tituloPagina: "Dados do Endereço",
+                anotacoes: [
+                  { numero: 1, texto: 'Funcionalidade <strong>Dados do Endereço</strong> — endereço completo da residência familiar.' },
+                  { numero: 2, texto: '<strong>Endereço</strong>, <strong>Bairro</strong>, <strong>CEP</strong> e <strong>Município/UF</strong> — localização da residência.' },
+                  { numero: 3, texto: '<strong>Ponto de Referência</strong> — informação complementar de localização.' },
+                  { numero: 4, texto: '<strong>Localização do Domicílio</strong> — indica se a residência está em área urbana ou rural.' },
+                  { numero: 5, texto: '<strong>Abrigo</strong> e <strong>Tipo</strong> — informações sobre a natureza do domicílio.' },
+                ],
+                textoExplicativo: "A seção Dados do Endereço apresenta a localização completa da residência da família, incluindo endereço, bairro, CEP, município, ponto de referência, tipo de localização (urbana ou rural) e informações sobre abrigo. Estas informações são provenientes do Cadastro Único e exibidas apenas para consulta no Prontuário Eletrônico.",
+              },
+            ]}
+          />
+        </section>
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
           <SecaoTutorial id="informacoes-familia" titulo="Informações da Família" screenshotSrc="/assets/screenshots/page-030.webp" paginaFisica={30}
             anotacoes={[
               { numero: 7, texto: 'Agrupamento <strong>Informações da Família</strong> — dados cadastrais do Cadastro Único.' },
@@ -180,38 +229,231 @@ const b = BLOCK_ACCENTS
         </section>
 
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="composicao-familiar" titulo="Composição Familiar" screenshotSrc="/assets/screenshots/page-031.webp" paginaFisica={31}
-            anotacoes={[
-              { numero: 8, texto: 'Agrupamento <strong>Composição Familiar</strong> — membros do núcleo familiar.' },
-              { numero: 9, texto: '<strong>Nome</strong> do membro da composição.' },
-              { numero: 10, texto: '<strong>Situação Cadastral</strong> do membro (Cadastrado, Excluído, etc.).' },
-              { numero: 11, texto: '<strong>CPF</strong> e <strong>NIS</strong> do membro.' },
-              { numero: 12, texto: '<strong>Sexo</strong> e <strong>Cor/Raça</strong>.' },
-              { numero: 13, texto: '<strong>Data de Nascimento</strong>.' },
-              { numero: 14, texto: '<strong>Ocorrências e Pendências</strong> — expande informações quando disponível.' },
+          <SecaoTutorialCarousel
+            id="composicao-familiar"
+            titulo="Composição Familiar"
+            descricao="Consulta ao perfil etário do grupo familiar e às especificidades sociais, étnicas e culturais da família registradas no Cadastro Único."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-040.webp",
+                paginaFisica: 40,
+                tituloPagina: "Perfil Etário e Especificidades",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Composição Familiar</strong> — perfil etário do grupo familiar, especificidades sociais, étnicas e culturais.' },
+                  { numero: 2, texto: '<strong>Perfil etário do grupo familiar</strong> — quantidade de pessoas por faixa etária e total da família.' },
+                  { numero: 3, texto: '<strong>Especificidades sociais, étnicas ou culturais</strong> — Família indígena, quilombola, grupos tradicionais, situação de rua.' },
+                  { numero: 4, texto: 'Campos <strong>Família indígena</strong>, <strong>Povo indígena</strong>, <strong>Terra/reserva indígena</strong> — identificação étnica.' },
+                ],
+                textoExplicativo: "O bloco Composição Familiar apresenta duas seções principais: o perfil etário, que mostra a distribuição dos membros por faixa etária, e as especificidades sociais, étnicas e culturais, que identificam se a família pertence a povos indígenas, comunidades quilombolas, grupos tradicionais ou se encontra em situação de rua.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-041.webp",
+                paginaFisica: 41,
+                tituloPagina: "Observações da Composição Familiar",
+                anotacoes: [
+                  { numero: 1, texto: 'Seção <strong>Observações da composição familiar</strong> — campo para registro de informações complementares.' },
+                  { numero: 2, texto: 'Ícone para <strong>retrair ou reexibir</strong> as informações do bloco.' },
+                  { numero: 3, texto: 'Para mais informações, consulte a página 19 sobre registro de observações.' },
+                ],
+                textoExplicativo: "A seção de observações permite que o profissional registre informações complementares sobre a composição familiar. Utilize o ícone de expandir/recolher para controlar a visualização do bloco.",
+              },
             ]}
           />
         </section>
 
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="forma-ingresso" titulo="Forma de Ingresso e Motivo do Atendimento" screenshotSrc="/assets/screenshots/page-032.webp" paginaFisica={32}
-            anotacoes={[
-              { numero: 1, texto: 'Bloco <strong>Forma de Ingresso</strong> — forma de acesso da pessoa na unidade CRAS.' },
-              { numero: 2, texto: '<strong>Data da Ação</strong> — data do atendimento.' },
-              { numero: 3, texto: '<strong>Forma de Ingresso</strong> — como a pessoa acessou a unidade.' },
-              { numero: 4, texto: '<strong>Unidade</strong> — nome da unidade.' },
-              { numero: 5, texto: 'Coluna <strong>Ações</strong> — ícone para visualizar registro.' },
+          <SecaoTutorialCarousel
+            id="forma-ingresso"
+            titulo="Forma de Ingresso e Motivo do Atendimento"
+            descricao="Fluxo completo de registro da forma de ingresso da pessoa/família na unidade CRAS: cadastro, visualização, edição e exclusão dos registros de primeiro atendimento."
+            observacao="O registro da forma de ingresso subsidia o planejamento do trabalho social e permite identificar as principais portas de entrada da população no CRAS."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-032.webp",
+                paginaFisica: 32,
+                tituloPagina: "Lista de Registros de Ingresso",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Forma de Ingresso</strong> — forma de acesso da pessoa na unidade CRAS.' },
+                  { numero: 2, texto: '<strong>Data da Ação</strong> — coluna com a data em que a pessoa buscou atendimento.' },
+                  { numero: 3, texto: '<strong>Forma de Ingresso</strong> — coluna com a forma como a pessoa acessou a unidade.' },
+                  { numero: 4, texto: '<strong>Unidade</strong> — nome da unidade onde o atendimento foi realizado.' },
+                  { numero: 5, texto: 'Coluna <strong>Ações</strong> — ícone para visualizar o registro completo.' },
+                ],
+                textoExplicativo: "O bloco Forma de Ingresso apresenta a lista de registros de como a pessoa/família acessou a unidade CRAS. Cada registro contém a data da ação, a forma de ingresso, a unidade de atendimento e ações disponíveis. É o ponto de partida para registrar, visualizar, alterar ou excluir formas de ingresso.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-033.webp",
+                paginaFisica: 33,
+                tituloPagina: "Incluir Forma de Ingresso",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Incluir Forma de Ingresso</strong> — acione para adicionar um novo registro.' },
+                  { numero: 2, texto: '<strong>Pessoa(s)</strong> — campo com o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 3, texto: '<strong>Data do Atendimento</strong> e <strong>N.º do Prontuário Físico</strong> — informações do registro.' },
+                  { numero: 4, texto: '<strong>Forma de acesso</strong> — campo para selecionar como a família acessou a unidade.' },
+                  { numero: 5, texto: '<strong>Razões que motivaram</strong> — informações adicionais sobre o primeiro atendimento.' },
+                  { numero: 6, texto: 'Opção <strong>Incluir</strong> — salva o registro e atualiza a lista.' },
+                ],
+                textoExplicativo: "Para adicionar um novo registro de forma de ingresso, o profissional aciona 'Incluir forma de ingresso' e preenche os campos: pessoa(s) atendida(s), data do atendimento, número do prontuário físico, forma de acesso à unidade e razões que motivaram o primeiro atendimento. A opção 'Incluir' salva e atualiza a lista com a mensagem de confirmação.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-035.webp",
+                paginaFisica: 35,
+                tituloPagina: "Visualizar Registro",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Visualizar Forma de Ingresso</strong> — exibe o registro em modo leitura.' },
+                  { numero: 2, texto: '<strong>Pessoa(s)</strong> — nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 3, texto: '<strong>Data do Atendimento</strong> e <strong>Prontuário Físico</strong> — dados do registro.' },
+                  { numero: 4, texto: '<strong>Forma de Ingresso</strong> e <strong>Razões</strong> — informações completas do atendimento.' },
+                  { numero: 5, texto: 'Opção <strong>Alterar</strong> — permite editar o registro a partir da visualização.' },
+                ],
+                textoExplicativo: "A opção 'Visualizar' exibe os detalhes do registro de forma de ingresso em modo somente leitura. O profissional pode consultar os dados completos do atendimento, incluindo as razões que motivaram o primeiro contato com a unidade, e a partir da visualização pode optar por alterar o registro.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-037.webp",
+                paginaFisica: 37,
+                tituloPagina: "Alterar Forma de Ingresso",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Alterar Forma de Ingresso</strong> — habilita os campos para edição.' },
+                  { numero: 2, texto: '<strong>Campos editáveis</strong> — pessoa(s), data, prontuário, forma de ingresso e razões.' },
+                  { numero: 3, texto: 'Campo <strong>Forma de acesso</strong> — lista com todas as alternativas de ingresso disponíveis.' },
+                  { numero: 4, texto: 'Opção <strong>Alterar</strong> — salva as alterações realizadas no registro.' },
+                ],
+                textoExplicativo: "Para editar um registro existente, o profissional aciona 'Alterar forma de ingresso', que habilita os campos para edição. Após realizar os ajustes necessários — como corrigir a data, a forma de ingresso ou complementar as razões — a opção 'Alterar' salva as modificações e o sistema exibe a mensagem de confirmação.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-038.webp",
+                paginaFisica: 38,
+                tituloPagina: "Opções de Forma de Ingresso",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Por demanda espontânea</strong> — pessoa procurou a unidade por iniciativa própria.' },
+                  { numero: 2, texto: '<strong>Busca Ativa</strong> — contato realizado pela equipe da unidade no território.' },
+                  { numero: 3, texto: '<strong>Encaminhamentos</strong> — PSB, PSE, Saúde, Educação e outras políticas setoriais.' },
+                  { numero: 4, texto: '<strong>Conselho Tutelar</strong>, <strong>Poder Judiciário</strong> e <strong>SGD</strong> — encaminhamentos do sistema de garantia de direitos.' },
+                ],
+                textoExplicativo: "O sistema oferece diversas opções para registrar a forma de ingresso da família na unidade: desde a demanda espontânea e busca ativa até encaminhamentos formais de outros serviços da Proteção Social Básica, Proteção Social Especial, saúde, educação, Conselho Tutelar, Poder Judiciário e outros órgãos do Sistema de Garantia de Direitos (Defensoria Pública, Ministério Público, Delegacias).",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-039.webp",
+                paginaFisica: 39,
+                tituloPagina: "Excluir Registro",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Excluir Forma de Ingresso</strong> — remove o registro permanentemente.' },
+                  { numero: 2, texto: '<strong>Confirmação</strong> — o sistema solicita confirmação antes de excluir.' },
+                  { numero: 3, texto: '<strong>Mensagem de sucesso</strong> — "Forma de ingresso excluída com sucesso."' },
+                ],
+                textoExplicativo: "Para excluir um registro, o profissional aciona 'Excluir forma de ingresso'. O sistema solicita confirmação da ação e, após confirmada, remove o registro da lista e exibe a mensagem 'Forma de ingresso excluída com sucesso'.",
+              },
             ]}
           />
         </section>
 
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="condicoes-trabalho" titulo="Condições de Trabalho e Rendimento da Família" screenshotSrc="/assets/screenshots/page-056.webp" paginaFisica={56}
-            anotacoes={[
-              { numero: 1, texto: 'Bloco <strong>Condições de Trabalho e Rendimento</strong> — consulta por membro da composição familiar.' },
-              { numero: 2, texto: '<strong>Lista de Condições</strong> com Pessoa, Idade e N.º da CTPS.' },
-              { numero: 3, texto: 'Agrupamento <strong>Valores Recebidos por Programas Sociais</strong> — Bolsa Família, BPC/LOAS, Seguro-desemprego, Pensão Alimentícia.' },
-              { numero: 4, texto: 'Campo <strong>Observações</strong> para registro de informações complementares.' },
+          <SecaoTutorialCarousel
+            id="condicoes-habitacionais"
+            titulo="Condições Habitacionais da Família"
+            descricao="Características do domicílio, condições habitacionais, inclusão e atualização de registros de habitação da família."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-042.webp",
+                paginaFisica: 42,
+                tituloPagina: "Características do Domicílio",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Condições habitacionais da família</strong> — características do domicílio.' },
+                  { numero: 2, texto: '<strong>Espécie de domicílio</strong>, <strong>Total de cômodos</strong> e <strong>Cômodos como dormitório</strong>.' },
+                  { numero: 3, texto: '<strong>Material das paredes externas</strong>, <strong>Tipo de iluminação</strong> e <strong>Forma de abastecimento de água</strong>.' },
+                  { numero: 4, texto: '<strong>Água canalizada</strong>, <strong>Escoamento sanitário</strong> e <strong>Coleta de lixo</strong>.' },
+                ],
+                textoExplicativo: "O bloco Características do Domicílio reúne informações estruturais da habitação, como espécie, quantidade de cômodos, materiais de construção, tipo de iluminação, abastecimento de água, escoamento sanitário e coleta de lixo — dados essenciais para avaliar as condições de vida da família.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-043.webp",
+                paginaFisica: 43,
+                tituloPagina: "Condições Habitacionais",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Número médio de pessoas por dormitório</strong> — indicador de densidade habitacional.' },
+                  { numero: 2, texto: '<strong>Acessibilidade</strong> — se o domicílio possui acessibilidade para pessoas com dificuldade de locomoção.' },
+                  { numero: 3, texto: '<strong>Área de risco</strong> — desabamento ou alagamento.' },
+                  { numero: 4, texto: '<strong>Área de difícil acesso geográfico</strong> e <strong>Área com forte presença de conflito/violência</strong>.' },
+                ],
+                textoExplicativo: "A seção de condições habitacionais avalia indicadores de qualidade da moradia: densidade por dormitório, acessibilidade, localização em área de risco (desabamento, alagamento), difícil acesso geográfico e exposição à violência — fatores que impactam diretamente a vulnerabilidade social da família.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-044.webp",
+                paginaFisica: 44,
+                tituloPagina: "Incluir Habitação",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Incluir habitação</strong> — acione para adicionar informações de habitação.' },
+                  { numero: 2, texto: '<strong>Data do atendimento</strong> — campo para informar a data da ação.' },
+                  { numero: 3, texto: '<strong>Campos de avaliação</strong> — densidade, acessibilidade, área de risco, difícil acesso, conflito/violência.' },
+                  { numero: 4, texto: 'Opção <strong>Incluir</strong> — salva o registro e exibe mensagem de confirmação.' },
+                ],
+                textoExplicativo: "Para adicionar informações habitacionais, o profissional aciona 'Incluir habitação' e preenche os campos de avaliação do domicílio: número de pessoas por dormitório, acessibilidade, localização em área de risco, difícil acesso geográfico e presença de conflito/violência.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-046.webp",
+                paginaFisica: 46,
+                tituloPagina: "Atualizar Habitação",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Atualizar habitação</strong> — acione para editar as informações existentes.' },
+                  { numero: 2, texto: '<strong>Campos habilitados</strong> — os mesmos campos da inclusão ficam disponíveis para edição.' },
+                  { numero: 3, texto: 'Opção <strong>Incluir</strong> — salva as alterações realizadas.' },
+                ],
+                textoExplicativo: "Para editar informações de habitação já registradas, o profissional aciona 'Atualizar habitação', que habilita os campos para correção ou complementação dos dados. Após os ajustes, a opção 'Incluir' salva as alterações.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-048.webp",
+                paginaFisica: 48,
+                tituloPagina: "Observações das Condições Habitacionais",
+                anotacoes: [
+                  { numero: 1, texto: 'Seção <strong>Observações</strong> — campo para registro de informações complementares.' },
+                  { numero: 2, texto: 'Ícone para <strong>retrair ou reexibir</strong> as informações do bloco.' },
+                ],
+                textoExplicativo: "A seção de observações permite registrar informações complementares sobre as condições habitacionais da família. Consulte a página 19 para mais detalhes sobre o registro de observações no Prontuário SUAS.",
+              },
+            ]}
+          />
+        </section>
+
+
+
+        <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
+          <SecaoTutorialCarousel
+            id="condicoes-trabalho"
+            titulo="Condições de Trabalho e Rendimento da Família"
+            descricao="Consulta por membro da composição familiar das condições de trabalho, valores recebidos por programas sociais e observações complementares."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-056.webp",
+                paginaFisica: 56,
+                tituloPagina: "Condições de Trabalho",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Condições de Trabalho e Rendimento</strong> — consulta por membro da composição familiar.' },
+                  { numero: 2, texto: '<strong>Lista de Condições</strong> — Pessoa, Idade e N.º da CTPS (Carteira de Trabalho).' },
+                  { numero: 3, texto: 'Agrupamento <strong>Condições de Trabalho</strong> — dados trabalhistas de cada membro.' },
+                ],
+                textoExplicativo: "O bloco Condições de Trabalho e Rendimento apresenta, para cada membro da composição familiar, as condições de trabalho registradas, incluindo idade e número da CTPS. Esses dados permitem à equipe identificar a inserção laboral dos membros da família.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-057.webp",
+                paginaFisica: 57,
+                tituloPagina: "Valores Recebidos por Programas Sociais",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Valores recebidos por Programas Sociais</strong> — Bolsa Família, BPC/LOAS, Aposentadoria/Pensão.' },
+                  { numero: 2, texto: '<strong>Bolsa Família</strong> — campo que informa se a família recebe o benefício.' },
+                  { numero: 3, texto: '<strong>Ajuda/doação regular</strong>, <strong>Seguro-desemprego</strong> e <strong>Pensão alimentícia</strong> — outras fontes de renda.' },
+                ],
+                textoExplicativo: "A seção Valores Recebidos por Programas Sociais detalha as fontes de renda da família: Bolsa Família, aposentadoria/pensão/BPC-LOAS, ajuda/doação regular, seguro-desemprego e pensão alimentícia — informações essenciais para a avaliação socioeconômica.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-058.webp",
+                paginaFisica: 58,
+                tituloPagina: "Observações das Condições de Trabalho e Rendimento",
+                anotacoes: [
+                  { numero: 1, texto: 'Seção <strong>Observações</strong> — campo para registro de informações complementares.' },
+                  { numero: 2, texto: 'Ícone para <strong>retrair ou reexibir</strong> as informações do bloco.' },
+                ],
+                textoExplicativo: "A seção de observações permite registrar informações complementares sobre as condições de trabalho e rendimento da família, como vínculos informais, desemprego recente ou participação em programas de qualificação profissional.",
+              },
             ]}
           />
         </section>
@@ -221,22 +463,100 @@ const b = BLOCK_ACCENTS
         <CicloAcompanhamento />
 
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="condicoes-educacionais" titulo="Condições Educacionais da Família" screenshotSrc="/assets/screenshots/page-049.webp" paginaFisica={49}
-            anotacoes={[
-              { numero: 1, texto: 'Bloco <strong>Condições Educacionais</strong> — consulta por membro da composição familiar.' },
-              { numero: 2, texto: '<strong>Lista de Condições</strong> com Pessoa, Idade, Sabe Ler e Escrever, Frequenta Escola.' },
-              { numero: 3, texto: 'Agrupamento <strong>Identificação de Vulnerabilidade Educacional</strong> por faixa etária.' },
-              { numero: 4, texto: 'Campo <strong>Observações</strong> sobre as condições educacionais.' },
+          <SecaoTutorialCarousel
+            id="condicoes-educacionais"
+            titulo="Condições Educacionais da Família"
+            descricao="Consulta por membro da composição familiar das condições educacionais, identificação de vulnerabilidade educacional e observações complementares."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-049.webp",
+                paginaFisica: 49,
+                tituloPagina: "Condições Educacionais e Vulnerabilidade",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Condições Educacionais</strong> — consulta por membro da composição familiar.' },
+                  { numero: 2, texto: '<strong>Lista de Condições</strong> — Pessoa, Idade, Sabe Ler e Escrever, Frequenta Escola.' },
+                  { numero: 3, texto: '<strong>Vulnerabilidade Educacional</strong> — faixa etária de pessoas que não frequentam escola/creche.' },
+                  { numero: 4, texto: '<strong>Faixa etária</strong> de pessoas que sabem ler/escrever.' },
+                ],
+                textoExplicativo: "O bloco Condições Educacionais apresenta, para cada membro da composição familiar, se sabe ler e escrever e se frequenta escola ou creche. A seção de vulnerabilidade educacional identifica, por faixa etária, quantas pessoas não estão frequentando a escola — indicador crítico para o planejamento de ações de enfrentamento.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-050.webp",
+                paginaFisica: 50,
+                tituloPagina: "Observações das Condições Educacionais",
+                anotacoes: [
+                  { numero: 1, texto: 'Seção <strong>Observações</strong> — campo para registro de informações complementares.' },
+                  { numero: 2, texto: 'Ícone para <strong>retrair ou reexibir</strong> as informações do bloco.' },
+                ],
+                textoExplicativo: "A seção de observações permite registrar informações complementares sobre as condições educacionais da família, como dificuldades específicas de aprendizagem, necessidade de reforço escolar ou encaminhamentos realizados para a rede de ensino.",
+              },
             ]}
           />
         </section>
 
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="condicoes-saude" titulo="Condições de Saúde da Família" screenshotSrc="/assets/screenshots/page-051.webp" paginaFisica={51}
-            anotacoes={[
-              { numero: 1, texto: 'Bloco <strong>Condições de Saúde</strong> — marcações de saúde por membro da família.' },
-              { numero: 2, texto: '<strong>Lista de Marcações</strong> com Data, Nome, Tipo (Doença grave, Remédios controlados, Uso abusivo de álcool/drogas) e Técnico.' },
-              { numero: 3, texto: 'Coluna <strong>Ações</strong> — ícone para visualizar registro de marcação de saúde.' },
+          <SecaoTutorialCarousel
+            id="condicoes-saude"
+            titulo="Condições de Saúde da Família"
+            descricao="Lista de marcações de saúde por membro da composição familiar, inclusão, visualização, edição e exclusão de registros de saúde."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-051.webp",
+                paginaFisica: 51,
+                tituloPagina: "Lista de Marcações de Saúde",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Condições de Saúde</strong> — marcações de saúde por membro da família.' },
+                  { numero: 2, texto: '<strong>Lista de Marcações</strong> — Data, Nome, Tipo (Doença grave, Remédios controlados, Álcool, Drogas) e Técnico.' },
+                  { numero: 3, texto: '<strong>Tipos de marcação</strong> — Doença grave, Remédios controlados para transtornos mentais, Uso abusivo de álcool e drogas.' },
+                  { numero: 4, texto: 'Coluna <strong>Ações</strong> — ícone para visualizar registro de marcação de saúde.' },
+                ],
+                textoExplicativo: "O bloco Condições de Saúde apresenta a lista de marcações de saúde registradas para a família. Cada registro inclui a data do atendimento, nome do membro, tipo de marcação (doença grave, remédios controlados, uso abusivo de álcool ou drogas) e o nome do técnico responsável.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-052.webp",
+                paginaFisica: 52,
+                tituloPagina: "Incluir Marcações de Saúde",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Incluir marcações de saúde</strong> — acione para adicionar nova marcação.' },
+                  { numero: 2, texto: '<strong>Data da ação</strong> — campo para informar a data do atendimento.' },
+                  { numero: 3, texto: '<strong>Pessoa</strong> — campo para informar o nome do membro atendido.' },
+                  { numero: 4, texto: '<strong>Tipo de marcação de saúde</strong> — seleção do tipo entre as opções disponíveis.' },
+                  { numero: 5, texto: 'Opção <strong>Incluir</strong> — salva o registro e exibe mensagem de confirmação.' },
+                ],
+                textoExplicativo: "Para adicionar uma nova marcação de saúde, o profissional aciona 'Incluir marcações de saúde' e preenche a data da ação, a pessoa atendida e o tipo de marcação. A opção 'Incluir' salva o registro e atualiza a lista.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-053.webp",
+                paginaFisica: 53,
+                tituloPagina: "Visualizar Marcações de Saúde",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Visualizar marcação</strong> — exibe o registro em modo leitura.' },
+                  { numero: 2, texto: '<strong>Data da ação</strong>, <strong>Pessoa</strong> e <strong>Tipo de marcação</strong> — dados do registro.' },
+                  { numero: 3, texto: 'Opção <strong>Fechar</strong> — fecha a janela de visualização.' },
+                ],
+                textoExplicativo: "A opção 'Visualizar' exibe os detalhes da marcação de saúde em modo somente leitura. O profissional pode consultar a data da ação, a pessoa atendida e o tipo de marcação registrada.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-054.webp",
+                paginaFisica: 54,
+                tituloPagina: "Editar e Excluir Marcações",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Alterar marcação</strong> — habilita os campos para edição do registro.' },
+                  { numero: 2, texto: 'Opção <strong>Atualizar</strong> — salva as alterações realizadas.' },
+                  { numero: 3, texto: 'Opção <strong>Excluir marcação</strong> — remove o registro após confirmação.' },
+                ],
+                textoExplicativo: "Para editar uma marcação, o profissional aciona 'Alterar marcação', ajusta os campos e confirma com 'Atualizar'. Para excluir, aciona 'Excluir marcação' e confirma a ação. O sistema exibe mensagens de confirmação para ambas as operações.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-055.webp",
+                paginaFisica: 55,
+                tituloPagina: "Observações das Condições de Saúde",
+                anotacoes: [
+                  { numero: 1, texto: 'Seção <strong>Observações</strong> — campo para registro de informações complementares.' },
+                  { numero: 2, texto: 'Ícone para <strong>retrair ou reexibir</strong> as informações do bloco.' },
+                ],
+                textoExplicativo: "A seção de observações permite registrar informações complementares sobre as condições de saúde da família, como acompanhamentos em andamento, encaminhamentos para a rede de saúde ou evolução de quadros crônicos.",
+              },
             ]}
           />
         </section>
@@ -246,11 +566,70 @@ const b = BLOCK_ACCENTS
         <TiposRegistro />
 
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.gestao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="registro-atendimentos" titulo="Registro de Atendimentos Socioassistenciais" screenshotSrc="/assets/screenshots/page-053.webp" paginaFisica={53}
-            anotacoes={[
-              { numero: 1, texto: 'Bloco <strong>Registro de Atendimentos</strong> — histórico de atendimentos realizados com a família.' },
-              { numero: 2, texto: '<strong>Lista de Atendimentos</strong> com Data, Tipo de Atendimento, Nome do Técnico e Ações.' },
-              { numero: 3, texto: 'Opção <strong>Incluir Atendimento</strong> para registrar novo atendimento.' },
+          <SecaoTutorialCarousel
+            id="registro-atendimentos"
+            titulo="Registro de Atendimentos Socioassistenciais"
+            descricao="Histórico completo de atendimentos realizados com a família: cadastro, tipos de atendimento, visualização, edição e exclusão de registros."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-059.webp",
+                paginaFisica: 59,
+                tituloPagina: "Lista de Atendimentos",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Registro de Atendimentos</strong> — histórico de atendimentos realizados com a família.' },
+                  { numero: 2, texto: '<strong>Lista de Atendimentos</strong> — Data, Nome, Nome do Técnico, Tipo de Atendimento e Ações.' },
+                  { numero: 3, texto: '<strong>Tipos de Atendimento</strong> — Acolhida particularizada, Atendimento individualizado, Busca ativa, Visita domiciliar PAIF, SCFV, PSB Domicílio.' },
+                  { numero: 4, texto: 'Coluna <strong>Ações</strong> — ícone para visualizar registro.' },
+                ],
+                textoExplicativo: "O bloco Registro de Atendimentos Socioassistenciais apresenta o histórico completo de atendimentos realizados com a família. Cada registro contém data, nome do membro atendido, técnico responsável, tipo de atendimento e ações disponíveis. Os tipos incluem acolhida particularizada, atendimento individualizado, busca ativa, visita domiciliar PAIF, PSB Domicílio e SCFV.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-060.webp",
+                paginaFisica: 60,
+                tituloPagina: "Incluir Atendimento — Tipos",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Incluir atendimento</strong> — acione para registrar novo atendimento.' },
+                  { numero: 2, texto: '<strong>Tipos de Atendimento</strong> — Acolhida particularizada, Atendimento individualizado, Busca ativa, Visita domiciliar PAIF.' },
+                  { numero: 3, texto: '<strong>PSB no Domicílio</strong> — Pessoa idosa, Pessoa com Deficiência, Gestantes e Primeira Infância.' },
+                  { numero: 4, texto: '<strong>SCFV</strong> e <strong>Outros</strong> — opções adicionais de tipo de atendimento.' },
+                ],
+                textoExplicativo: "Os tipos de atendimento disponíveis no sistema abrangem as principais ações do PAIF e da Proteção Social Básica: acolhida particularizada, atendimento individualizado, busca ativa, visita domiciliar, atendimento do PSB no Domicílio (idoso, PCD, gestantes), SCFV e outros.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-061.webp",
+                paginaFisica: 61,
+                tituloPagina: "Incluir Atendimento — Formulário",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Pessoa(s)</strong> — campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s).' },
+                  { numero: 2, texto: '<strong>Data do atendimento</strong> — campo para informar a data da realização.' },
+                  { numero: 3, texto: '<strong>Nome do técnico responsável</strong> — campo do profissional que realizou o atendimento.' },
+                  { numero: 4, texto: '<strong>Tipo</strong> e <strong>Descrição/Resumo</strong> — tipo de atendimento e informações adicionais.' },
+                  { numero: 5, texto: 'Opção <strong>Incluir</strong> — salva o registro de atendimento.' },
+                ],
+                textoExplicativo: "O formulário de inclusão de atendimento contém os campos: pessoa(s) atendida(s), data, técnico responsável, tipo de atendimento e descrição/resumo. A opção 'Incluir' salva o registro e exibe a mensagem de confirmação.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-062.webp",
+                paginaFisica: 62,
+                tituloPagina: "Visualizar Atendimento",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Visualizar atendimento</strong> — exibe o registro completo em modo leitura.' },
+                  { numero: 2, texto: '<strong>Dados exibidos</strong> — Pessoa(s), Data, Técnico, Tipo e Descrição do atendimento.' },
+                  { numero: 3, texto: 'Opção <strong>Cancelar</strong> — fecha a janela de visualização.' },
+                ],
+                textoExplicativo: "A opção 'Visualizar' exibe todos os dados do atendimento em modo somente leitura: pessoa(s), data, técnico, tipo e descrição/resumo. O profissional pode consultar o histórico completo para subsidiar o planejamento do acompanhamento familiar.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-064.webp",
+                paginaFisica: 64,
+                tituloPagina: "Editar e Excluir Atendimento",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Alterar atendimento</strong> — habilita os campos para edição do registro.' },
+                  { numero: 2, texto: 'Opção <strong>Alterar</strong> — salva as alterações realizadas no atendimento.' },
+                  { numero: 3, texto: 'Opção <strong>Excluir atendimento</strong> — remove o registro após confirmação.' },
+                ],
+                textoExplicativo: "Para editar um atendimento, o profissional aciona 'Alterar atendimento', ajusta os campos necessários e confirma com o botão 'Alterar'. Para excluir, aciona 'Excluir atendimento' e confirma a ação. O sistema exibe mensagens de confirmação para ambas as operações.",
+              },
             ]}
           />
         </section>

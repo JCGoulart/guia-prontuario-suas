@@ -1,9 +1,7 @@
 ---
-// Diagnóstico Socioeconômico da Família — tutorial expandido com screenshot, anotações, tabela comparativa e boas práticas
-import SecaoTutorial from '../SecaoTutorial.astro'
+// Diagnóstico Socioeconômico da Família — seção conceitual com tabela comparativa e boas práticas
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
-import type { Anotacao } from '@/types'
 import ProgramsTable from '@/components/react/content/ProgramsTable.tsx'
 import BestPracticesList from '@/components/astro/content/BestPracticesList.astro'
 
@@ -62,15 +60,8 @@ const programas = [
   },
 ]
 
-const anotacoes: Anotacao[] = [
-  { numero: 1, texto: 'Janela "Incluir forma de ingresso" — formulário para registrar como a família acessou a unidade e o motivo do primeiro atendimento.' },
-  { numero: 2, texto: '<strong>Pessoa(s)</strong> — campo que informa o(s) nome(s) da(s) pessoa(s) atendida(s).' },
-  { numero: 3, texto: '<strong>Data do atendimento</strong> — campo que informa a data em que o atendimento foi realizado.' },
-  { numero: 4, texto: '<strong>Número do prontuário físico</strong> — informa o número do prontuário físico da pessoa/família.' },
-  { numero: 5, texto: '<strong>De que forma a família acessou a unidade para o primeiro atendimento</strong> — informa como a pessoa/família acessou a unidade para o primeiro atendimento.' },
-  { numero: 6, texto: '<strong>Razões que motivaram o primeiro atendimento</strong> — campo que apresenta as informações adicionais ao atendimento. Acione <strong>Incluir</strong> para salvar o registro.' },
-]
 ---
+
 <section
   id="diagnostico-socioeconomico"
   class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none mt-6"
@@ -113,15 +104,7 @@ const anotacoes: Anotacao[] = [
     </div>
   </div>
 
-  <!-- Screenshot com anotações -->
-  <SecaoTutorial
-    screenshotSrc="assets/screenshots/page-034.webp"
-    titulo="Diagnóstico Socioeconômico da Família"
-    subtitulo="Forma de ingresso na unidade e motivo do primeiro atendimento"
-    anotacoes={anotacoes}
-    paginaFisica={34}
-    id="diagnostico-socioeconomico-tutorial"
-  />
+  </div>
 
   <!-- Tabela comparativa de programas de transferência de renda -->
   <div class="mt-10">
