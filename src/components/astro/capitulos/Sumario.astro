@@ -1,6 +1,6 @@
 ---
 // Sumário do Manual do Prontuário Eletrônico
-import { BLOCKS, BLOCK_ACCENTS } from '@/lib/constants'
+import { BLOCKS, BLOCK_ACCENTS, APPENDIX_SECTIONS } from '@/lib/constants'
 ---
 
 <section id="sumario" class="animate-fade-in bg-white dark:bg-slate-800 shadow-xl rounded-2xl p-8 md:p-16 print:shadow-none print:rounded-none print:break-before-page print:break-after-page">
@@ -29,6 +29,34 @@ import { BLOCKS, BLOCK_ACCENTS } from '@/lib/constants'
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-institucional-blue transition-colors"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </a>
+    <a href="#linha-tempo-prontuario" class="flex items-center justify-between py-2.5 px-4 rounded-lg hover:bg-institucional-lightBlue dark:hover:bg-slate-700 transition-colors group">
+      <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-institucional-blue dark:group-hover:text-institucional-lightBlue-foreground">Linha do Tempo do Prontuário SUAS</span>
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-slate-400">p. —</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-institucional-blue transition-colors"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>
+    <a href="#diferencas-prontuarios" class="flex items-center justify-between py-2.5 px-4 rounded-lg hover:bg-institucional-lightBlue dark:hover:bg-slate-700 transition-colors group">
+      <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-institucional-blue dark:group-hover:text-institucional-lightBlue-foreground">Diferenças entre os Prontuários</span>
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-slate-400">p. —</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-institucional-blue transition-colors"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>
+    <a href="#situacao-prontuario" class="flex items-center justify-between py-2.5 px-4 rounded-lg hover:bg-institucional-lightBlue dark:hover:bg-slate-700 transition-colors group">
+      <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-institucional-blue dark:group-hover:text-institucional-lightBlue-foreground">Situação do Novo Prontuário</span>
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-slate-400">p. —</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-institucional-blue transition-colors"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>
+    <a href="#funcionalidades-prontuario" class="flex items-center justify-between py-2.5 px-4 rounded-lg hover:bg-institucional-lightBlue dark:hover:bg-slate-700 transition-colors group">
+      <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-institucional-blue dark:group-hover:text-institucional-lightBlue-foreground">Funcionalidades do Prontuário</span>
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-slate-400">p. —</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-institucional-blue transition-colors"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>
     <a href="#conceitos-gerais" class="flex items-center justify-between py-2.5 px-4 rounded-lg hover:bg-institucional-lightBlue dark:hover:bg-slate-700 transition-colors group">
       <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-institucional-blue dark:group-hover:text-institucional-lightBlue-foreground">Conceitos Gerais</span>
       <div class="flex items-center gap-3">
@@ -36,10 +64,17 @@ import { BLOCKS, BLOCK_ACCENTS } from '@/lib/constants'
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-institucional-blue transition-colors"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </a>
-    <a href="#papeis-profissionais" class="flex items-center justify-between py-2.5 px-4 rounded-lg hover:bg-institucional-lightBlue dark:hover:bg-slate-700 transition-colors group">
-      <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-institucional-blue dark:group-hover:text-institucional-lightBlue-foreground">Profissionais do SUAS e Perfis de Acesso</span>
+    <a href="#cadastro-autenticacao" class="flex items-center justify-between py-2.5 px-4 rounded-lg hover:bg-institucional-lightBlue dark:hover:bg-slate-700 transition-colors group">
+      <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-institucional-blue dark:group-hover:text-institucional-lightBlue-foreground">Cadastro e Autenticação</span>
       <div class="flex items-center gap-3">
-        <span class="text-xs text-slate-400">p. 10</span>
+        <span class="text-xs text-slate-400">p. —</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-institucional-blue transition-colors"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>
+    <a href="#papel-profissionais" class="flex items-center justify-between py-2.5 px-4 rounded-lg hover:bg-institucional-lightBlue dark:hover:bg-slate-700 transition-colors group">
+      <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-institucional-blue dark:group-hover:text-institucional-lightBlue-foreground">Papel dos Profissionais</span>
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-slate-400">p. —</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-institucional-blue transition-colors"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </a>
@@ -87,4 +122,18 @@ import { BLOCKS, BLOCK_ACCENTS } from '@/lib/constants'
       </div>
     )
   })}
+
+  <!-- Anexos -->
+  <div class="mb-8 space-y-0.5">
+    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3 ml-4">Anexos</h3>
+    {APPENDIX_SECTIONS.map((s) => (
+      <a href={`#${s.id}`} class="flex items-center justify-between py-2.5 px-4 rounded-lg hover:bg-institucional-lightBlue dark:hover:bg-slate-700 transition-colors group">
+        <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-institucional-blue dark:group-hover:text-institucional-lightBlue-foreground">{s.title}</span>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-slate-400">p. —</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 group-hover:text-institucional-blue transition-colors"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+    ))}
+  </div>
 </section>

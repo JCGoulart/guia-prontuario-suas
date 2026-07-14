@@ -54,6 +54,10 @@ export const FINAL_SECTIONS = [
 ]
 
 export const APPENDIX_SECTIONS = [
+  { id: 'resumo-visual', title: 'Resumo: O que Pode e Não Pode' },
+  { id: 'checklist-prontuario', title: 'Checklist do Prontuário' },
+  { id: 'base-normativa', title: 'Base Normativa do Prontuário' },
+  { id: 'regras-ouro', title: '10 Regras de Ouro do Prontuário' },
   { id: 'duvidas-recorrentes', title: 'Dúvidas Recorrentes' },
   { id: 'problemas-tecnicos', title: 'Problemas Técnicos' },
   { id: 'capacitacao', title: 'Capacitação' },
@@ -78,6 +82,7 @@ export const BLOCKS = [
       { id: 'condicoes-saude', title: 'Condições de Saúde da Família' },
       { id: 'registro-atendimentos', title: 'Registro de Atendimentos' },
       { id: 'acesso-beneficios', title: 'Acesso a Benefícios Eventuais' },
+      { id: 'convivencia-familiar', title: 'Convivência Familiar e Comunitária' },
       { id: 'vulnerabilidades', title: 'Situações de Vulnerabilidade' },
       { id: 'planejamento-evolucao', title: 'Planejamento e Evolução' },
       { id: 'encaminhamentos', title: 'Encaminhamentos' },

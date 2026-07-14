@@ -7,6 +7,13 @@ const allSectionIds = [
   'conceitos-gerais',
   'cadastro-autenticacao',
   ...BLOCKS.flatMap((b) => b.items.map((i) => i.id)),
+  // Conceptual expandida sections (observer-only — active highlight + breadcrumb)
+  'fluxo-atendimento', 'gestao-prontuario', 'diagnostico-socioeconomico',
+  'condicoes-vida-expandido', 'ciclo-acompanhamento', 'tipos-registro',
+  'vulnerabilidades-protecoes', 'beneficios-eventuais',
+  'metodologia-acompanhamento', 'encaminhamentos-intersetorialidade',
+  'atendimento-coletivo-expandido', 'migracao-prontuario-expandido',
+  'painel-estatistico-expandido',
   ...APPENDIX_SECTIONS.map((s) => s.id),
   ...FINAL_SECTIONS.map((s) => s.id),
 ]
