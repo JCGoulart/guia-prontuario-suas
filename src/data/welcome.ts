@@ -38,8 +38,8 @@ export const WELCOME_CONTACT = {
 
 export const OTHER_CADERNOS = [
   {
-    href: 'https://guia-vigilancia.gofsuasrj.org',
-    label: 'Guia de Implantação da Vigilância Socioassistencial',
+    href: 'https://guia-vigilancia.sedsodh.org/',
+    label: 'Guia de Implementação da Vigilância Socioassistencial',
     description: '4 etapas para a formalização da Vigilância Socioassistencial nos Municípios',
     accentClass: 'bg-institucional-blue',
   },
@@ -50,7 +50,7 @@ export const OTHER_CADERNOS = [
     accentClass: 'bg-institucional-green',
   },
   {
-    href: 'https://sedsodh.github.io/hub-vigilancia-socioassistencial/',
+    href: 'https://hub-vigilancia.sedsodh.org/',
     label: 'Hub da Vigilância Socioassistencial',
     description: 'Central de informações, indicadores e dados da Vigilância Socioassistencial',
     accentClass: 'bg-institucional-blue',
