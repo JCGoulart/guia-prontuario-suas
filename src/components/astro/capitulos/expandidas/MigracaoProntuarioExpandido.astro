@@ -1,22 +1,9 @@
 ---
 // Migração de Prontuário Expandido — tutorial aprofundado sobre o fluxo de migração de prontuários entre CRAS
-import SecaoTutorial from '@/components/astro/capitulos/SecaoTutorial.astro'
 import SectionHeader from '@/components/astro/layout/SectionHeader.astro'
 import AlertBox from '@/components/astro/content/AlertBox.astro'
 import ProcessStepper from '@/components/astro/content/ProcessStepper.astro'
 import FeatureCard from '@/components/astro/content/FeatureCard.astro'
-import type { Anotacao } from '@/types'
-
-const anotacoes: Anotacao[] = [
-  { numero: 1, texto: 'Tela "Aprovação de pedido de migração" — lista de prontuários aguardando análise para migração entre unidades.' },
-  { numero: 2, texto: '<strong>N.º do prontuário</strong> — coluna que informa o número do prontuário eletrônico da pessoa.' },
-  { numero: 3, texto: '<strong>Nome</strong> — coluna que informa o nome da pessoa vinculada ao prontuário eletrônico.' },
-  { numero: 4, texto: '<strong>Data da solicitação</strong> — coluna que informa a data da solicitação da migração.' },
-  { numero: 5, texto: '<strong>Unidade de origem</strong> — coluna que informa o código da unidade de origem do prontuário.' },
-  { numero: 6, texto: '<strong>Município/UF</strong> — coluna que informa o município e UF da unidade de origem.' },
-  { numero: 7, texto: '<strong>Situação</strong> — coluna que informa a situação da solicitação (aguardando, aprovada, etc.).' },
-  { numero: 8, texto: '<strong>Ações</strong> — coluna com opções: <strong>Visualizar</strong> (detalhes da solicitação) e <strong>Aprovar migração</strong> (confirmar recebimento).' },
-]
 
 const fluxogramaSteps = [
   { number: 1, title: 'Unidade de Origem', description: 'Identifica a necessidade de migração e registra a solicitação no sistema. Após a aprovação, perde o acesso ao prontuário.', accent: 'blue' as const },
@@ -142,16 +129,6 @@ const fluxogramaSteps = [
       </p>
     </section>
   </div>
-
-  <!-- Tutorial com screenshot -->
-  <SecaoTutorial
-    id="aprovacao-pedido-migracao"
-    titulo="Aprovação de Pedido de Migração"
-    screenshotSrc="/assets/screenshots/page-131.webp"
-    paginaFisica={131}
-    anotacoes={anotacoes}
-    observacao="A tela de aprovação de migração é acessada pela unidade de destino. Cabe à equipe revisar os dados antes de aprovar — a migração é irreversível e transfere a titularidade do prontuário."
-  />
 
   <!-- SVG Flowchart -->
   <div class="mt-10">

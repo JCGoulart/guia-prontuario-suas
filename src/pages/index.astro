@@ -51,6 +51,7 @@ const b = BLOCK_ACCENTS
     <Sumario />
     <Apresentacao />
     <ProfissionaisPerfis />
+    <PapelProfissionais />
     <LoginSistema />
     <TermoUso />
 
@@ -379,19 +380,116 @@ const b = BLOCK_ACCENTS
       <SectionHeader title="Bloco 3 — Migrar Prontuário" accent="cyan" />
       <div data-block-content="migrar-prontuario" class="space-y-6">
         <section class={`bg-white dark:bg-slate-800 shadow-md rounded-xl print:shadow-none print:rounded-none border-l-4 ${b.reprogramacao.border} transition-all hover:shadow-lg`}>
-          <SecaoTutorial id="migrar-prontuario" titulo="Migrar Prontuário" screenshotSrc="/assets/screenshots/page-129.webp" paginaFisica={129}
-            anotacoes={[
-              { numero: 1, texto: 'Módulo <strong>Migrar Prontuário</strong> — gerencia transferências entre unidades.' },
-              { numero: 2, texto: 'Permite <strong>registrar pedido de transferência</strong> para outra unidade.' },
-              { numero: 3, texto: 'Permite <strong>receber prontuários</strong> de outras unidades.' },
+          <SecaoTutorialCarousel
+            id="migrar-prontuario"
+            titulo="Migrar Prontuário"
+            descricao="Fluxo completo de migração do prontuário eletrônico: da abertura da solicitação na unidade de origem à seleção da unidade de destino, aprovação do pedido pela unidade recebedora e finalização da transferência."
+            observacao="A família sempre estará vinculada ao serviço mais adequado ao seu território ou necessidade, mantendo a continuidade do acompanhamento."
+            paginas={[
+              {
+                screenshotSrc: "/assets/screenshots/page-023.webp",
+                paginaFisica: 23,
+                tituloPagina: "Acessando a Migração",
+                anotacoes: [
+                  { numero: 1, texto: 'Bloco <strong>Informações do Prontuário</strong> — exibe os dados do prontuário atual da pessoa/família.' },
+                  { numero: 2, texto: 'Ícone <strong>Opções</strong> — acione para acessar as ações disponíveis para o prontuário.' },
+                  { numero: 3, texto: 'Opção <strong>Migrar prontuário</strong> — selecione para iniciar o processo de transferência.' },
+                  { numero: 4, texto: '<strong>Janela de migração</strong> — o sistema apresenta a janela com os dados da pessoa e família.' },
+                ],
+                textoExplicativo: "Para iniciar a migração do prontuário para outra unidade, o profissional aciona o ícone Opções e seleciona a opção 'Migrar prontuário'. O sistema exibe uma janela com os dados do prontuário atual e da pessoa de referência, dando início ao processo de transferência entre unidades.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-024.webp",
+                paginaFisica: 24,
+                tituloPagina: "Informações do Prontuário e Identificação",
+                anotacoes: [
+                  { numero: 1, texto: 'Agrupamento <strong>Informações do Prontuário</strong> — N.º do prontuário, Data de Abertura, Unidade atual e Município.' },
+                  { numero: 2, texto: '<strong>Unidade atual</strong> e <strong>Município</strong> — identificam a unidade de origem do prontuário.' },
+                  { numero: 3, texto: 'Agrupamento <strong>Identificação da Pessoa</strong> — Nome, CPF e Grau de Parentesco da pessoa de referência.' },
+                  { numero: 4, texto: '<strong>Dados complementares</strong> — Situação Cadastral, Código Familiar, Data de Nascimento, Nome da Mãe e NIS.' },
+                ],
+                textoExplicativo: "A janela de migração exibe as informações do prontuário atual (número, data de abertura, unidade e município) e os dados da pessoa de referência, como nome, CPF, grau de parentesco, situação cadastral e código familiar. Essas informações são oriundas do Cadastro Único e servem para identificar corretamente a família a ser transferida.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-025.webp",
+                paginaFisica: 25,
+                tituloPagina: "Destino da Migração e Motivo",
+                anotacoes: [
+                  { numero: 1, texto: '<strong>Identificação complementar</strong> — RG, data de emissão, órgão expedidor e endereço da família.' },
+                  { numero: 2, texto: 'Campo <strong>Migrar para</strong> — selecione a unidade de destino da migração.' },
+                  { numero: 3, texto: 'Campos <strong>UF</strong> e <strong>Município</strong> — filtros para localizar a unidade de destino.' },
+                  { numero: 4, texto: 'Campo <strong>Motivo</strong> — informe o motivo da solicitação de migração do prontuário.' },
+                  { numero: 5, texto: 'Opções <strong>Confirmar</strong> (salva a solicitação) e <strong>Cancelar</strong> (cancela a ação).' },
+                ],
+                textoExplicativo: "Para completar a migração, o profissional deve selecionar a unidade de destino utilizando os filtros de UF e município, informar o motivo da transferência e confirmar a solicitação. Dados complementares como RG e endereço são exibidos para referência. A confirmação gera uma solicitação de migração que será processada pela unidade de destino.",
+              },
+              // --- Recebimento e aprovação da migração (páginas 130–139) ---
+              {
+                screenshotSrc: "/assets/screenshots/page-130.webp",
+                paginaFisica: 130,
+                tituloPagina: "Selecionar Unidade para Análise",
+                anotacoes: [
+                  { numero: 1, texto: 'Menu <strong>Migrar Prontuário</strong> — acione para acessar o módulo de migração.' },
+                  { numero: 2, texto: 'Funcionalidade <strong>Selecionar Unidade</strong> — lista todas as unidades atribuídas ao perfil no CadSUAS.' },
+                  { numero: 3, texto: '<strong>Lista de Unidades</strong> — Código, Nome, Município/UF, Endereço e Telefone.' },
+                  { numero: 4, texto: 'Opção <strong>Pesquisar</strong> — refine a lista informando os parâmetros desejados.' },
+                  { numero: 5, texto: '<strong>Registro na lista</strong> — acione para visualizar solicitações ou analisar pedidos recebidos.' },
+                ],
+                textoExplicativo: "Para gerenciar as solicitações de migração recebidas, o profissional acessa o menu Migrar Prontuário e seleciona a unidade de atendimento. O sistema exibe a lista de unidades atribuídas ao seu perfil, permitindo refinar a busca por parâmetros e selecionar a unidade desejada para análise das solicitações.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-131.webp",
+                paginaFisica: 131,
+                tituloPagina: "Aprovação de Pedido de Migração",
+                anotacoes: [
+                  { numero: 1, texto: 'Funcionalidade <strong>Aprovação de pedido de migração</strong> — lista os prontuários aguardando análise.' },
+                  { numero: 2, texto: '<strong>Lista de Solicitações</strong> — N.º do prontuário, Nome, Data da solicitação, Unidade de origem, Município/UF e Situação.' },
+                  { numero: 3, texto: 'Coluna <strong>Ações</strong> — opções <strong>Visualizar</strong> (consulta os detalhes) e <strong>Aprovar migração</strong>.' },
+                ],
+                textoExplicativo: "A tela de aprovação exibe a lista de solicitações de migração pendentes. Cada registro mostra o número do prontuário, nome da pessoa, data da solicitação, unidade de origem e situação atual. Na coluna Ações, o profissional pode visualizar os detalhes completos ou aprovar a migração diretamente.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-132.webp",
+                paginaFisica: 132,
+                tituloPagina: "Visualizar Solicitação — Dados do Prontuário",
+                anotacoes: [
+                  { numero: 1, texto: 'Agrupamento <strong>Informações do Prontuário</strong> — N.º do prontuário, Data de Abertura, Unidade atual e Município.' },
+                  { numero: 2, texto: 'Agrupamento <strong>Identificação da Pessoa</strong> — Nome, CPF e Grau de Parentesco da pessoa de referência.' },
+                  { numero: 3, texto: '<strong>Dados complementares</strong> — Situação Cadastral, Código Familiar, Data de Nascimento, Nome da Mãe, NIS e RG.' },
+                  { numero: 4, texto: '<strong>Endereço completo</strong> e <strong>Motivo</strong> da solicitação de migração.' },
+                ],
+                textoExplicativo: "Ao visualizar a solicitação, o sistema exibe as informações completas do prontuário e da pessoa de referência, incluindo dados do Cadastro Único, endereço e o motivo informado. Esses dados permitem ao profissional analisar a procedência da solicitação antes de decidir pela aprovação ou rejeição.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-135.webp",
+                paginaFisica: 135,
+                tituloPagina: "Aprovar Migração",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Prosseguir para aprovação</strong> — acione para iniciar o processo de aprovação.' },
+                  { numero: 2, texto: '<strong>Janela Aprovar migração</strong> — exibe os dados do prontuário e da família para conferência final.' },
+                  { numero: 3, texto: 'Campo <strong>Aprovar (Sim/Não)</strong> — informe o resultado da avaliação da solicitação.' },
+                  { numero: 4, texto: 'Campo <strong>Observação</strong> — registre informações complementares sobre a decisão.' },
+                  { numero: 5, texto: 'Opção <strong>Confirmar</strong> — salva o resultado da análise e atualiza a situação.' },
+                ],
+                textoExplicativo: "Para aprovar ou rejeitar a migração, o profissional aciona 'Prosseguir para aprovação' e preenche o formulário de decisão. É necessário informar se a migração é aprovada (Sim) ou não (Não) e, opcionalmente, registrar uma observação. A confirmação salva o resultado e atualiza a situação da solicitação no sistema.",
+              },
+              {
+                screenshotSrc: "/assets/screenshots/page-138.webp",
+                paginaFisica: 138,
+                tituloPagina: "Aprovar Todos",
+                anotacoes: [
+                  { numero: 1, texto: 'Opção <strong>Aprovar todos</strong> — aprova todas as solicitações pendentes de uma só vez.' },
+                  { numero: 2, texto: '<strong>Texto informativo</strong> — confirma a operação em lote antes de prosseguir.' },
+                  { numero: 3, texto: 'Campo <strong>Observação</strong> — registro de observação geral para a aprovação em lote.' },
+                  { numero: 4, texto: 'Opções <strong>Confirmar</strong> (salva a aprovação em lote) e <strong>Cancelar</strong> (cancela a ação).' },
+                ],
+                textoExplicativo: "A funcionalidade 'Aprovar todos' permite que o profissional aprove todas as solicitações de migração pendentes em uma única operação. O sistema exibe uma janela de confirmação com a quantidade de registros a serem aprovados. É possível adicionar uma observação geral antes de confirmar a operação.",
+              },
             ]}
-            observacao="A família sempre estará vinculada ao serviço mais adequado ao seu território."
           />
         </section>
 
         <MigracaoProntuarioExpandido />
-
-        <PapelProfissionais />
       </div>
     </div>
 

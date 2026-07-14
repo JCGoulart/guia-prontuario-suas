@@ -164,7 +164,39 @@ const blockNavList: Array<{
     openBtn.classList.remove('hidden')
     bottomBar.classList.add('hidden')
     var el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (!el) return
+
+    // Expand ancestor block if collapsed by the accordion
+    var blockContent = el.closest('[data-block-content]')
+    if (blockContent && blockContent.style.display === 'none') {
+      blockContent.style.display = ''
+      // Update the toggle button label and chevron
+      var blockId = blockContent.closest('[data-block-group]')?.getAttribute('data-block-group') || ''
+      if (blockId) {
+        var label = document.querySelector('[data-block-toggle-label="' + blockId + '"]')
+        var chevron = document.querySelector('[data-block-chevron="' + blockId + '"]')
+        if (label) label.textContent = 'Recolher'
+        if (chevron) (chevron).style.transform = ''
+        // Remove from localStorage collapsed list
+        try {
+          var collapsed = JSON.parse(localStorage.getItem('prontuario-blocks-collapsed') || '[]')
+          var idx = collapsed.indexOf(blockId)
+          if (idx > -1) collapsed.splice(idx, 1)
+          localStorage.setItem('prontuario-blocks-collapsed', JSON.stringify(collapsed))
+        } catch(e) {}
+      }
+      // Update global toggle-all button
+      var globalBtn = document.getElementById('toggle-all-blocks')
+      if (globalBtn) {
+        var contents = document.querySelectorAll('[data-block-content]')
+        var allCollapsed = Array.from(contents).every(function(c) { return c.style.display === 'none' })
+        globalBtn.innerHTML = allCollapsed
+          ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg> Expandir todos'
+          : '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 15 12 9 18 15"/></svg> Recolher todos'
+      }
+    }
+
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   function openSidebar() {
