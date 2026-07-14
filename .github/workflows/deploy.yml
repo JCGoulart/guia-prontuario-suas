@@ -17,6 +17,7 @@ jobs:
           port: 22
           script_stop: true
           script: |
+            export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new"
             cd /var/www/guia-prontuario-suas
             git pull origin master
             npm ci
